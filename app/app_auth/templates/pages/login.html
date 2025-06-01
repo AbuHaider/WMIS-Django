@@ -1,0 +1,245 @@
+
+{% extends "layouts/auth_master.html" %}
+{% load static %}
+{% block title %}Login{% endblock title %}
+
+{% block custom_styles_block %} 
+
+<style type="text/css">
+    
+    body {
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+    
+    .login-container {
+        width: 100%;
+        max-width: 400px; 
+    }
+    
+    /* Optional: Add some responsive behavior to the card */
+    .card.login-box {
+        width: 100%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    }
+    
+    /* Responsive adjustments for smaller screens */
+    @media (max-width: 576px) {
+        .login-container {
+            padding: 10px;
+        }
+    
+        .card.login-box {
+            box-shadow: none; 
+        }
+    }
+
+
+</style>
+
+{% endblock custom_styles_block %}
+
+
+{% block content %}
+
+<div class="container" >
+    <div class="login-container" style="display: flex; justify-content: center; align-items: center; position: absolute; top: 25%; left: 42%;">
+        <div class="card login-box">
+            <div class="card-header" style="background-color: #124A6F;color: #fff;">
+                <h3 class="card-title font-weight-bold">Login</h3>
+            </div>
+
+            <div class="card-body rounded-bottom pt-2 pb-1">
+                <form id="myForm" enctype="multipart/form-data">
+
+                    <span id="show_error" class="text-danger"></span>
+
+                    <div class="form-group mb-3">
+                        <span><i class="fa fa-user"></i></span>
+                        <label for="UserName">User Name</label>
+                        <div class="input-group">
+                            <span class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fas fa-user-circle fa-fw"></i>
+                                </span>
+                            </span>
+                            <input for="UserName" id="username" name="username" class="form-control" placeholder="User name" />
+                        </div>
+                        <span for="UserName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <span><i class="fa fa-lock"></i></span>
+                        <label for="Password">Password</label>
+                        <div class="input-group password-content">
+                            <span class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="fa fa-key fa-fw"></i>
+                                </span>
+                            </span>
+                            <input for="Password" type="password" class="form-control" id="password" name="password" placeholder="Password" autocomplete="current-password" />
+                            <span class="input-group-append">
+                                <span class="input-group-text">
+                                    <a class="show-hide-link" href="" id="pass_show_hide">
+                                        <i class="fa fa-eye-slash fa-fw" aria-hidden="true"></i>
+                                    </a>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-2">
+                        <div class="row">
+                            <div class="col-12">
+                                <input type="checkbox" class="remember-me" id="cb1" checked> 
+                                <label for="RememberMe">Remember me</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-2">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <button type="submit" class="btn ripple btn-outline-primary">Login</button>
+                            </div>
+                            <div class="col-md-9 text-center mt-2">
+                            <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+{% block popup_content %}
+
+<!-- Popup Message Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Message</h5>
+        <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+      </div>
+      <div class="modal-body">
+
+        <h5 id="success_msg"><h5>
+        <h5 id="error_msg"><h5>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="btn_close" class="btn btn-danger" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock popup_content %}
+
+
+{% block custom_scripts_block %}
+
+<script>
+
+var csrftoken = $("meta[name='csrf-token']").attr("content");  
+
+$(function () {
+    
+    $('#pass_show_hide').on('click', function(event) {
+        event.preventDefault(); 
+
+        var passwordInput = $('#password');
+        var icon = $('#pass_show_hide i');
+
+        // Toggle the input type between 'password' and 'text'
+        if (passwordInput.attr('type') === 'password') {
+            passwordInput.attr('type', 'text');
+            icon.removeClass('fa-eye-slash').addClass('fa-eye'); 
+        } else {
+            passwordInput.attr('type', 'password');
+            icon.removeClass('fa-eye').addClass('fa-eye-slash'); 
+        }
+    });
+
+    $('#myForm').on('submit', function (event) {
+    
+        event.preventDefault();
+
+        var formData = {};
+        $(this).serializeArray().forEach(function (item) {
+            formData[item.name] = item.value;
+            console.log(`Added to formData: ${item.name} = ${item.value}`); 
+        });
+
+
+        $.ajax({
+            type: "POST",
+            url: "/login-user/",
+            headers: { "X-CSRFToken": csrftoken },
+            data: JSON.stringify(formData), 
+            contentType: "application/json",
+            dataType: "JSON",
+            success: function (data) {
+                console.log(data);
+                if(data.status) {
+                    window.location.href = '/dashboard';
+                    // window.location.href = '/';
+                    $('.resetInputVal').val('');
+                } else {
+                    $('#show_error').html(data.message);
+                } 
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+                console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    
+    });
+
+    $('#guestUser').on('change', function () {
+        if ($(this).is(':checked')) {
+        var checkboxValue = $(this).val();
+        console.log(checkboxValue);
+
+        var userName = 'guest';
+        var userPassword = 'guest';
+
+        $.ajax({
+            type: "POST",
+            url: "/get-login/",
+            headers: { "X-CSRFToken": csrftoken },
+            data: JSON.stringify({'user_name': userName, 'password': userPassword }),
+            dataType: 'json',
+            contentType: 'application/json',
+            cache: false,
+            success: function (data) {
+            if(data.status) {
+                window.location.href = '/';
+                $('.resetInputVal').val('');
+            }
+            else {
+                $('#myModal').modal({backdrop : 'static', keyboard : false});
+                $('#error_msg').html('<span style="color: red">ERROR!! <p>'+data.message+'</p></span>');
+            } 
+            },
+            error: function(xhr, ajaxOptions, thrownError) {
+            console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+        }
+    });
+
+});
+
+</script>
+
+{% endblock custom_scripts_block %}
+

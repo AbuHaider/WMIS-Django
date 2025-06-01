@@ -1,0 +1,108 @@
+{% extends "layouts/home_master.html" %}
+{% load static %}
+{% static "" as baseUrl %}
+
+{% block title %} News & Event {% endblock title %}
+
+{% block content %}
+
+
+<style>
+
+    a {
+        color: #03623f;
+    }
+
+    a:hover {
+        color: #00b75c;
+    }
+
+</style>
+
+<div class="main-container pt-2" >
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card parent-card" style="border-radius: 0px;">
+                <div class="page-header" style="background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    <h4 class="main-content-title tx-24 mg-b-5" style="padding: 5px 0px 2px 20px;">News and Event</h4>   
+                </div>
+
+                <div class="col-md-12" style="padding: 20px 20px 0px 20px;">
+
+                    <div class="card-body" style="max-height: 65vh; overflow-y: auto;">
+                        
+                        <div class="text-wrap">
+                            <div class="example">
+                                <ul class="list-unstyled">
+                                    <li class="media d-block d-sm-flex pb-3">
+                                        <a class="d-sm-flex" href="#">
+                                            <img alt="img" class="wd-100p" width="420px" height="300px" src="{% static 'assets/images/news_events/inception.png' %}">
+                                            <div class="media-body" style="padding-left: 20px;">
+                                                <h5>Inception of Climate Resilient Livelihood Improvement and Watershed Management in Chittagong Hill Tracts Sector Project by MoCHTA</h5>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="media d-block d-sm-flex mg-t-25 pb-3">
+                                        <a class="d-sm-flex" href="#">
+                                            <img alt="img" class="wd-100p" width="420px" height="300px" src="{% static 'assets/images/news_events/wmis.png' %}">
+                                            <div class="media-body" style="padding-left: 20px;">
+                                                <h5>Launch of Watershed Management Information System (WMIS) for Chittagong Hill Tracts Area</h5>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="media d-block d-sm-flex mg-t-25 pb-3">
+                                        <a class="d-sm-flex" href="#">
+                                            <img alt="img" class="wd-100p" width="420px" height="300px" src="{% static 'assets/images/news_events/final-workshop.png' %}">
+                                            <div class="media-body" style="padding-left: 20px;">
+                                                <h5>Final workshop of ADB TA REG 6539 Investing in Climate Change Adaptation through Agroecological Landscape Restoration: A Nature-Based Solution for Climate Resilience for Chittagong Hill Tracts Region of Bangladesh</h5>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="media d-block d-sm-flex mg-t-25 pb-3">
+                                        <a class="d-sm-flex" href="#">
+                                            <img alt="img" class="wd-100p" width="420px" height="300px" src="{% static 'assets/images/news_events/drone.png' %}">
+                                            <div class="media-body" style="padding-left: 20px;">
+                                                <h5>Demonstration of drone-based watershed health monitoring by CEGIS and ADB in CHT Watersheds</h5>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block script_content %}
+
+    <script>
+        console.log("here I am..");
+
+        function setFixedHeaderWidth() {
+            const card = document.querySelector('.parent-card');
+            const header = document.querySelector('.page-header');
+            if (card && header) {
+            // header.style.width = card.offsetWidth + 'px';
+            const cardWidth = card.offsetWidth;
+            header.style.width = (cardWidth - 2) + 'px';
+            }
+        }
+
+        // Initial setup
+        window.addEventListener('load', setFixedHeaderWidth);
+
+        // Adjust on resize
+        window.addEventListener('resize', setFixedHeaderWidth);
+    </script>
+
+{% endblock %}
+
+

@@ -1,0 +1,169 @@
+
+{% load static %}
+
+
+<header id="page-topbar" style="background-color: #1353A3 ; ">
+    {% comment %} <img class="logo" src="{% static 'assets/logo/ADB_logo.png' %}" style="float:left"> {% endcomment %}
+    
+    <div class="navbar-header">
+        <div class="d-flex">
+            <button type="button" class="btn btn-sm px-3 font-size-16 d-lg-none header-item waves-effect waves-light" data-bs-toggle="collapse" data-bs-target="#topnav-menu-content">
+                <i class="fa fa-fw fa-bars"></i>
+            </button>
+
+            <span class="title-txt d-none d-md-inline-block mt-3">
+                <span style="color: rgb(240, 203, 135);font: 700 1.40vw/1 Roboto, Noto Sans, Helvetica, Arial, sans-serif">Watershed Management Information System</span><br />
+                <span style="color: #d7ebf0;font: 700 1.20vw/1 Roboto, Noto Sans, Helvetica, Arial, sans-serif">Chittagong Hill Tracts (CHT)</span>  <br>
+                <span style="color:#d7ebf0;font: 700 .80vw/1 Roboto, Noto Sans, Helvetica, Arial, sans-serif">Asian Development Bank</span>        
+            </span>
+
+            <span class="title-txt d-inline-block d-md-none text-center">
+                <span class="title title-sm m-2">WMIS</span>
+            </span>
+        </div>
+
+        <div class="d-flex">
+            <div class="dropdown d-inline-block d-lg-none ms-2">
+                <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-search-dropdown"
+                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="uil-search"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+                    aria-labelledby="page-header-search-dropdown">
+    
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="topnav">
+
+            <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
+
+                <div class="collapse navbar-collapse" id="topnav-menu-content">
+                    <ul class="navbar-nav">
+
+                        <!--Dashboard-->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'home' %}">
+                                <i class="uil-home-alt me-2"></i> 
+                                Home
+                            </a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link arrow-none" href="{% url 'map_view' %}" id="topnav-components" role="button">
+                                <i class="uil-map me-2"></i> <strong> Map Viewer </strong>
+                            </a>
+                        </li>
+
+                        <!--Major Components-->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link arrow-none" href="#" id="topnav-components" role="button">
+                                <i class="uil-layers me-2"></i><strong>Watershed Monitoring</strong><div class="arrow-down"></div>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="topnav-components">
+                                <a href="{% url 'watershed_health' %}" class="dropdown-item">Watershed Health</a>
+                                    <a href="{% url 'climate_resilience' %}" class="dropdown-item">Climate Resilience</a>
+                            </div>
+                        </li> 
+                        
+                        <!-- 
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'map_view' %}">
+                                <i class="uil-map me-2"></i>
+                                Map Viewer
+                            </a>
+                        </li> -->
+
+                        <!--Major Components-->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link arrow-none" href="#" id="topnav-components" role="button">
+                                <i class="uil uil-analysis me-2"></i><strong>Major Components</strong><div class="arrow-down"></div>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="topnav-components">
+                                <a href="{% url 'factsheets' %}" class="dropdown-item">Factsheets</a>
+                                <a href="{% url 'map_gallery' %}" class="dropdown-item">Map Gallery</a>
+                                <a href="{% url 'documents' %}" class="dropdown-item">Documents</a>
+                                <a href="{% url 'value_chain' %}" class="dropdown-item">Value Chain</a>
+                            </div>
+                        </li>
+
+                        <!--
+                            <li class="nav-item">
+                                <a class="nav-link"  href="{% url 'factsheets' %}">
+                                    <i class="uil uil-file-check-alt me-2"></i> 
+                                    Factsheets
+                                </a>
+                            </li>
+                            
+                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'documents' %}" style="color: gray;">
+                                    <i class="uil-analysis me-2"></i> 
+                                    Documents
+                                </a>
+                            </li> 
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'value_chain' %}" style="color: gray;">
+                                    <i class="uil uil-analysis me-2"></i> 
+                                    Value Chain
+                                </a>
+                            </li>
+                        --> 
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link arrow-none" href="#" id="topnav-components" role="button">
+                                <i class="uil uil-parcel me-2"></i><strong>Capacity Building</strong><div class="arrow-down"></div>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="topnav-components">
+                                <a href="{% url 'demonstration' %}" class="dropdown-item">Demonstration</a>
+                                    <a href="{% url 'training' %}" class="dropdown-item">Trainig</a>
+                            </div>
+                        </li>
+                        
+                        <li class="nav-item dropdown">
+                            <a class="nav-link arrow-none" href="#" id="topnav-components" role="button">
+                                <i class="uil uil-sitemap me-2"></i><strong>About CRLIWM-CHT</strong><div class="arrow-down"></div>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="topnav-components">
+                                <a href="#" class="dropdown-item">Overview</a>
+                                    <a href="{% url 'news_events_list' %}" class="dropdown-item">News and Event</a>
+                                    <a href="{% url 'success_stories' %}" class="dropdown-item">Success Stories</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            {% if user.is_authenticated %}
+                                <a class="nav-link arrow-none" href="#" id="topnav-components" role="button">
+                                    <i class="uil uil-user me-1"></i><strong>{{user.username}}</strong><div class="arrow-down"></div>
+                                </a>
+                            {%else%}
+                                <a class="nav-link arrow-none" href="{% url 'login' %}" id="topnav-components" role="button">
+                                    <i class="uil uil-sign-in-alt me-1"></i><strong> Sign In </strong>
+                                </a>
+                            {% endif %}
+
+                            {% if user.is_authenticated %}
+                                <div class="dropdown-menu" aria-labelledby="topnav-components">
+                                    <a href="#" class="dropdown-item">View Profile</a>
+                                    <button class="dropdown-item" onclick="document.getElementById('header-logout-form').submit();">
+                                        <i class="uil uil-sign-out-alt me-2"></i> Sign Out
+                                    </button>
+                                    <form id="header-logout-form" action="{% url 'logout' %}" method="POST" class="d-none">
+                                        {% csrf_token %}
+                                    </form>  
+                                </div>
+                            {% endif %}
+                        </li>                            
+                        
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    
+</header>

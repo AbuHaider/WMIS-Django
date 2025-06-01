@@ -1,0 +1,286 @@
+
+body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.map-container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: calc(100vh - 3rem) !important;
+    margin: 0;
+    padding: 0;
+    outline-style: none;
+}
+
+body .map-container {
+    left: 17rem;
+    width: calc(100% - 17rem);
+    transition: left 250ms ease, width 200ms ease;
+}
+
+body.sidebar-collapse .map-container {
+    left: 50px;
+    width: calc(100% - 50px);
+    transition: left 250ms ease, width 200ms ease;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    border-radius: 5px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1011;
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover {
+    background-color: #6ea2f5;
+}
+
+/* Tree-view CSS Roles Start :: */
+
+.treeview {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.treeview li {
+    margin: 0px 0;
+}
+
+.treeview li label {
+    cursor: default; /* Default cursor */
+    margin-bottom: 0px;
+    padding: 0px 5px 0px 5px;
+    display: flex;
+    align-items: center;
+}
+
+.treeview li:not(:has(ul)) > label {
+    cursor: default; /* Arrow cursor */
+}
+
+.treeview li:has(ul) > label {
+    cursor: pointer; /* Clickable pointer */
+}
+
+.treeview label::before {
+    content: '-'; /* Default to '-' */
+    margin-right: 8px;
+    display: inline-block;
+    width: 15px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Hover color for labels of <li> that have a nested <ul> */
+.treeview li:has(ul) > label:hover {
+    color: #F4A261; 
+}
+
+/* Hover color for labels of <li> that do not have a nested <ul> */
+.treeview li:not(:has(ul)) > label:hover {
+    color: black;
+}
+
+/* Make checkboxes visible only for <li> elements without a child <ul> */
+.treeview li:not(:has(ul)) > input[type="checkbox"] {
+    display: inline-block; /* Make checkboxes visible */
+    margin-right: 5px; /* Add some space between the checkbox and the label */
+    vertical-align: middle; /* Align it with the text */
+}
+
+/* Keep checkboxes for <li> with <ul> hidden */
+.treeview li:has(ul) > input[type="checkbox"] {
+    display: none; /* Hide checkboxes */
+}
+
+.treeview input[type="checkbox"] + label::before {
+    content: '+'; /* Show '+' if the <li> has a <ul> */
+}
+
+.treeview input[type="checkbox"] + label + ul {
+    display: none;
+}
+
+.treeview input[type="checkbox"]:checked + label::before {
+    content: '-'; /* Change to '-' when expanded */
+}
+
+.treeview input[type="checkbox"]:checked + label + ul {
+    display: block;
+}
+
+.treeview ul {
+    padding-left: 20px;
+}
+
+.treeview li {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.treeview ul {
+    list-style-type: none;
+}
+
+.treeview li > ul > li:last-child {
+    margin-left: 0px; /* Align with subcategories */
+}
+
+.treeview li ul li label::before {
+    content: '-'; /* Ensure nested <li> items without further children get '-' */
+}
+
+/* Apply '-' for the last child */
+/* .treeview li:last-child label::before {
+    content: '-'; 
+
+} */
+
+
+/* End :: Tree-view CSS Roles */
+
+/* Leaflet CSS roles  */
+.leaflet-attribution-flag {
+    display: none !important;
+}
+
+.leaflet-tooltip {
+    background-color: transparent;
+    border: none;
+    box-shadow: none;              
+    color: black;                  
+    font-size: 12px;               
+    padding: 0;                    
+}
+
+.leaflet-tooltip:before {
+    content: none; /* Remove the triangle */
+}
+
+.leaflet-control-scale {
+    left: 430px !important; /* Move scale bar slightly to the right */
+    bottom: 6px !important; /* Adjust vertical positioning if needed */
+}
+
+.select2-container--open {
+    z-index: 10051 !important; /* Higher than the popup's z-index */
+}
+
+
+
+/* Start :: Tooltrip Message CSS roles */
+
+.tooltip-container {
+    position: relative;
+    /* display: inline-block; */
+}
+
+/* Tooltip text */
+.tooltip-container .tooltip-text {
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: center;
+    padding: 6px 10px;
+    border-radius: 4px;
+    position: absolute;
+    /* top: 50%;
+    right: 120%; 
+    transform: translateY(-50%); */
+    white-space: nowrap;
+    font-size: 14px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.tooltip-text.left {
+    top: 50%;
+    right: 100%; 
+    transform: translateY(-50%); 
+    margin-right: 10px;
+}
+
+.tooltip-text.right {
+    top: 50%;
+    left: 100%; 
+    transform: translateY(-50%); 
+    margin-left: 10px;
+}
+
+.tooltip-text.top {
+    bottom: 100%; 
+    left: 50%;
+    transform: translateX(-50%); 
+    margin-bottom: 10px; 
+}
+
+/* Tooltip arrow */
+.tooltip-container .tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%; /* Always at the right edge of the tooltip */
+    transform: translateY(-50%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: transparent transparent transparent rgba(0, 0, 0, 0.7);
+}
+
+/* Show tooltip with animation */
+.tooltip-container:hover .tooltip-text,
+.tooltip-container:focus-within .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+    animation: fadeOut 5s forwards; 
+}
+
+/* Keyframes for auto-hide effect */
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+
+/* .tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip-container:focus-within .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+} */
+
+/* End :: Tooltrip Message CSS roles */
+
+.watershed-label {
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    padding: 5px;
+}

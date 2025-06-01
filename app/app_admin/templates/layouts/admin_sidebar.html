@@ -1,0 +1,139 @@
+{% load static %}
+
+
+<aside class="main-sidebar elevation-4 sidebar-color" style="top: 55px;">
+
+  <!-- <a href="/" class="brand-link border-0 " style="background-color: #257358; padding-left: 25px;">
+    <img src="{% static 'assets/img/icons/bapex_logo_trans.png' %}" alt="BAPEX-DIMS" class="brand-image" />
+     <span class="brand-text ml-2">DIMS, BAPEX</span> 
+  </a> -->
+
+  <div class="sidebar" style="margin: 0px;">
+    <nav>
+        <ul class="nav nav-pills nav-sidebar flex-column nav-flat nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
+            
+            <li class="nav-item" style="background: #f48708; ">
+                <a href="{% url 'dashboard' %}" class="nav-link sidebar-label"><i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>Dashboard</p>
+                </a>
+            </li>
+            
+            {% if details.user_role == 'admin' %}
+
+                <li class="nav-item {% if 'administrative' in parent %} menu-open {% endif %}">
+                    <a href="#" class="nav-link sidebar-label {% if 'administrative' in parent %} active {% endif %}">
+                    {% comment %} <i class="nav-icon fas fa-edit"></i> {% endcomment %}
+                    <i class="nav-icon fas fa-user-cog"></i>
+                    <p>Administrative <i class="right fas fa-angle-left"></i></p>
+                    </a>
+
+                    <ul class="nav nav-treeview" style="background: none; padding-left: 10px;">
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link sidebar-label {% if 'user_control' in segment %} active {% endif %}">
+                            <i class="nav-icon far fa-circle"></i>
+                            <p>User Control Panel</p>
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="#" class="nav-link sidebar-label {% if 'pending_request' in segment %} active {% endif %}">
+                            <i class="nav-icon far fa-circle"></i>
+                            <p>Pending Request</p>
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="#" class="nav-link sidebar-label {% if 'physical_lacation' in segment %} active {% endif %}">
+                            <i class="nav-icon far fa-circle"></i>
+                            <p>Menu 1</p>
+                            </a>
+                        </li>
+                
+                
+                    <!-- <li class="nav-item">
+                        <a href="#" class="nav-link {% if 'map_legend' in segment %} active {% endif %}">
+                        <i class="nav-icon far fa-circle"></i>
+                        <p>Map Legend</p>
+                        </a>
+                    </li> -->
+
+                    </ul>
+                </li>
+            
+            {% endif %}
+            
+            {% if details.user_role == 'requester' %}
+
+                <li class="nav-item {% if 'requester' in parent %} menu-open {% endif %}">
+                    <a href="#" class="nav-link {% if 'requester' in parent %} active {% endif %}">
+                    <i class="nav-icon fas fa-user-cog"></i>
+                    <p>Data Request <i class="right fas fa-angle-left"></i></p>
+                    </a>
+
+                    <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{% url 'requester_list_view' %}" class="nav-link {% if 'requester_pending_list' in segment %} active {% endif %}">
+                        <i class="nav-icon far fa-circle"></i>
+                        <p>View Pending Request</p>
+                        </a>
+                    </li>
+
+                    </ul>
+                </li>
+            
+            {% endif %}
+
+
+            {% if details.user_role == 'deputy' %}
+                <li class="nav-item {% if 'admin_home' in parent %} menu-open {% endif %}" style="background: #f48708;">
+                    <a href="{% url 'admin_dashboard' %}" class="nav-link {% if 'dashboard' in segment %} active {% endif %}">
+                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                    <p>Dashboard </i></p>
+                    </a>
+                </li>
+
+                <li class="nav-item {% if 'deputy' in parent %} menu-open {% endif %}">
+                    <a href="#" class="nav-link {% if 'deputy' in parent %} active {% endif %}">
+                    {% comment %} <i class="nav-icon fas fa-edit"></i> {% endcomment %}
+                    <i class="nav-icon fas fa-user-cog"></i>
+                    <p>Data Request <i class="right fas fa-angle-left"></i></p>
+                    </a>
+
+                    <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{% url 'dgm_pending_request' %}" class="nav-link {% if 'data_pending_request' in segment %} active {% endif %}">
+                        <i class="nav-icon far fa-circle"></i>
+                        <p>View Pending Request</p>
+                        </a>
+                    </li>
+                    </ul>
+                </li>
+            {% endif %} 
+
+
+            {% if request.user.is_authenticated %}
+                <li class="nav-item">
+                    <a href="{% url 'logout' %}" class="nav-link sidebar-label"><i class="nav-icon fa fa-sign-out-alt"></i><p>Logout</p></a>
+                </li>
+            {% else %}
+
+            <li class="nav-item">
+                <a href="{% url 'login' %}" class="nav-link sidebar-label"><i class="nav-icon fa fa-sign-in-alt"></i><p>Login</p></a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'register' %}" class="nav-link sidebar-label"><i class="nav-icon fa fa-user-plus"></i><p>Register</p></a>
+            </li>
+            {% endif %} 
+            
+            <li class="nav-item">
+            <a target="_blank" href="#" class="nav-link sidebar-label">
+                <i class="nav-icon fas fa-info-circle icon-1p25"></i>
+                <p>Help</p>
+            </a>
+            </li>
+            
+        </ul>
+    </nav>
+  </div>
+</aside>

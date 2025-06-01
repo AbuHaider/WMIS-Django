@@ -1,0 +1,200 @@
+{% extends "layouts/home_master.html" %}
+{% load static %}
+{% static "" as baseUrl %}
+
+{% block title %} Demonstration {% endblock title %}
+
+{% block content %}
+
+<style>
+
+    body{
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+    a {
+        color: #03623f;
+    }
+
+    a:hover {
+        color: #00b75c;
+    }
+
+</style>
+
+
+
+<div class="main-container" style="padding-top: 10px;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card parent-card" style="border-radius: 0px;">
+                <div class="page-header" style="background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    <h4 class="main-content-title tx-24 mg-b-5" style="padding: 5px 0px 2px 20px;">
+                        Demonstration
+                    </h4>    
+                </div>
+                
+                <!-- Page Content -->
+                <div class="col-md-12" style="padding: 20px 20px 5px 10px;">
+                    <div class="card-body" style="max-height: 65vh; overflow-y: auto;">
+                        <div class="row pb-2">
+                            <div class="col-md-4">
+                                <!-- <a href="{% url 'ws_activity' %}"> -->
+                                <a href="#">
+                                    <div class="card features main-features main-features-3 wow fadeInUp reveal revealleft">
+                                        <div class="card-body">
+                                            <div class="counter-body-2">
+                                                <div class="bg-img mb-2 text-left hexagon-wrapper">                                                
+                                                    <div class="counter-icon mx-auto">
+                                                        <img class="wd-100" height="150px" width="200px" src="{% static 'assets/images/demo_activities/agro-forestry.png' %}">
+                                                        <!-- <i class="fe fe-package text-white"></i> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="text-left counter-body" style="min-height: 60px;">
+                                                <h5>Community based agro-forestry</h5>
+                                                <!-- <p class="mb-0">Spruha has a unique design that you cannot compare with any other templates. It has unique Design</p> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="#">
+                                    <div class="card features main-features main-features-3 wow fadeInUp reveal revealleft">
+                                        <div class="card-body">
+                                            <div class="counter-body-2">
+                                                <div class="bg-img mb-2 text-left hexagon-wrapper">
+                                                    <div class="counter-icon mx-auto">
+                                                        <img class="wd-100" height="150px" width="200px" src="{% static 'assets/images/demo_activities/climate-change.png' %}">
+                                                        <!-- <i class="fe fe-code text-white"></i> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="text-left counter-body" style="min-height: 60px;">
+                                                <!-- <h4>Quality &amp; Clean Code</h4> -->
+                                                <h5>Community based climate change risk and adaptation assessment</h5>                                            
+                                                <!-- <p class="mb-0">The Spruha admin code is maintained very cleanly and well-structured.</p> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="#">
+                                    <div class="card features main-features main-features-3 wow fadeInUp reveal revealleft">
+                                        <div class="card-body">
+                                            <div class="counter-body-2">
+                                                <div class="bg-img mb-2 text-left hexagon-wrapper">
+                                                    <div class="counter-icon mx-auto">
+                                                        <img class="wd-100" height="150px" width="200px" src="{% static 'assets/images/demo_activities/waterhed-health.png' %}">
+                                                        <!-- <i class="fe fe-layers text-white"></i> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="text-left counter-body" style="min-height: 60px;">
+                                                <h5>Watershed health monitoring using drones</h5>
+                                                <!-- <p class="mb-0">We included multiple demos, preview video, and screen shots to give a quick overview of our template.</p> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="row pt-2">
+                            <div class="col-md-4">
+                                <a href="#">
+                                    <div class="card features main-features main-features-3 wow fadeInUp reveal revealleft">
+                                        <div class="card-body">
+                                            <div class="counter-body-2">
+                                                <div class="bg-img mb-2 text-left hexagon-wrapper">
+                                                    <div class="counter-icon mx-auto">
+                                                        <img class="wd-100" height="150px" width="200px" src="{% static 'assets/images/demo_activities/participatory.png' %}">
+                                                        <!-- <i class="fe fe-file text-white"></i> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="text-left counter-body" style="min-height: 60px;">
+                                                <h5>Participatory climate resilience tracking</h5>
+                                                <!-- <p class="mb-0">The most advanced "User Pages" are included in this template, like registration, profile, and log-in pages.</p> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="#">
+                                    <div class="card features main-features main-features-3 wow fadeInUp reveal revealleft">
+                                        <div class="card-body">
+                                            <div class="counter-body-2">
+                                                <div class="bg-img mb-2 text-left hexagon-wrapper">
+                                                    <div class="counter-icon mx-auto">
+                                                        <img class="wd-100" height="150px" width="200px" src="{% static 'assets/images/demo_activities/agro-nursery.png' %}">
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="text-left counter-body" style="min-height: 60px;">
+                                                <h5>Agro-forestry nursery development</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a href="#">
+                                    <div class="card features main-features main-features-3 wow fadeInUp reveal revealleft">
+                                        <div class="card-body">
+                                            <div class="counter-body-2">
+                                                <div class="bg-img mb-2 text-left hexagon-wrapper">
+                                                    <div class="counter-icon mx-auto">
+                                                        <img class="wd-100" height="150px" width="200px" src="{% static 'assets/images/demo_activities/native.png' %}">
+                                                        <!-- <i class="fe fe-aperture text-white"></i> -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="text-left counter-body" style="min-height: 60px;">
+                                                <h5>Native regenerative tree plantations</h5>
+                                                <!-- <p class="mb-0">Modern widgets are included in this template. Please check out the best option that suits for your projects.</p> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>    
+                </div>    
+                <!-- End Row -->
+
+            </div>
+        </div>
+    </div>    
+</div>
+
+{% endblock %}
+
+
+{% block script_content %}
+
+    <script>
+        console.log("here I am..");
+
+        function setFixedHeaderWidth() {
+            const card = document.querySelector('.parent-card');
+            const header = document.querySelector('.page-header');
+            if (card && header) {
+            // header.style.width = card.offsetWidth + 'px';
+            const cardWidth = card.offsetWidth;
+            header.style.width = (cardWidth - 2) + 'px';
+            }
+        }
+
+        // Initial setup
+        window.addEventListener('load', setFixedHeaderWidth);
+
+        // Adjust on resize
+        window.addEventListener('resize', setFixedHeaderWidth);
+    </script>
+
+{% endblock %}

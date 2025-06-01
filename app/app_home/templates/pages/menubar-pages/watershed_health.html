@@ -1,0 +1,1188 @@
+{% extends "layouts/home_master.html" %}
+{% load static %}
+{% static "" as baseUrl %}
+
+{% block title %} Watershed Health {% endblock title %}
+
+{% block content %}
+
+<style>
+
+    body{
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+    .main-nav-line .nav-link {
+        color: #c6d3cd;
+    }
+
+
+</style>
+
+<div class="main-container" style="padding-top: 10px;">
+    
+    <!-- Row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card parent-card" style="border-radius: 0px;">
+                <div class="page-header " style="position: fixed; top: 162px; z-index: 1000;  background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    <h4 class="main-content-title tx-24 mg-b-5" style="padding: 5px 0px 2px 20px;">Watershed Health</h4>  
+                </div>
+
+                <div class="col-md-12" style="padding: 40px 20px 20px 20px;">
+                    <div class="card" style="border: none;">
+                        <div class="card-body" style="max-height: 65vh; overflow-y: auto;">
+                                                
+                            <div class="row mt-2 mb-4">
+                                <div class="col-md-2">
+                                    <select class="form-control select2">
+                                        <option value="" selected disabled>Select Wstershed</option>
+                                        <option value="R65">Bangaltali and Rupakari</option>
+                                        <option value="K71">Bhaibon Chhara</option>
+                                        <option value="R99">Bhushan Chhara</option>
+                                        <option value="K76">Dighinala</option>
+                                        <option value="R114">Ghilachari</option>
+                                        <option value="K98">Logang</option>
+                                        <option value="B76">Tangkabati 1</option>
+                                        <option value="B77">Tangkabati 2</option>
+                                        <option value="B173">Thanchi</option>
+                                    </select>
+                                </div>
+                                <!-- <div class="col-md-2" style="padding-top: 5px; text-align: left;">Select Watershed</div>  -->                             
+                            </div>
+
+                            <!-- Tab Navigation -->
+                            <div class="d-flex flex-wrap gap-2 mb-3" role="tablist">
+                                <a class="btn btn-primary active" data-bs-toggle="pill" href="#navpills2-profile" role="tab" aria-selected="true">
+                                    Overall Status
+                                </a>
+                                <a class="btn btn-secondary" data-bs-toggle="pill" href="#navpills2-messages" role="tab" aria-selected="false">
+                                    Component Wise Status
+                                </a>
+                            </div>
+
+                            <!-- Tab Content -->
+                            <div class="collapse show" id="collapseExample" style="border: none;">
+                               
+                                <div class="tab-content text-muted">
+                                    
+                                    <div class="tab-pane fade show active" id="navpills2-profile" role="tabpanel">
+                                        <div class="row">
+                                            <div class="col-md-5" style="padding: 0px;">
+                                                <div class="card custom-card" style="box-shadow: none; border: none;" id="list">
+                                                    <div class="card-body">                                                                    
+                                                        <div class="text-wrap">                                                                        
+                                                            <ul class="list-unstyled">
+                                                                <li class="media d-block d-sm-flex">  
+                                                                        <div class="media-body" style="width: 100%; ">
+                                                                            <div class="listgroup-example ">
+                                                                                <ul class="list-group checked" style="padding-left: 0px !important;">
+                                                                                    <li class="list-group-item" style="background-color: #2F539B; ">
+                                                                                            <h5 style="margin-bottom: 3px; color: white;">Overall Status Of Gilachhari </h5>
+                                                                                    </li>
+                                                                                    <li class="list-group-item"><i class="fa fa-angle-double-right my-2 me-3 tx-13" aria-hidden="true"></i>
+                                                                                        Number of Para: 15
+                                                                                    </li>  
+                                                                                    <li class="list-group-item"><i class="fa fa-angle-double-right my-2 me-3 tx-13" aria-hidden="true"></i>
+                                                                                        Area: 2920 ha
+                                                                                    </li>
+                                                                                    <li class="list-group-item"><i class="fa fa-angle-double-right my-2 me-3 tx-13" aria-hidden="true"></i>
+                                                                                        Total Population: 5034
+                                                                                    </li>    
+                                                                                    <li class="list-group-item"><i class="fa fa-angle-double-right my-2 me-3 tx-13" aria-hidden="true"></i>
+                                                                                        Male: 2490
+                                                                                    </li> 
+                                                                                    <li class="list-group-item"><i class="fa fa-angle-double-right my-2 me-3 tx-13" aria-hidden="true"></i>
+                                                                                        Female: 2544
+                                                                                    </li> 
+                                                                                    <li class="list-group-item"><i class="fa fa-angle-double-right my-2 me-3 tx-13" aria-hidden="true"></i>
+                                                                                        Number of Household: 1168
+                                                                                    </li> 
+                                                                                    <li class="list-group-item"><i class="fa fa-angle-double-right my-2 me-3 tx-13" aria-hidden="true"></i>
+                                                                                        Number of Community: 03 (Chakma, Marma and Tripura)
+                                                                                    </li>                                                                                                                                                                                                         
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                </li>                                                                                
+                                                            </ul>                                                                        
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5" style="padding: 13px;">
+                                                <div class="col-md-12" style="padding: 20px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);">
+                                                    <div class="counter-icon">
+                                                        <img alt="img" class="wd-150 mg-sm-r-20 mg-b-20 mg-sm-b-0" width="100%" height="360px" src="{% static 'assets/images/factsheets/gilachhari.png' %}">
+                                                    </div>
+                                                </div>                                                              
+                                            </div>
+                                            <div class="col-md-8" style="padding: 0px;">
+                                                <div class="row p-4">
+                                                    <div class="col-md-12" style="padding: 10px 20px 20px 10px; ">
+                                                        <h6>Watershed Health Standardized Rating </h6>
+                                                        <div class="counter-icon">
+                                                            <img src="{% static 'assets/images/watershed_monitoring/current-status.png' %}">
+                                                        </div>
+                                                        <p style="text-align: justify;">Currently, standardized rating is reflecting ‘Bad’ condition of Gilachhari watershed in terms of watershed health composite index.</p>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="navpills2-messages" role="tabpanel">
+                                        <div class="col-xl-12">
+                                            <div class="card">
+                                                <div class="card-body">
+
+                                                    <h4 class="card-title" style="padding-bottom: 10px;">Component Wise Status</h4>
+
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                                                <a class="nav-link mb-2 active" id="v-pills-home-tab" data-bs-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Soil and Land</a>
+                                                                <a class="nav-link mb-2" id="v-pills-profile-tab" data-bs-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false" tabindex="-1">Water</a>
+                                                                <a class="nav-link mb-2" id="v-pills-messages-tab" data-bs-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false" tabindex="-1">Local Climate Effect</a>
+                                                                <a class="nav-link mb-2" id="v-pills-settings-tab" data-bs-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false" tabindex="-1">Forest/Agroforestry</a>
+                                                                <a class="nav-link" id="v-pills-info-tab" data-bs-toggle="pill" href="#v-pills-info" role="tab" aria-controls="v-pills-info" aria-selected="false" tabindex="-1">Ecosystem and Biodiversity</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-9">
+                                                            <div class="tab-content text-muted mt-4 mt-md-0" id="v-pills-tabContent">
+                                                                <div class="tab-pane fade active show" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                                                    <div aria-multiselectable="true" class="accordion" id="accordion_1" role="tablist">
+                                                                        <div class="card">
+                                                                            <div class="card-header" id="SL_1" role="tab">
+                                                                                <a aria-controls="collapse_SL_1" aria-expanded="true" data-bs-toggle="collapse" href="#collapse_SL_1" >Soil Erosion</a>
+                                                                            </div>
+                                                                            <div aria-labelledby="SL_1" class="collapse show" data-bs-parent="#accordion_1" id="collapse_SL_1" role="tabpanel">                                                                                                                                                      
+                                                                                <div class="card-body component-item">
+                                                                                    <h6 class="pb-2">List of Parameters</h6>  
+                                                                                    <nav class="nav d-block flex-column">
+                                                                                        <li>
+                                                                                            <i style="font-size:15px; padding: 7px 0px 0px 0px; float: left;" class="uil-angle-right-b"></i>
+                                                                                            <a class="nav-link" href="{% url 'monitoring_data' %}?MonitoringDataCat=AnnualSoil">Annual Soil Erosion Load (View Status)</a>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data Source:</label>
+                                                                                                        <label>Field survey / primary assessment and CEGIS</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection frequency:</label>
+                                                                                                        <label>Annually</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection approach:</label>
+                                                                                                        <label>Watershed Modeling, Mapping and Field survey data </label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <!-- <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">MRV tools and techniques:</label>
+                                                                                                        <label></label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Assumptions:</label>
+                                                                                                        <label></label>
+                                                                                                    </div>
+                                                                                                </div> -->
+                                                                                            </div>
+                                                                                        </li>
+                                                                                    </nav>                                                                               
+                                                                                </div>                                                                           
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="card">
+                                                                            <div class="card-header" id="SL_2" role="tab">
+                                                                                <a aria-controls="collapse_SL_2" aria-expanded="true" data-bs-toggle="collapse" href="#collapse_SL_2">Soil Organic Content</a>
+                                                                            </div>
+                                                                            <div aria-labelledby="SL_2" class="collapse" data-bs-parent="#accordion_1" id="collapse_SL_2" role="tabpanel">
+                                                                                <div class="card-body component-item">
+                                                                                    <h6 class="pb-2">List of Parameters</h6>  
+                                                                                    <nav class="nav d-block flex-column">
+                                                                                        <li>
+                                                                                            <i style="font-size:15px; padding: 7px 0px 0px 0px; float: left;" class="uil-angle-right-b"></i>
+                                                                                            <a class="nav-link" href="#brset">Percentage of Organic Matter (View Status)</a>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data Source:</label>
+                                                                                                        <label>CEGIS</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection frequency:</label>
+                                                                                                        <label>1 year</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection approach:</label>
+                                                                                                        <label></label>
+                                                                                                    </div>
+                                                                                                </div>                                                                                            
+                                                                                            </div>
+                                                                                        </li>
+                                                                                    </nav>
+                                                                                    <br>
+                                                                                    
+                                                                                </div>    
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="card">
+                                                                            <div class="card-header" id="SL_3" role="tab">
+                                                                                <a aria-controls="collapse_SL_3" aria-expanded="true" data-bs-toggle="collapse" href="#collapse_SL_3">Top soil nutrients (NPKC)</a>
+                                                                            </div>
+                                                                            <div aria-labelledby="SL_3" class="collapse" data-bs-parent="#accordion_1" id="collapse_SL_3" role="tabpanel">
+                                                                                <div class="card-body component-item">
+                                                                                    <h6 class="pb-2">List of Parameters</h6>  
+                                                                                    <nav class="nav d-block flex-column">
+                                                                                        <li>
+                                                                                            <i style="font-size:15px; padding: 7px 0px 0px 0px; float: left;" class="uil-angle-right-b"></i>
+                                                                                            <a class="nav-link" href="#brset">Total Nitrogen (N) (View Status)</a>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data Source:</label>
+                                                                                                        <label>CEGIS</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection frequency:</label>
+                                                                                                        <label>1 year</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection approach:</label>
+                                                                                                        <label></label>
+                                                                                                    </div>
+                                                                                                </div>                                                                                            
+                                                                                            </div>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <i style="font-size:15px; padding: 7px 0px 0px 0px; float: left;" class="uil-angle-right-b"></i>
+                                                                                            <a class="nav-link" href="#brsizes">Availability of Phosphorus (P) (View Status)</a>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data Source:</label>
+                                                                                                        <label>CEGIS</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection frequency:</label>
+                                                                                                        <label>1 year</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection approach:</label>
+                                                                                                        <label></label>
+                                                                                                    </div>
+                                                                                                </div>                                                                                            
+                                                                                            </div>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <i style="font-size:15px; padding: 7px 0px 0px 0px; float: left;" class="uil-angle-right-b"></i>
+                                                                                            <a class="nav-link" href="#brremove">Exchangeable Potassium (K) (View Status)</a>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data Source:</label>
+                                                                                                        <label>CEGIS</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection frequency:</label>
+                                                                                                        <label>1 year</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection approach:</label>
+                                                                                                        <label></label>
+                                                                                                    </div>
+                                                                                                </div>                                                                                            
+                                                                                            </div>
+                                                                                        </li>                                                                                    
+                                                                                    </nav>                                                                                
+                                                                                </div>   
+                                                                            </div>
+                                                                        </div>                                                                    
+                                                                        <div class="card">
+                                                                            <div class="card-header" id="SL_4" role="tab">
+                                                                                <a aria-controls="collapse_SL_4" aria-expanded="true" data-bs-toggle="collapse" href="#collapse_SL_4">Soil pH</a>
+                                                                            </div>
+                                                                            <div aria-labelledby="SL_4" class="collapse" data-bs-parent="#accordion_1" id="collapse_SL_4" role="tabpanel">
+                                                                                <div class="card-body component-item">
+                                                                                    <h6 class="pb-2">List of Parameters</h6>  
+                                                                                    <nav class="nav d-block flex-column">
+                                                                                        <li>
+                                                                                            <i style="font-size:15px; padding: 7px 0px 0px 0px; float: left;" class="uil-angle-right-b"></i>
+                                                                                            <a class="nav-link" href="#brset">PH (View Status)</a>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data Source:</label>
+                                                                                                        <label>CEGIS</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection frequency:</label>
+                                                                                                        <label>1 year</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection approach:</label>
+                                                                                                        <label></label>
+                                                                                                    </div>
+                                                                                                </div>                                                                                    
+                                                                                            </div>
+                                                                                        </li>                                                                                    
+                                                                                    </nav>                                                                                                                                                                
+                                                                                </div>   
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="card">
+                                                                            <div class="card-header" id="SL_5" role="tab">
+                                                                                <a aria-controls="collapse_SL_5" aria-expanded="true" data-bs-toggle="collapse" href="#collapse_SL_5">Urbanization/ Paved area</a>
+                                                                            </div>
+                                                                            <div aria-labelledby="SL_5" class="collapse" data-bs-parent="#accordion_1" id="collapse_SL_5" role="tabpanel">
+                                                                                <div class="card-body component-item">
+                                                                                    <h6 class="pb-2">List of Parameters</h6>  
+                                                                                    <nav class="nav d-block flex-column">
+                                                                                        <li>
+                                                                                            <i style="font-size:15px; padding: 7px 0px 0px 0px; float: left;" class="uil-angle-right-b"></i>
+                                                                                            <a class="nav-link" href="#brset">Percentage of Paved Area (View Status)</a>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data Source:</label>
+                                                                                                        <label>CEGIS</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection frequency:</label>
+                                                                                                        <label>1 year</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection approach:</label>
+                                                                                                        <label></label>
+                                                                                                    </div>
+                                                                                                </div>                                                                                    
+                                                                                            </div>
+                                                                                        </li>                                                                                    
+                                                                                    </nav>                                                                                
+                                                                                </div>   
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                                                                    <div aria-multiselectable="true" class="accordion" id="accordion_2" role="tablist">
+                                                                        <div class="card">
+                                                                            <div class="card-header" id="W_1" role="tab">
+                                                                                <a aria-controls="collapse_W_1" aria-expanded="true" data-bs-toggle="collapse" href="#collapse_W_1">Water Availability</a>
+                                                                            </div>
+                                                                            <div aria-labelledby="W_1" class="collapse show" data-bs-parent="#accordion_2" id="collapse_W_1" role="tabpanel">                                                                                                                                                        
+                                                                                <div class="card-body component-item">
+                                                                                    <h6 class="pb-2">List of Parameters</h6>  
+                                                                                    <nav class="nav d-block flex-column">
+                                                                                        <li>
+                                                                                            <i style="font-size:15px; padding: 7px 0px 0px 0px; float: left;" class="uil-angle-right-b"></i>
+                                                                                            <a class="nav-link" href="{% url 'monitoring_data' %}?MonitoringDataCat=WaterDepthDrySeason">Avg. Water Depth (ft) of Chhara in Dry Season (Oct-Feb) (View Status)</a>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data Source:</label>
+                                                                                                        <label>CEGIS</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection frequency:</label>
+                                                                                                        <label>1 year</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection approach:</label>
+                                                                                                        <label></label>
+                                                                                                    </div>
+                                                                                                </div>                                                                                    
+                                                                                            </div>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <i style="font-size:15px; padding: 7px 0px 0px 0px; float: left;" class="uil-angle-right-b"></i>
+                                                                                            <a class="nav-link" href="#brsizes">Avg. Water Depth (ft) of Chhara in Wet Season (Oct-Feb) (View Status)</a>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data Source:</label>
+                                                                                                        <label>CEGIS</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection frequency:</label>
+                                                                                                        <label>1 year</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection approach:</label>
+                                                                                                        <label></label>
+                                                                                                    </div>
+                                                                                                </div>                                                                                    
+                                                                                            </div>
+                                                                                        </li>                                                                                    
+                                                                                    </nav>                                                                                
+                                                                                </div>                                                                         
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="card">
+                                                                            <div class="card-header" id="W_2" role="tab">
+                                                                                <a aria-controls="collapse_W_2" aria-expanded="true" data-bs-toggle="collapse" href="#collapse_W_2">Water Quality</a>
+                                                                            </div>
+                                                                            <div aria-labelledby="W_2" class="collapse" data-bs-parent="#accordion_2" id="collapse_W_2" role="tabpanel">
+                                                                                <div class="card-body component-item">
+                                                                                    <h6 class="pb-2">List of Parameters</h6>  
+                                                                                    <nav class="nav d-block flex-column">
+                                                                                        <li>
+                                                                                            <i style="font-size:15px; padding: 7px 0px 0px 0px; float: left;" class="uil-angle-right-b"></i>
+                                                                                            <a class="nav-link" href="#brset">Waterquality Index (View Status)</a>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data Source:</label>
+                                                                                                        <label>CEGIS</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection frequency:</label>
+                                                                                                        <label>1 year</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection approach:</label>
+                                                                                                        <label></label>
+                                                                                                    </div>
+                                                                                                </div>                                                                                    
+                                                                                            </div>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <i style="font-size:15px; padding: 7px 0px 0px 0px; float: left;" class="uil-angle-right-b"></i>
+                                                                                            <a class="nav-link" href="#brsizes">Number of Chhara (Number of Unique Reaches) (View Status)</a>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data Source:</label>
+                                                                                                        <label>CEGIS</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection frequency:</label>
+                                                                                                        <label>1 year</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection approach:</label>
+                                                                                                        <label></label>
+                                                                                                    </div>
+                                                                                                </div>                                                                                    
+                                                                                            </div>
+                                                                                        </li>
+                                                                                    </nav>                                                                                
+                                                                                </div>   
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="card">
+                                                                            <div class="card-header" id="W_5" role="tab">
+                                                                                <a aria-controls="collapse_W_5" aria-expanded="true" data-bs-toggle="collapse" href="#collapse_W_5">Number of Spring/Chhara</a>
+                                                                            </div>
+                                                                            <div aria-labelledby="W_5" class="collapse" data-bs-parent="#accordion_2" id="collapse_W_5" role="tabpanel">
+                                                                                <div class="card-body component-item">
+                                                                                    <h6 class="pb-2">List of Parameters</h6>  
+                                                                                    <nav class="nav d-block flex-column">
+                                                                                        <li>
+                                                                                            <i style="font-size:15px; padding: 7px 0px 0px 0px; float: left;" class="uil-angle-right-b"></i>
+                                                                                            <a class="nav-link" href="#brset">Number of Spring (View Status)</a>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data Source:</label>
+                                                                                                        <label>CEGIS</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection frequency:</label>
+                                                                                                        <label>1 year</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection approach:</label>
+                                                                                                        <label></label>
+                                                                                                    </div>
+                                                                                                </div>                                                                                    
+                                                                                            </div>
+                                                                                        </li>                                                                                
+                                                                                    </nav>                                                                                
+                                                                                </div>   
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="card">
+                                                                            <div class="card-header" id="W_6" role="tab">
+                                                                                <a aria-controls="collapse_W_6" aria-expanded="true" data-bs-toggle="collapse" href="#collapse_W_6">Abundance of Native aquatic species</a>
+                                                                            </div>
+                                                                            <div aria-labelledby="W_6" class="collapse" data-bs-parent="#accordion_2" id="collapse_W_6" role="tabpanel">
+                                                                                <div class="card-body component-item">
+                                                                                    <h6 class="pb-2">List of Parameters</h6>  
+                                                                                    <nav class="nav d-block flex-column">
+                                                                                        <li>
+                                                                                            <i style="font-size:15px; padding: 7px 0px 0px 0px; float: left;" class="uil-angle-right-b"></i>
+                                                                                            <a class="nav-link" href="#brset">Number of Native Aquatic Species (View Status)</a>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data Source:</label>
+                                                                                                        <label>CEGIS</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection frequency:</label>
+                                                                                                        <label>1 year</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection approach:</label>
+                                                                                                        <label></label>
+                                                                                                    </div>
+                                                                                                </div>                                                                                    
+                                                                                            </div>
+                                                                                        </li>                                                                                    
+                                                                                    </nav>                                                                                
+                                                                                </div>   
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                                                                    <div aria-multiselectable="true" class="accordion" id="accordion_3" role="tablist">
+                                                                        <div class="card">
+                                                                            <div class="card-header" id="C_1" role="tab">
+                                                                                <a aria-controls="collapse_C_1" aria-expanded="true" data-bs-toggle="collapse" href="#collapse_C_1">Temperature</a>
+                                                                            </div>
+                                                                            <div aria-labelledby="C_1" class="collapse show" data-bs-parent="#accordion_3" id="collapse_C_1" role="tabpanel">                                                                                                                                                        
+                                                                                <div class="card-body component-item">
+                                                                                    <h6 class="pb-2">List of Parameters</h6>  
+                                                                                    <nav class="nav d-block flex-column">
+                                                                                        <li>
+                                                                                            <i style="font-size:15px; padding: 7px 0px 0px 0px; float: left;" class="uil-angle-right-b"></i>
+                                                                                            <a class="nav-link" href="#brset">Annual Average Temperature (View Status)</a>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data Source:</label>
+                                                                                                        <label>CEGIS</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection frequency:</label>
+                                                                                                        <label>1 year</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection approach:</label>
+                                                                                                        <label></label>
+                                                                                                    </div>
+                                                                                                </div>                                                                                    
+                                                                                            </div>
+                                                                                        </li>
+                                                                                    </nav>                                                                                
+                                                                                </div>                                                                        
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="card">
+                                                                            <div class="card-header" id="C_2" role="tab">
+                                                                                <a aria-controls="collapse_C_2" aria-expanded="true" data-bs-toggle="collapse" href="#collapse_C_2">Consequtive Dry Days</a>
+                                                                            </div>
+                                                                            <div aria-labelledby="C_2" class="collapse" data-bs-parent="#accordion_3" id="collapse_C_2" role="tabpanel">
+                                                                                <div class="card-body component-item">
+                                                                                    <h6 class="pb-2">List of Parameters</h6>  
+                                                                                    <nav class="nav d-block flex-column">
+                                                                                        <li>
+                                                                                            <i style="font-size:15px; padding: 7px 0px 0px 0px; float: left;" class="uil-angle-right-b"></i>
+                                                                                            <a class="nav-link" href="#brset">Max CDD in Dry Season (View Status)</a>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data Source:</label>
+                                                                                                        <label>CEGIS</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection frequency:</label>
+                                                                                                        <label>1 year</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection approach:</label>
+                                                                                                        <label></label>
+                                                                                                    </div>
+                                                                                                </div>                                                                                    
+                                                                                            </div>
+                                                                                        </li>
+                                                                                    </nav>                                                                                
+                                                                                </div>   
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="card">
+                                                                            <div class="card-header" id="C_3" role="tab">
+                                                                                <a aria-controls="collapse_C_3" aria-expanded="true" data-bs-toggle="collapse" href="#collapse_C_3">Heat Index</a>
+                                                                            </div>
+                                                                            <div aria-labelledby="C_3" class="collapse" data-bs-parent="#accordion_3" id="collapse_C_3" role="tabpanel">
+                                                                                <div class="card-body component-item">
+                                                                                    <h6 class="pb-2">List of Parameters</h6>  
+                                                                                    <nav class="nav d-block flex-column">
+                                                                                        <li>
+                                                                                            <i style="font-size:15px; padding: 7px 0px 0px 0px; float: left;" class="uil-angle-right-b"></i>
+                                                                                            <a class="nav-link" href="#brset">Heat Index (View Status)</a>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data Source:</label>
+                                                                                                        <label>CEGIS</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection frequency:</label>
+                                                                                                        <label>1 year</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection approach:</label>
+                                                                                                        <label></label>
+                                                                                                    </div>
+                                                                                                </div>                                                                                    
+                                                                                            </div>
+                                                                                        </li>
+                                                                                    </nav>                                                                                
+                                                                                </div>   
+                                                                            </div>
+                                                                        </div>                                                                    
+                                                                    </div>
+                                                                </div>
+                                                                <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                                                                    <div aria-multiselectable="true" class="accordion" id="accordion_4" role="tablist">
+                                                                        <div class="card">
+                                                                            <div class="card-header" id="FA_1" role="tab">
+                                                                                <a aria-controls="collapse_FA_1" aria-expanded="true" data-bs-toggle="collapse" href="#collapse_FA_1">Tree Coverage </a>
+                                                                            </div>
+                                                                            <div aria-labelledby="FA_1" class="collapse show" data-bs-parent="#accordion_4" id="collapse_FA_1" role="tabpanel">                                                                                                                                                        
+                                                                                <div class="card-body component-item">
+                                                                                    <h6 class="pb-2">List of Parameters</h6>  
+                                                                                    <nav class="nav d-block flex-column">
+                                                                                        <li>
+                                                                                            <i style="font-size:15px; padding: 7px 0px 0px 0px; float: left;" class="uil-angle-right-b"></i>
+                                                                                            <a class="nav-link" href="#brset">Percentage Area (View Status)</a>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data Source:</label>
+                                                                                                        <label>CEGIS</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection frequency:</label>
+                                                                                                        <label>1 year</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection approach:</label>
+                                                                                                        <label></label>
+                                                                                                    </div>
+                                                                                                </div>                                                                                    
+                                                                                            </div>
+                                                                                        </li>
+                                                                                    </nav>                                                                                
+                                                                                </div>                                                                           
+                                                                            </div>
+                                                                        </div>                                                                    
+                                                                        <div class="card">
+                                                                            <div class="card-header" id="FA_3" role="tab">
+                                                                                <a aria-controls="collapse_FA_3" aria-expanded="true" data-bs-toggle="collapse" href="#collapse_FA_3">Species diversity (Flora)/abundance/Richness</a>
+                                                                            </div>
+                                                                            <div aria-labelledby="FA_3" class="collapse" data-bs-parent="#accordion_4" id="collapse_FA_3" role="tabpanel">
+                                                                                <div class="card-body component-item">
+                                                                                    <h6 class="pb-2">List of Parameters</h6>  
+                                                                                    <nav class="nav d-block flex-column">
+                                                                                        <li>
+                                                                                            <i style="font-size:15px; padding: 7px 0px 0px 0px; float: left;" class="uil-angle-right-b"></i>
+                                                                                            <a class="nav-link" href="#brset">Number of Species (View Status)</a>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data Source:</label>
+                                                                                                        <label>CEGIS</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection frequency:</label>
+                                                                                                        <label>1 year</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection approach:</label>
+                                                                                                        <label></label>
+                                                                                                    </div>
+                                                                                                </div>                                                                                    
+                                                                                            </div>
+                                                                                        </li>
+                                                                                    </nav>                                                                                
+                                                                                </div>   
+                                                                            </div>
+                                                                        </div>                                                                                                                                        
+                                                                        <div class="card">
+                                                                            <div class="card-header" id="FA_5" role="tab">
+                                                                                <a aria-controls="collapse_FA_5" aria-expanded="true" data-bs-toggle="collapse" href="#collapse_FA_5">Forest Dependant Livelihood Diversification</a>
+                                                                            </div>
+                                                                            <div aria-labelledby="FA_5" class="collapse" data-bs-parent="#accordion_4" id="collapse_FA_5" role="tabpanel">
+                                                                                <div class="card-body component-item">
+                                                                                    <h6 class="pb-2">List of Parameters</h6>  
+                                                                                    <nav class="nav d-block flex-column">
+                                                                                        <li>
+                                                                                            <i style="font-size:15px; padding: 7px 0px 0px 0px; float: left;" class="uil-angle-right-b"></i>
+                                                                                            <a class="nav-link" href="#brset">No of Family Dependent on Forest (View Status)</a>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data Source:</label>
+                                                                                                        <label>CEGIS</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection frequency:</label>
+                                                                                                        <label>1 year</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection approach:</label>
+                                                                                                        <label></label>
+                                                                                                    </div>
+                                                                                                </div>                                                                                    
+                                                                                            </div>
+                                                                                        </li>
+                                                                                    </nav>                                                                                
+                                                                                </div>   
+                                                                            </div>
+                                                                        </div>                                                                    
+                                                                        <div class="card">
+                                                                            <div class="card-header" id="FA_7" role="tab">
+                                                                                <a aria-controls="collapse_FA_7" aria-expanded="true" data-bs-toggle="collapse" href="#collapse_FA_7">Agroforestry Coverage (Agriculture/Crop Land)</a>
+                                                                            </div>
+                                                                            <div aria-labelledby="FA_7" class="collapse" data-bs-parent="#accordion_4" id="collapse_FA_7" role="tabpanel">
+                                                                                <div class="card-body component-item">
+                                                                                    <h6 class="pb-2">List of Parameters</h6>  
+                                                                                    <nav class="nav d-block flex-column">
+                                                                                        <li>
+                                                                                            <i style="font-size:15px; padding: 7px 0px 0px 0px; float: left;" class="uil-angle-right-b"></i>
+                                                                                            <a class="nav-link" href="#brset">Percentage Area (View Status)</a>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data Source:</label>
+                                                                                                        <label>CEGIS</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection frequency:</label>
+                                                                                                        <label>1 year</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection approach:</label>
+                                                                                                        <label></label>
+                                                                                                    </div>
+                                                                                                </div>                                                                                    
+                                                                                            </div>
+                                                                                        </li>
+                                                                                    </nav>                                                                                
+                                                                                </div>   
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="card">
+                                                                            <div class="card-header" id="FA_8" role="tab">
+                                                                                <a aria-controls="collapse_FA_8" aria-expanded="true" data-bs-toggle="collapse" href="#collapse_FA_8">carbon Sequestration</a>
+                                                                            </div>
+                                                                            <div aria-labelledby="FA_8" class="collapse" data-bs-parent="#accordion_4" id="collapse_FA_8" role="tabpanel">
+                                                                                <div class="card-body component-item">
+                                                                                    <h6 class="pb-2">List of Parameters</h6>  
+                                                                                    <nav class="nav d-block flex-column">
+                                                                                        <li>
+                                                                                            <i style="font-size:15px; padding: 7px 0px 0px 0px; float: left;" class="uil-angle-right-b"></i>
+                                                                                            <a class="nav-link" href="#brset">Carbon Storage (View Status)</a>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data Source:</label>
+                                                                                                        <label>CEGIS</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection frequency:</label>
+                                                                                                        <label>1 year</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection approach:</label>
+                                                                                                        <label></label>
+                                                                                                    </div>
+                                                                                                </div>                                                                                    
+                                                                                            </div>
+                                                                                        </li>
+                                                                                    </nav>                                                                                
+                                                                                </div>   
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="card">
+                                                                            <div class="card-header" id="FA_6" role="tab">
+                                                                                <a aria-controls="collapse_FA_6" aria-expanded="true" data-bs-toggle="collapse" href="#collapse_FA_6">NDVI</a>
+                                                                            </div>
+                                                                            <div aria-labelledby="FA_6" class="collapse" data-bs-parent="#accordion_4" id="collapse_FA_6" role="tabpanel">
+                                                                                <div class="card-body component-item">
+                                                                                    <h6 class="pb-2">List of Parameters</h6>  
+                                                                                    <nav class="nav d-block flex-column">
+                                                                                        <li>
+                                                                                            <i style="font-size:15px; padding: 7px 0px 0px 0px; float: left;" class="uil-angle-right-b"></i>
+                                                                                            <a class="nav-link" href="#brset">Unit (View Status)</a>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data Source:</label>
+                                                                                                        <label>CEGIS</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection frequency:</label>
+                                                                                                        <label>1 year</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection approach:</label>
+                                                                                                        <label></label>
+                                                                                                    </div>
+                                                                                                </div>                                                                                    
+                                                                                            </div>
+                                                                                        </li>
+                                                                                    </nav>                                                                                
+                                                                                </div>   
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="tab-pane fade" id="v-pills-info" role="tabpanel" aria-labelledby="v-pills-info-tab">
+                                                                    <div aria-multiselectable="true" class="accordion" id="accordion_5" role="tablist">
+                                                                        <div class="card">
+                                                                            <div class="card-header" id="EB_1" role="tab">
+                                                                                <a aria-controls="collapse_EB_1" aria-expanded="true" data-bs-toggle="collapse" href="#collapse_EB_1">Abundance of Flora and Fauna (Native, Exotic and Alleign)</a>
+                                                                            </div>
+                                                                            <div aria-labelledby="EB_1" class="collapse show" data-bs-parent="#accordion_5" id="collapse_EB_1" role="tabpanel">                                                                                                                                                        
+                                                                                <div class="card-body component-item">
+                                                                                    <h6 class="pb-2">List of Parameters</h6>  
+                                                                                    <nav class="nav d-block flex-column">
+                                                                                        <li>
+                                                                                            <i style="font-size:15px; padding: 7px 0px 0px 0px; float: left;" class="uil-angle-right-b"></i>
+                                                                                            <a class="nav-link" href="#brset">Number of Native Species (Flora) (View Status)</a>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data Source:</label>
+                                                                                                        <label>CEGIS</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection frequency:</label>
+                                                                                                        <label>1 year</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection approach:</label>
+                                                                                                        <label></label>
+                                                                                                    </div>
+                                                                                                </div>                                                                                    
+                                                                                            </div>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <i style="font-size:15px; padding: 7px 0px 0px 0px; float: left;" class="uil-angle-right-b"></i>
+                                                                                            <a class="nav-link" href="#brsizes">Number of Exotic Species (Flora) (View Status)</a>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data Source:</label>
+                                                                                                        <label>CEGIS</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection frequency:</label>
+                                                                                                        <label>1 year</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection approach:</label>
+                                                                                                        <label></label>
+                                                                                                    </div>
+                                                                                                </div>                                                                                    
+                                                                                            </div>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <i style="font-size:15px; padding: 7px 0px 0px 0px; float: left;" class="uil-angle-right-b"></i>
+                                                                                            <a class="nav-link" href="#brremove">Number of Native Species (Fauna) (View Status)</a>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data Source:</label>
+                                                                                                        <label>CEGIS</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection frequency:</label>
+                                                                                                        <label>1 year</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection approach:</label>
+                                                                                                        <label></label>
+                                                                                                    </div>
+                                                                                                </div>                                                                                    
+                                                                                            </div>
+                                                                                        </li>
+                                                                                    </nav>                                                                                
+                                                                                </div>                                                                         
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="card">
+                                                                            <div class="card-header" id="EB_2" role="tab">
+                                                                                <a aria-controls="collapse_EB_2" aria-expanded="true" data-bs-toggle="collapse" href="#collapse_EB_2">Aquatic Habitat (Extent and Condition )</a>
+                                                                            </div>
+                                                                            <div aria-labelledby="EB_2" class="collapse" data-bs-parent="#accordion_5" id="collapse_EB_2" role="tabpanel">
+                                                                                <div class="card-body component-item">
+                                                                                    <h6 class="pb-2">List of Parameters</h6>  
+                                                                                    <nav class="nav d-block flex-column">
+                                                                                        <li>
+                                                                                            <i style="font-size:15px; padding: 7px 0px 0px 0px; float: left;" class="uil-angle-right-b"></i>
+                                                                                            <a class="nav-link" href="#brset">Aquatic Habitat Extent (View Status)</a>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data Source:</label>
+                                                                                                        <label>CEGIS</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection frequency:</label>
+                                                                                                        <label>1 year</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection approach:</label>
+                                                                                                        <label></label>
+                                                                                                    </div>
+                                                                                                </div>                                                                                    
+                                                                                            </div>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <i style="font-size:15px; padding: 7px 0px 0px 0px; float: left;" class="uil-angle-right-b"></i>
+                                                                                            <a class="nav-link" href="#brsizes">Aquatic Habitat Condition (View Status)</a>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data Source:</label>
+                                                                                                        <label>CEGIS</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection frequency:</label>
+                                                                                                        <label>1 year</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection approach:</label>
+                                                                                                        <label></label>
+                                                                                                    </div>
+                                                                                                </div>                                                                                    
+                                                                                            </div>
+                                                                                        </li>
+                                                                                    </nav>                                                                                
+                                                                                </div>   
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="card">
+                                                                            <div class="card-header" id="EB_3" role="tab">
+                                                                                <a aria-controls="collapse_EB_3" aria-expanded="true" data-bs-toggle="collapse" href="#collapse_EB_3">Terristrial Habitat (Extent and Condition)</a>
+                                                                            </div>
+                                                                            <div aria-labelledby="EB_3" class="collapse" data-bs-parent="#accordion_5" id="collapse_EB_3" role="tabpanel">
+                                                                                <div class="card-body component-item">
+                                                                                    <h6 class="pb-2">List of Parameters</h6>  
+                                                                                    <nav class="nav d-block flex-column">
+                                                                                        <li>
+                                                                                            <i style="font-size:15px; padding: 7px 0px 0px 0px; float: left;" class="uil-angle-right-b"></i>
+                                                                                            <a class="nav-link" href="#brset">Terristrial Habitat Extent (View Status)</a>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data Source:</label>
+                                                                                                        <label>CEGIS</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection frequency:</label>
+                                                                                                        <label>1 year</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection approach:</label>
+                                                                                                        <label></label>
+                                                                                                    </div>
+                                                                                                </div>                                                                                    
+                                                                                            </div>
+                                                                                        </li>
+                                                                                        <li>
+                                                                                            <i style="font-size:15px; padding: 7px 0px 0px 0px; float: left;" class="uil-angle-right-b"></i>
+                                                                                            <a class="nav-link" href="#brsizes">Terristrial Habitat Condition (Based on Tree Coverage) (View Status)</a>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data Source:</label>
+                                                                                                        <label>CEGIS</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection frequency:</label>
+                                                                                                        <label>1 year</label>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="form-label">Data collection approach:</label>
+                                                                                                        <label></label>
+                                                                                                    </div>
+                                                                                                </div>                                                                                    
+                                                                                            </div>
+                                                                                        </li>
+                                                                                    </nav>                                                                                
+                                                                                </div>   
+                                                                            </div>
+                                                                        </div>                                                                                                                                                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- end card-body -->
+                                            </div><!-- end card -->
+                                        </div>
+                                    </div>
+
+                                </div>
+                                
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
+
+
+{% block script_content %}
+
+    <script>
+        console.log("here I am..");
+
+        function setFixedHeaderWidth() {
+            const card = document.querySelector('.parent-card');
+            const header = document.querySelector('.page-header');
+            if (card && header) {
+            // header.style.width = card.offsetWidth + 'px';
+            const cardWidth = card.offsetWidth;
+            header.style.width = (cardWidth - 2) + 'px';
+            header.style.left = '50%';
+            header.style.transform = 'translateX(-50%)';
+            }
+        }
+
+        // Initial setup
+        window.addEventListener('load', setFixedHeaderWidth);
+
+        // Adjust on resize
+        window.addEventListener('resize', setFixedHeaderWidth);
+    </script>
+
+{% endblock %}
+
+

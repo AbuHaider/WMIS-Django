@@ -1,0 +1,709 @@
+{% extends "layouts/home_master.html" %}
+{% load static %}
+{% static "" as baseUrl %}
+
+{% block content %}
+
+<style>
+
+    h6 {
+        font-weight: bold;
+        margin-top: 20px; 
+        margin-bottom: 5px;      
+    }
+
+    p {        
+        text-align: justify;
+    }
+
+    a {
+        color: #03623f;
+    }
+
+    a:hover {
+        color: #00b75c;
+    }
+
+    .vertical-up {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        vertical-align: middle !important;
+        /* text-orientation: upright;  */
+    }
+
+    .tblWomenActivities td {
+        text-align: center !important;
+    }
+
+</style>
+
+
+
+<div class="main-container mt-2">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card parent-card" style="border-radius: 0px;">
+                <div class="page-header" style="background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    <h4 class="main-content-title tx-24 mg-b-5" style="padding: 5px 0px 2px 20px;">Agro-forestry Business Model</h4>   
+                </div>
+
+                <!-- Row -->
+                <div class="col-md-12" style="padding: 20px 20px 0px 20px;">
+
+                    <div class="card-body" style="max-height: 65vh; overflow-y: auto;">
+
+                        <i><u><h4>Goal of a new compact business model</h4></u></i>                               
+                        <div class="table-responsive">
+                            <table class="table card-table text-nowrap table-bordered border-top mb-1">
+                                <thead>
+                                    <tr>
+                                        <th>Issues</th>
+                                        <th>Goals of a new business model</th>                                                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Spoil and wastage of products</td>                                                                        
+                                        <td>Local Food security</td>                                                                        
+                                    </tr>
+                                    <tr>
+                                        <td style="word-wrap: break-word;">Invasion of unsustainable and inappropriate species and practices</td>                                                                        
+                                        <td style="word-wrap: break-word;">Resilience of the Business model and the community that adopting the business model<br>with respect to the climatic and other shocks and epidemics.</td>                                                                        
+                                    </tr>
+                                    <tr>
+                                        <td>Land erosion, degradation, massive change in natural landscape</td>                                                                        
+                                        <td>Sustainable to the environment, biodiversity and suitable to local landscape</td>                                                                        
+                                    </tr>
+                                    <tr>
+                                        <td>Fertilizers (Organic and Chemical) Cost in BDT/hectare</td>                                                                        
+                                        <td>35,963</td>                                                                        
+                                    </tr>
+                                    <tr>
+                                        <td>Water shortage</td>                                                                        
+                                        <td>Landscape restoring business model</td>                                                                        
+                                    </tr>
+                                    <tr>
+                                        <td>Unsustainable harvesting / over-harvesting of NTFPs</td>                                                                        
+                                        <td>Enabling overall business environments</td>                                                                        
+                                    </tr>
+                                    <tr>
+                                        <td>Labor Cost in BDT/hectare</td>                                                                        
+                                        <td>44,460</td>                                                                        
+                                    </tr>
+                                    <tr>
+                                        <td></td>                                                                        
+                                        <td>Poverty alleviation and employment generation of local ethnic communities</td>                                                                        
+                                    </tr>
+                                    <tr>
+                                        <td></td>                                                                        
+                                        <td>Exporting of local value-added products</td>                                                                        
+                                    </tr>                                        
+                                </tbody>
+                            </table>                                                            
+                        </div>
+                        <label style="font-size: 13px;"><i><b>Note:</b> Monetary values have been quoted in BDT and calculated against per hectare. In case of transportation, the cost indicates 0.8 BDT/kg based on 5 km distance. Source: In-depth Interviews with farmers and Key Informant Interviews with experts of DAE.</i></label>
+
+                        
+                        <i><u><h4 style="margin-top: 20px;">Social Preference of Agro-forestry Products in Ghilachari</h4></u></i>     
+                        <div class="table-responsive">
+                            <table class="table card-table text-nowrap table-bordered border-top mb-1">
+                                <thead>
+                                    <tr>
+                                        <th>Component and Product</th>
+                                        <th>Not at all</th>
+                                        <th>Not preferable</th>
+                                        <th>Moderately Preferable</th>
+                                        <th>Preferable</th>
+                                        <th>Very much preferable</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Agro ecological Tourism</td>
+                                        <td>9</td>
+                                        <td>1</td>
+                                        <td>3</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Apiculture</td>
+                                        <td>8</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>7</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Broom Grass</td>
+                                        <td>6</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>6</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gamari</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>5</td>
+                                        <td>6</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ginger and Turmeric</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>12</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jackfruit</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>3</td>
+                                        <td>3</td>
+                                        <td>9</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mashroom</td>
+                                        <td>4</td>
+                                        <td>0</td>
+                                        <td>4</td>
+                                        <td>3</td>
+                                        <td>4</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Teak</td>
+                                        <td>1</td>
+                                        <td>1</td>
+                                        <td>0</td>
+                                        <td>2</td>
+                                        <td>11</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pine-apple</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Plum</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sugarcane</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Sunflower</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tobacco</td>
+                                        <td>13</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>0</td>
+                                        <td>2</td>
+                                    </tr>
+                                </tbody>
+                            </table>                                                            
+                        </div>                            
+                        <label style="font-size: 13px;"><i><b>Source:</b>  Ghilachari 2023-24</i></label>
+
+
+                        <i><u><h4 style="margin-top: 20px;">Proposed Agroforestry landscape restoration options</h4></u></i>  
+                        <p class="mb-1">Three model categories are as follows:</p>  
+
+                        <div class="listgroup-example">
+                            <ul class="list-group">
+                                <li class="listorder"><b>1. Agriculture + Forestry:</b> This category combines agricultural crops with tree planting for a balanced approach to land use.</li>
+                                <li class="listorder"><b>2. Fruit orchards (Horticulture):</b> This category focuses on revitalizing existing orchards and introducing new fruit-bearing species.</li>                                    
+                                <li class="listorder"><b>3. Forestry:</b> This category prioritizes restoring severely degraded land through strategic tree planting and soil management techniques.</li>
+                            </ul>
+                        </div>
+
+                        <ul class="list-group">                                
+                            <li class="list-group-item list-group-item-success pb-1 pt-1 mt-2 mb-3">
+                                <h5>Model 1: Rejuvenating Pineapple Fields</h4>
+                                <h5>Slope: 5-25%</h5>
+                                <h5>Type: Agriculture+ Forestry</h5>
+                            </li>                                
+                        </ul>
+
+                        <p>
+                            <b>Addressing Pine Apple's Impact:</b> While pineapple cultivation provides economic benefits, it can negatively affect soil health in the long term. This model introduces a strategy to replace pineapple monoculture with a combination of crops and trees to promoting a more sustainable land-use approach.
+                        </p>
+                        <h6>Modalities:</h6>
+
+                        <div class="listgroup-example ">
+                            <ul class="list-group" style="padding-left: 30px !important;">                                    
+                                <li><b>1.	Initial Planting (April-May):</b>
+                                    <ul class="list-group checked" style="padding-left: 30px !important;">
+                                        <li class="list-group-item"><i class="fa fa-arrow-right me-3 tx-13" aria-hidden="true"></i>
+                                            <b>Arhar (Pigeon Pea):</b> Planted first, arhar is a nitrogen-fixing legume. This means it takes nitrogen from the air and converts it into a form usable by plants, improving soil fertility. Arhar seeds is utilized as pulse and also provides early income for farmers.                                                
+                                        </li>
+                                        <li class="list-group-item"><i class="fa fa-arrow-right me-3 tx-13" aria-hidden="true"></i>
+                                            <b>Ginger or Turmeric:</b> Short-term cash crops like ginger or turmeric will be planted alongside arhar. These provide additional income while the other crops mature.
+                                        </li>                                            
+                                    </ul>
+                                </li>
+                                <li><b>2.	Tree Integration:</b>
+                                    <ul class="list-group checked" style="padding-left: 30px !important;">
+                                        <li class="list-group-item"><i class="fa fa-arrow-right me-3 tx-13" aria-hidden="true"></i>
+                                            <b>Moringa oleifera (Sojne):</b> Planted at 50ft intervals, sojne (Moringa) matures within two years, offering a source of income and environmental benefits. Its leaves and fruits are a valuable source of nutrition and can be sold locally and globally.                                                
+                                        </li>
+                                        <li class="list-group-item"><i class="fa fa-arrow-right me-3 tx-13" aria-hidden="true"></i>
+                                            <b>Gmelina arborea (Gamar):</b> Planted at 100ft intervals in a stargate or alternate pattern, gamar is a fast-growing tree suitable for timber production. This ensures long-term economic benefits while providing habitat and shade.
+                                        </li>                                            
+                                    </ul>
+                                </li>
+                                <li><b>3.	Tree Integration:</b>
+                                    <ul class="list-group checked" style="padding-left: 30px !important;">
+                                        <li class="list-group-item"><i class="fa fa-arrow-right me-3 tx-13" aria-hidden="true"></i>
+                                            <b>Medicinal Plants (Bashok, Brinjal):</b> Planting medicinal plants like Adhatoda vasica (bashok) and Brinjal (begun) along a 5-6ft width in downslope periphery provides additional income opportunities and helps control erosion. These plants are often in high demand locally and nationally in the pharmaceuticals industries.
+                                        </li>                                                                                       
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <h6>Considerations:</h6>
+                        <div class="listgroup-example ">
+                            <ul class="list-group checked" style="padding-left: 30px !important;">
+                                <li class="list-group-item"><i class="fa fa-asterisk me-3 tx-13" aria-hidden="true"></i>
+                                    <b>Crop Competition:</b> This model prioritizes maintaining or increasing ginger and turmeric production for immediate income generation. The planting scheme is designed to minimize competition with these crops. This selection is crucial as these crops provide instant cash. Farmers may become discouraged from adopting this method if they perceive it as less beneficial compared to their current practices. So, the focus should be on the overall production and quality of ginger and turmeric to ensure they are not produced in lesser quantities.
+                                </li>                                                                                      
+                            </ul>
+                        </div>
+
+                        <h6>Benefits:</h6>
+                        <div class="listgroup-example ">
+                            <ul class="list-group checked" style="padding-left: 30px !important;">
+                                <li class="list-group-item"><i class="fe fe-check me-3 tx-13" aria-hidden="true"></i>
+                                    <b>Multi-layered income generation:</b> This model offers income from arhar, sojne, ginger/turmeric, medicinal plants, and future timber harvest from gamar.
+                                </li>  
+                                <li class="list-group-item"><i class="fe fe-check me-3 tx-13" aria-hidden="true"></i>
+                                    <b>Improved soil health:</b> Arhar's nitrogen fixation helps improve soil fertility, protect soil erosion and thusbenefitting future plantings.
+                                </li>  
+                                <li class="list-group-item"><i class="fe fe-check me-3 tx-13" aria-hidden="true"></i>
+                                    <b>Long-term timber production:</b> Gamar provides a valuable timber resource in the long term.
+                                </li>                                                                                      
+                            </ul>
+                        </div>
+
+                        <h6>Variations for Smaller Landholdings:</h6>
+                        <div class="listgroup-example ">
+                            <ul class="list-group checked" style="padding-left: 30px !important;">
+                                <li class="list-group-item"><i class="fa fa-arrow-circle-right me-3 tx-13" aria-hidden="true"></i>
+                                    <b>Less than 0.25 hectare (1 acre): Individual Cultivation:</b> With limited space, focus on arhar, ginger/turmeric, omitting sojne and gamar for initial planting.
+                                </li>  
+                                <li class="list-group-item"><i class="fa fa-arrow-circle-right me-3 tx-13" aria-hidden="true"></i>
+                                    <b>0.25-1 hectare: Community Cultivation:</b> In larger areas with community involvement, sojne and gamar can be included with reduced tree density compared to vast lands.
+                                </li>  
+                                <li class="list-group-item"><i class="fa fa-arrow-circle-right me-3 tx-13" aria-hidden="true"></i>
+                                    <b>Over 1 hectare: Community Cultivation:</b> Extensive areas allow for higher density planting of sojne and gamar alongside arhar, ginger/turmeric, and medicinal plants.
+                                </li>                                                                                      
+                            </ul>
+                        </div>
+
+                        
+                        <h6>Land Size and Aspect:</h6>
+                        <div class="listgroup-example ">
+                            <ul class="list-group checked" style="padding-left: 30px !important;">
+                                <li class="list-group-item"><i class="fa fa-angle-double-right me-3 tx-13" aria-hidden="true"></i>
+                                    Land size will be determined by surveying the area to ensure the model is appropriately scaled.
+                                </li>  
+                                <li class="list-group-item"><i class="fa fa-angle-double-right me-3 tx-13" aria-hidden="true"></i>
+                                    Aspect (sun exposure) will be considered when choosing tree species. Agriculturists and forestry specialists will provide guidance on spacing and species selection based on aspect to optimize plant growth.
+                                </li>                                                                                                                          
+                            </ul>
+                        </div>
+
+                        <div class="row"><img alt="Responsive image" class="col-md-10 mx-auto img-fit-cover" src="{% static 'images/value_chain/model_img_1.png' %}"></div>
+                        <div class="col-md-12 text-center mb-3"><label class="mx-auto">Figure: Restoration options with suitable Agroforestry products in different hill position</label></div>
+
+
+                        <i><u><h4 style="margin-top: 20px;">Proposed Value Chain for Business Model</h4></u></i>  
+                        <div class="row"><img alt="Responsive image" class="col-md-10 mx-auto img-fit-cover" src="{% static 'images/value_chain/model_img_2.png' %}"></div>
+                        <div class="col-md-12 text-center mb-3"><label class="mx-auto">Figure: Proposed  Value Chain of the Business model</label></div>
+
+
+                        <i><u><h4 style="margin-top: 20px;">Proposed Processing and Storage Sites</h4></u></i>     
+                        <div class="table-responsive">
+                            <table class="table card-table text-nowrap table-bordered border-top mb-1">
+                                <thead>
+                                    <tr>
+                                        <th>Regional Center</th>
+                                        <th>Prospective industrial zone</th>
+                                        <th>Connecting road No.</th>
+                                        <th>Processing sites</th>
+                                        <th>Storage sites</th>
+                                        <th>Distance (km)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Rangamati Sadar</td>
+                                        <td>Raozan</td>
+                                        <td class="text-center">N106</td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center">✔</td>
+                                        <td class="text-center">39</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Rangamati Sadar</td>
+                                        <td>Hathazari </td>
+                                        <td class="text-center">N106</td>
+                                        <td class="text-center">✔</td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center">51</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Rangamati Sadar</td>
+                                        <td>Anwara</td>
+                                        <td class="text-center">N106, R163, Z1018</td>
+                                        <td class="text-center">✔</td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center">82</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Khagrachhari Sadar</td>
+                                        <td>Fatikchhari</td>
+                                        <td class="text-center">R160</td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center">✔</td>
+                                        <td class="text-center">69.3</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Khagrachhari Sadar</td>
+                                        <td>Hathazari</td>
+                                        <td class="text-center">R160</td>
+                                        <td class="text-center">✔</td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center">91.6</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Khagrachhari Sadar</td>
+                                        <td>Mirsharai</td>
+                                        <td class="text-center">R160, Z1021</td>
+                                        <td class="text-center">✔</td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center">115-124</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Bandarban Sadar</td>
+                                        <td>Satkania</td>
+                                        <td class="text-center">N108</td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center">✔</td>
+                                        <td class="text-center">22.2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Bandarban Sadar</td>
+                                        <td>Anwara</td>
+                                        <td class="text-center">N108</td>
+                                        <td class="text-center">✔</td>
+                                        <td class="text-center"></td>
+                                        <td class="text-center">58-59</td>
+                                    </tr>
+                                </tbody>
+                            </table>                                                            
+                        </div>                            
+                        <label style="font-size: 13px;"><i><b>Source:</b>  Ghilachari 2023-24</i></label>
+
+
+                        <i><u><h4 style="margin-top: 20px;">Overall Implementation Mechanism</h4></u></i>
+                        <p>At the very first, a detailed planning of the overall project activities will be made. The plan will include all the required information to implement the sustainable business model. After the planning is conducted, a piloting implementation will be initiated. This will be implemented on a selected area and on small scale in order to understand the whole scenario. After successfully initiating the piloting process, required changes will be made in the planning and it will be implemented in the project area. During the first year, the planning will be executed. During the second year, the whole implementation will be closely monitored in order to find out the lacking. It will be a learning process for the project implementing agency and from the learning best possible solutions will be identified. These solutions will be incorporated in the planning and it will be updated and later it will be re-implemented on the whole project area.</p>
+                        <div class="row"><img alt="Responsive image" class="col-md-10 mx-auto img-fit-cover" src="{% static 'images/value_chain/model_img_3.png' %}"></div>
+                        <div class="col-md-12 text-center mb-3"><label class="mx-auto">Figure: Institutional Mechanism of the Business Model</label></div>
+
+
+                        <i><u><h4 style="margin-top: 20px;">Business Model Coordination Strategies</h4></u></i> 
+                        <p>To facilitate the business model, the study team has planned to build a co-ordination center in each Watershed. The Sustainable-agro-hub. This will consist of:</p>
+                        <div class="listgroup-example ">
+                            <ul class="list-group" style="padding-left: 30px !important;">                                    
+                                <li>1.	A collection point</li>
+                                <li>2.	ICT center</li>
+                                <li>3.	Seed Storage</li>
+                                <li>4.	Emergency product storage</li>
+                                <li>5.	Best practice Advisory and Monitoring Center</li>
+                                <li>6.	Financing and mobile banking center</li>
+                                <li>7.	Urban entrepreneur network</li>
+                            </ul>
+                        </div>
+                        <p>The function of this Sustainable Agro-forestry Hub is expected to be:</p>
+                        <div class="listgroup-example ">
+                            <ul class="list-group" style="padding-left: 30px !important;">                                    
+                                <li>
+                                    <p>(1)	Facilitating the application based co-ordination mechanism with community level <b>“Digital facilitator”</b>, Application facilitator will bridge between the local farmers, application, database and the market. The farmers will inform their expected production prior to the harvest to the Digital facilitator.  The facilitator entries the total expected amount of productions to the application, and database. Super shops, wholesalers and individual customers view the production dashboard and farm gate asking price and also place their demand and price expectation.</p>
+                                    <p>Urban entrepreneur networks act to expand urban market and also to sell products of different grades to different market strata, especially premium buyers and international buyers.</p>
+                                    <p>This entrepreneur network will have their team in the watershed <b>agro-forestry hub</b> and they will monitor the issues pertaining tractability, carbon credit and agricultural best practices.</p>
+                                    <p>In between the farmer, <b>Sustainable Agro-forestry Hub</b> and the urban buyers there will be the transport agents and <b>Special Courier services</b>. The transport agents will transport bulk amount of goods to bulk buyers and courier services will transport products for individual consumers. In Bangladesh, in some localities there are special courier services during mango harvest season.</p>
+                                    <p><b>Transport agents</b> will receive transportation request from the online application.</p>
+                                </li>
+                                <li>
+                                    <p>(2)	The <b>Sustainable Agro-forestry Hub</b> will provide supports on necessary treatment of any production disruption, disease, infestation or disaster. The sustainability center will make routine soil nutrient measures and prescribe interventions for the farmers.</p>
+                                    <p>The <b>weather forecast center</b> will forecast upcoming disaster, temperature, drought, landslide and advice necessary intervention to the farmers.</p>
+                                        
+                                </li>
+                                <li>
+                                    <p>(3)	The <b>financing center</b> within the hub will have the facility to transect money using mobile banking and ATM machine. The financing center will have agent from Bank or banks that will convey necessary easy loan facility for the farmers and entrepreneurs.</p>
+                                </li>                                    
+                            </ul>
+                        </div>
+                        <p>Each Watershed dependent community will have a group headed by the Headman, and assisted by the Karbari(s). The team will also consist of local experts on different sectors based on the land use pattern. The Upazila Agricultural, Livestock, fisheries, and Forest officers/block facilitator will be supervising the Team. The government experts will train (Training of Trainers) these “local experts”. The team will also consist of marketing and outsourcing professionals; those will also be in close contact with Department of Marketing, other government offices, and private companies. The local service provider and regulatory group have another important task, and that is to make fruitful coordination among different actors at heterogeneous layers in a value chain from community level, that is doing vertical linkage effective.</p>
+                        <h5 style="margin-top: 20px;">Local expert Service provider and regulatory group</h5> 
+                        <p>In this concept, each Watershed dependent community will have a group headed by the Headman, DAM and DAE. The Headman will create community linkages along with all other stakeholders and aspects. Department of Agriculture Marketing will be responsible for the whole value chain management related support among the communities. Department of Agriculture Extension will be in-charge of environmental monitoring. DAM and DAE will arrange seminars, workshops and trainings for the communities in coordination with the Headman. The rest of the stakeholders will work directly in the community for the business model management. The Karbari will act as a manager field level in order to create linkages among all the stakeholders. Women farmer representative will ensure active participation of the women participants. The local trained farmer will be also knowns as smart farmer and the experts will train them. It is also known as the <b>Training for the Trainers (TOT)</b>. An App facilitator will be selected from the each water shed and he/she will be trained properly. The app facilitator/ICT Expert will be in-charge of maintaining all the product related activity and record keeping for traceability such as receiving orders, receiving products from farmer, updating product details, receiving farmers queries and output forecast and more. Local and outsource agents will outsource different buyers. They will also create linkages among different level buyers. An urban entrepreneur will manage the urban entrepreneur network and his/her task will be managing the business at urban level. </p>
+                        <div class="row"><img alt="Responsive image" class="col-md-10 mx-auto img-fit-cover" src="{% static 'images/value_chain/model_img_4.png' %}"></div>
+                        <div class="col-md-12 text-center mb-3"><label class="mx-auto">Figure: Watershed Based Business Management Framework</label></div>
+
+
+                        <h5 style="margin-top: 20px;">Community cooperatives</h5> 
+                        <p>Community cooperative(s) will be formed. The cooperatives will be consist of marginal actors from different layers in the agro-forestry production scheme- such as, farmers/producers/harvesters group or association.  The rationale for that is, the farmers have week horizontal linkage- that is interpersonal relation with other farmers. Due to lack of <b>horizontal linkage</b>, their negotiation power in the market is weak. By increasing community cooperatives among the farmers, harvesters or other marginal group, their negotiation power will rise in the market.</p>
+                        
+
+                        <i><u><h4 style="margin-top: 20px;">Community Engagement</h4></u></i> 
+                        <p>For any development programs, engagement of the community is one of the most important components. Effective community participation is highly required to bring out the best outcome from any development program. The agro-forestry business model in the CHT region is mainly targeted towards the local communities and their active engagement is incomparable. Also all the other stakeholders in the community also needs to be engaged in order to get a sustainable and positive result. The Para collection point also will be known, as the Digital Information Hub will play an important in community engagement. This hub will be one of the main source of connecting the entire stakeholder involved in the business.</p>
+                        <div class="row"><img alt="Responsive image" class="col-md-6 mx-auto img-fit-cover" src="{% static 'images/value_chain/model_img_5.png' %}"></div>
+                        <div class="col-md-12 text-center mb-3"><label class="mx-auto">Figure: Different Level Community Engagement via Para Collection Point</label></div>
+                        <p>The farmers/producers in the region will be directly connected with other stakeholders with the help of the hub. The hub will also arrange workshops, seminars, trainings for the community. In corporation with public and private organizations, the hub will arrange seminars, workshops for the community people to encourage them to be involve in the agro-forestry business. The community leaders will also be encouraged to actively engage in the process as they can play a vital role in the development.</p>
+
+
+                        <i><u><h4 style="margin-top: 20px;">Gender and Youth Engagement Strategies</h4></u></i>
+                        <h5 style="margin-top: 20px;">Women Engagement</h5> 
+                        <p>Food production, processing, marketing, and distribution are just a few of the tasks that women and youth participate in within food value chains, making them essential to the operation of food systems. Compared to the other parts of the country, gender and youth engagement in livelihood generation related activities are higher. As a result, more effective and active engagement of gender and youth needs to be ensured for maximum positive results. A baseline condition of women and youth involvement in different product in Ghilachari is shown below.</p>
+                        <h5>Table: Roles and Contributions of Various Activities of Women in the Agricultural Production System</h5>
+                        <div class="table-responsive">
+                            <table class="table card-table text-nowrap table-bordered tblWomenActivities border-top mb-1">
+                                <thead>
+                                    <tr>
+                                        <th class="vertical-up">Product name</th>
+                                        <th class="vertical-up">Preproduction</th>
+                                        <th class="vertical-up">Shelter<br>preparation</th>
+                                        <th class="vertical-up">Rearing</th>
+                                        <th class="vertical-up">Showing seeds</th>
+                                        <th class="vertical-up">Wedding</th>
+                                        <th class="vertical-up">Fertilizer and<br>pesticides apply</th>
+                                        <th class="vertical-up">Harvesting</th>
+                                        <th class="vertical-up">Processing</th>
+                                        <th class="vertical-up">Marketing</th>
+                                        <th class="vertical-up">Selling</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Rice</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>Low</td>
+                                        <td>low</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Bamboo</td>
+                                        <td>Low</td>
+                                        <td>Low</td>
+                                        <td>N/A</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>N/A</td>
+                                        <td>Low</td>
+                                        <td>N/A</td>
+                                        <td>Low</td>
+                                        <td>low</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Banana</td>
+                                        <td>Medium</td>
+                                        <td>Medium</td>
+                                        <td>N/A</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Bean</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>Medium</td>
+                                        <td>Medium</td>
+                                        <td>Medium</td>
+                                        <td>N/A</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Bottle Guard</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Brinjal</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                    </tr>
+                                    <tr>
+                                        <td>chili</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Jackfruit</td>
+                                        <td>Low</td>
+                                        <td>Low</td>
+                                        <td>Low</td>
+                                        <td>Low</td>
+                                        <td>Low</td>
+                                        <td>Low</td>
+                                        <td>Low</td>
+                                        <td>Low</td>
+                                        <td>Low</td>
+                                        <td>Low</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mango</td>
+                                        <td>Low</td>
+                                        <td>Low</td>
+                                        <td>N/A</td>
+                                        <td>Low</td>
+                                        <td>Medium</td>
+                                        <td>High</td>
+                                        <td>Low</td>
+                                        <td>Low</td>
+                                        <td>Low</td>
+                                        <td>Low</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mustard</td>
+                                        <td>Medium</td>
+                                        <td>Medium</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pineapple</td>
+                                        <td>Medium</td>
+                                        <td>Medium</td>
+                                        <td>N/A</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>N/A</td>
+                                        <td>N/A</td>
+                                        <td>Low</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Potato</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>N/A</td>
+                                        <td>N/A</td>
+                                        <td>High</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Poultry (Hen)</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>N/A</td>
+                                        <td>N/A</td>
+                                        <td>N/A</td>
+                                        <td>Low</td>
+                                        <td>Low</td>
+                                        <td>N/A</td>
+                                        <td>High</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Turmeric and Ginger</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>N/A</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                        <td>High</td>
+                                    </tr>
+                                </tbody>
+                            </table>                                                            
+                        </div>  
+                        <label style="font-size: 13px;"><i><b>Source:</b> CEGIS Field Visit, 2024 (Ghilachari)</i></label>
+
+                    </div>    
+
+                </div>    
+                <!-- End Row -->
+            </div>    
+
+        </div>
+    </div>    
+</div>
+
+{% endblock %}

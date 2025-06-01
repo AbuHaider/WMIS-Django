@@ -1,0 +1,117 @@
+{% extends "layouts/home_master.html" %}
+{% load static %}
+{% static "" as baseUrl %}
+
+{% block title %} Training {% endblock title %}
+
+{% block content %}
+
+<style>
+    body{
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+    /* a {
+        color: #03623f;
+    }
+
+    a:hover {
+        color: #00b75c;
+    } */
+
+</style>
+
+
+
+<div class="main-container pt-2">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card parent-card" style="border-radius: 0px;">
+                <div class="page-header" style="background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    <h4 class="main-content-title tx-24 mg-b-5" style="padding: 5px 0px 2px 20px;">List of Training</h4>   
+                </div>
+
+                <!-- Page Content -->
+                <div class="col-md-12" style="padding: 20px 20px 0px 20px;">
+
+                    <div class="card-body" style="max-height: 65vh; overflow-y: auto;">
+                        <div class="table-responsive">
+                            <table class="table card-table text-nowrap table-bordered border-top mb-1">
+                                <thead>
+                                    <tr>
+                                        <th>SL.</th>
+                                        <th>Training Name</th>   
+                                        <th>Participants</th>   
+                                        <th>Duration</th>   
+                                        <th>Training Materials</th>                                                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>  
+                                        <td><a class="nav-link p-0" href="#">Climate change risk assessment and adaptation option assessment</a></td> 
+                                        <td>GoB agencies </td> 
+                                        <td><b>Jun-July 2024</b></td>                                                
+                                        <td><a class="nav-link p-0" href="#">Training modules</a></td>                                                                                                                                                                                          
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>  
+                                        <td><a class="nav-link p-0" href="#">Agro-ecological landscape degradation assessment and restoration opportunities assessment</a></td>  
+                                        <td>GoB agencies and NGOs</td>  
+                                        <td><b>Apr-May 2025</b></td>  
+                                        <td><a class="nav-link p-0" href="#">Training manual</a></td>                                                                                                                                                                                          
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>  
+                                        <td><a class="nav-link p-0" href="#">Community based climate change risk and adaptation option assessment</a></td>  
+                                        <td>Community</td>  
+                                        <td><b>Aug, 2024</b></td>  
+                                        <td><a class="nav-link p-0" href="#">Bangla Training manual</a></td>                                                                                                                                                                                          
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>  
+                                        <td><a class="nav-link p-0" href="#">Watershed health monitoring using satellite information and drone technology</a></td>  
+                                        <td>GoB agencies</td>  
+                                        <td><b>Sep, 2024</b></td>  
+                                        <td><a class="nav-link p-0" href="#">Training materials Drone use demo</a></td>                                                                                                                                                                                          
+                                    </tr>                                  
+                                </tbody>
+                            </table>                                                            
+                        </div>
+                    </div>
+
+                </div>    
+                <!-- End Page Content -->
+
+            </div>
+        </div>
+    </div>    
+</div>
+
+{% endblock %}
+
+
+
+{% block script_content %}
+
+    <script>
+        console.log("here I am..");
+
+        function setFixedHeaderWidth() {
+            const card = document.querySelector('.parent-card');
+            const header = document.querySelector('.page-header');
+            if (card && header) {
+            // header.style.width = card.offsetWidth + 'px';
+            const cardWidth = card.offsetWidth;
+            header.style.width = (cardWidth - 2) + 'px';
+            }
+        }
+
+        // Initial setup
+        window.addEventListener('load', setFixedHeaderWidth);
+
+        // Adjust on resize
+        window.addEventListener('resize', setFixedHeaderWidth);
+    </script>
+
+{% endblock %}

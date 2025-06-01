@@ -1,0 +1,144 @@
+{% extends "layouts/home_master.html" %}
+{% load static %}
+{% static "" as baseUrl %}
+
+{% block title %} Succes Stories {% endblock title %}
+
+{% block content %}
+
+<style>
+
+    a {
+        color: #03623f;
+    }
+
+    a:hover {
+        color: #00b75c;
+    }
+
+</style>
+
+
+
+<div class="main-container pt-2">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card parent-card" style="border-radius: 0px;">
+                <div class="page-header" style="background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    <h4 class="main-content-title tx-24 mg-b-5" style="padding: 5px 0px 2px 20px;">Success Stories</h4>   
+                </div>
+
+                <!-- Page Content -->
+                <div class="col-md-12" style="padding: 20px 20px 0px 20px;">
+
+                    <div class="card-body" style="padding: 10px; max-height: 65vh; overflow-y: auto; overflow-x: hidden;">                        
+                        
+                        <div class="row pb-4">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img class="card-img-top img-fluid" src="{% static 'assets/images/success_stories/irrigation.png' %}" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Card title</h4>
+                                        <p class="card-text">Solar Irrigation Flourishing Agriculture at Gilachhari</p>
+                                        <a href="#" class="btn btn-primary waves-effect waves-light">View Story</a>
+                                    </div><!-- end cardbody -->
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img class="card-img-top img-fluid" src="{% static 'assets/images/success_stories/Proshanto-chakma.png' %}" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Card title</h4>
+                                        <p class="card-text">Agro-forestry Improves Life of Proshanto Chakma in Dighinala</p>
+                                        <a href="#" class="btn btn-primary waves-effect waves-light">View Story</a>
+                                    </div><!-- end cardbody -->
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img class="card-img-top img-fluid" src="{% static 'assets/images/success_stories/broom-grass.png' %}" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Card title</h4>
+                                        <p class="card-text">Broom Grass based Industries Expanding</p>
+                                        <a href="#" class="btn btn-primary waves-effect waves-light">View Story</a>
+                                    </div><!-- end cardbody -->
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row pb-3">
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img class="card-img-top img-fluid" src="{% static 'assets/images/success_stories/native-species.png' %}" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Card title</h4>
+                                        <p class="card-text">Native Species Rejuvenates Watershed Health and Landscape</p>
+                                        <a href="#" class="btn btn-primary waves-effect waves-light">View Story</a>
+                                    </div><!-- end cardbody -->
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img class="card-img-top img-fluid" src="{% static 'assets/images/success_stories/water-reservoir.png' %}" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Card title</h4>
+                                        <p class="card-text">Water Reservoir for Combating Drought and Providing</p>
+                                        <a href="#" class="btn btn-primary waves-effect waves-light">View Story</a>
+                                    </div><!-- end cardbody -->
+                                </div>
+                            </div>
+                            <!-- 
+                            <div class="col-md-4">
+                                <div class="card">
+                                    <img class="card-img-top img-fluid" src="{% static 'assets/images/success_stories/broom-grass.png' %}" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Card title</h4>
+                                        <p class="card-text">Broom Grass based Industries Expanding</p>
+                                        <a href="#" class="btn btn-primary waves-effect waves-light">View Story</a>
+                                    </div>
+                                </div>
+                            </div> -->
+
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Page Content End -->
+
+            </div>
+        </div>
+    </div>    
+</div>
+
+{% endblock %}
+
+
+{% block script_content %}
+
+    <script>
+        console.log("here I am..");
+
+        function setFixedHeaderWidth() {
+            const card = document.querySelector('.parent-card');
+            const header = document.querySelector('.page-header');
+            if (card && header) {
+            // header.style.width = card.offsetWidth + 'px';
+            const cardWidth = card.offsetWidth;
+            header.style.width = (cardWidth - 2) + 'px';
+            }
+        }
+
+        // Initial setup
+        window.addEventListener('load', setFixedHeaderWidth);
+
+        // Adjust on resize
+        window.addEventListener('resize', setFixedHeaderWidth);
+    </script>
+
+{% endblock %}
+
+

@@ -1,0 +1,18 @@
+
+.navbar-color {
+    background-color: #1353A3;
+}
+
+.sidebar-color {
+    /* background-color: #257358; */
+    background-color: rgb(26, 140, 87);
+}
+
+.footer-color {
+    /* background-color: #f48708; */
+    background-color: #008080;
+}
+
+a {
+    text-decoration: none;
+}

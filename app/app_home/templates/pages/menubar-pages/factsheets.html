@@ -1,0 +1,201 @@
+{% extends "layouts/home_master.html" %}
+{% load static %}
+{% static "" as baseUrl %}
+
+{% block title %} Factsheets {% endblock title %}
+
+{% block content %}
+
+<style>
+
+    body{
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+    .pdfobject-container { 
+        height: 800px; border: 1px solid #ccc; 
+    }
+    
+</style>
+
+<div class="main-container" style="padding-top: 10px;">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card parent-card" style="border-radius: 0px;">
+                <div class="page-header" style="background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    <div><h4 class="main-content-title tx-24 mg-b-5" style="padding: 5px 0px 2px 20px;">Factsheets</h4></div>    
+                </div>
+
+                <!-- Page content start -->
+                <div class="col-md-12" style="padding: 0px 20px 0px 10px;">
+                    
+                    <div class="card-body" style="max-height: 65vh; overflow-y: auto;">
+                        <h4 class="mt-1 mb-3">List of Watersheds</h4> 
+                        <div class="row row-sm">                                
+                            <div class="col-md-4">
+                                <a data-bs-target="#" data-bs-toggle="modal" href="#">
+                                    <img alt="Responsive image" class="img-thumbnail" src="{% static 'assets/images/factsheets/bangaltali.png' %}">
+                                    <h6 class="mt-2 mb-4">Bangaltali and Rupakari</h6>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a data-bs-target="#" data-bs-toggle="modal" href="#">
+                                    <img alt="Responsive image" class="img-thumbnail" src="{% static 'assets/images/factsheets/bhaibon.png' %}">
+                                    <h6 class="mt-2 mb-4">Bhaibon Chhara</h6>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a data-bs-target="#" data-bs-toggle="modal" href="#">
+                                    <img alt="Responsive image" class="img-thumbnail" src="{% static 'assets/images/factsheets/bhusan-chhara.png' %}">
+                                    <h6 class="mt-2 mb-4">Bhushan Chhara</h6>
+                                </a>
+                            </div>                                                             
+                        </div>
+                        <div class="row row-sm">
+                            <div class="col-md-4">
+                                <a data-bs-target="#" data-bs-toggle="modal" href="#">
+                                    <img alt="Responsive image" class="img-thumbnail" src="{% static 'assets/images/factsheets/dighinala.png' %}">
+                                    <h6 class="mt-2 mb-4">Dighinala</h6>
+                                </a>
+                            </div>
+                            <div class="col-md-4 mg-t-10 mg-sm-t-0">
+                                <a data-bs-target="#modalsheet2" data-bs-toggle="modal" href="#">
+                                    <img alt="Responsive image" class="img-thumbnail" src="{% static 'assets/images/factsheets/gilachhari.png' %}">
+                                    <h6 class="mt-2 mb-4">Ghilachari</h6>
+                                </a>
+                            </div>   
+                            
+                            <div class="col-md-4">
+                                <a data-bs-target="#modalsheet3" data-bs-toggle="modal" href="#">
+                                    <img alt="Responsive image" class="img-thumbnail" src="{% static 'assets/images/factsheets/logang.png' %}">
+                                    <h6 class="mt-2 mb-4">Logang</h6>
+                                </a>
+                            </div>                              
+                        </div>
+                        <div class="row row-sm">
+                            <div class="col-md-4">
+                                <a data-bs-target="#" data-bs-toggle="modal" href="#">
+                                    <img alt="Responsive image" class="img-thumbnail" src="{% static 'assets/images/factsheets/tangkabati1.png' %}">
+                                    <h6 class="mt-2 mb-4">Tangkabati 1</h6>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a data-bs-target="#" data-bs-toggle="modal" href="#">
+                                    <img alt="Responsive image" class="img-thumbnail" src="{% static 'assets/images/factsheets/tangkabati2.png' %}">
+                                    <h6 class="mt-2 mb-4">Tangkabati 2</h6>
+                                </a>
+                            </div>
+                            <div class="col-md-4">
+                                <a data-bs-target="#" data-bs-toggle="modal" href="#">
+                                    <img alt="Responsive image" class="img-thumbnail" src="{% static 'assets/images/factsheets/thanchi.png' %}">
+                                    <h6 class="mt-2 mb-4">Thanchi</h6>
+                                </a>
+                            </div>                          
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Extra Large Modal border: 1px solid green;-->
+<div class="modal fade" id="modalsheet1">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content modal-content-demo" style="border-radius: 8px;">
+            <div class="modal-header">
+                <h6 id="titlemodalmajor" class="modal-title">Bhushan Chhara</h6>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+            </div>
+            <div class="modal-body" style="overflow: auto;height: 700px;width: 100%;">
+                <div id="factsheetpdf1" class="h-100"></div>
+                <!-- <div style="overflow-y: auto;" class="table-responsive" id="divTypeRiverSummary">
+                    <div id="factsheetpdf1" class="h-100"></div>
+                </div> -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn ripple btn-danger" data-bs-dismiss="modal" type="button">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalsheet2">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content modal-content-demo" style="border-radius: 8px;">
+            <div class="modal-header">
+                <h6 id="titlemodalmajor" class="modal-title">Ghilachari</h6>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+            </div>
+            <div class="modal-body" style="overflow: auto;height: 70vh;width: 100%;">
+                <div id="factsheetpdf2"></div>
+                <!-- <div style="overflow-y: auto;" class="table-responsive" id="divTypeRiverSummary">
+                    <div id="factsheetpdf2"></div>
+                </div> -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn ripple btn-danger" data-bs-dismiss="modal" type="button">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalsheet3">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content modal-content-demo" style="border-radius: 8px;">
+            <div class="modal-header">
+                <h6 id="titlemodalmajor" class="modal-title">Logang</h6>
+                <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+            </div>
+            <div class="modal-body" style="overflow: auto;height: 70vh;width: 100%;">
+                <div id="factsheetpdf3"></div>
+                <!-- <div style="overflow-y: auto;" class="table-responsive" id="divTypeRiverSummary">
+                    <div id="factsheetpdf3"></div>
+                </div> -->
+            </div>
+            <div class="modal-footer">
+                <button class="btn ripple btn-danger" data-bs-dismiss="modal" type="button">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://unpkg.com/pdfobject"></script>
+<script>PDFObject.embed("{% static 'assets/pdf/Logang_Watershed.pdf' %}", "#factsheetpdf1");</script>
+<script>PDFObject.embed("{% static 'assets/pdf/Logang_Watershed.pdf' %}", "#factsheetpdf2");</script>
+<script>PDFObject.embed("{% static 'assets/pdf/Logang_Watershed.pdf' %}", "#factsheetpdf3");</script>
+<!-- ref: https://stackoverflow.com/questions/35286303/pdf-file-to-be-displayed-on-the-dialog-modal-via-bootstrap -->
+
+{% endblock %}
+
+
+
+{% block script_content %}
+
+    <script>
+        console.log("here I am..");
+        
+        function setFixedHeaderWidth() {
+            const card = document.querySelector('.parent-card');
+            const header = document.querySelector('.page-header');
+            if (card && header) {
+            // header.style.width = card.offsetWidth + 'px';
+            const cardWidth = card.offsetWidth;
+            header.style.width = (cardWidth - 2) + 'px';
+            //header.style.left = '50%';
+            //header.style.transform = 'translateX(-50%)';
+            }
+        }
+
+        // Initial setup
+        window.addEventListener('load', setFixedHeaderWidth);
+
+        // Adjust on resize
+        window.addEventListener('resize', setFixedHeaderWidth);
+    </script>
+
+{% endblock %}

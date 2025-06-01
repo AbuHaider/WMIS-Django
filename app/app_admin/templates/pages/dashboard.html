@@ -1,0 +1,192 @@
+{% extends "layouts/admin_master.html" %}
+{% load static %}
+
+{% block title %} Dashboard {% endblock title %}
+
+{% block custom_styles_block %} 
+
+{% endblock custom_styles_block %}
+
+{% block content %}
+
+<div class="content-header">
+    <div class="container-fluid border-bottom">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">At a Glance</h1>
+        </div>
+
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" href="#">Dashboard</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+        
+        {% if details.user_role == 'admin' %}
+          
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-4 col-lg">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>{{data.total_wells}}</h3>
+                <p>Total Well</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+              
+              <a href="#" class="small-box-footer" target="_blank">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-md-4 col-lg">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <h3>{{data.total_welllogs}}</h3>
+                <p>Total Well Logs</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              
+              <a href="#" class="small-box-footer" target="_blank">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          
+          <!-- ./col -->
+          <div class="col-12 col-sm-6 col-md-4 col-lg">
+            <!-- small box -->
+            <div class="small-box bg-danger">
+              <div class="inner">
+                <h3>{{data.total_reports}}</h3>
+                <p>Total Reports</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              
+              {% comment %} <a href="{% url 'seismic2d_index' %}" class="small-box-footer" target="_blank">More info <i class="fas fa-arrow-circle-right"></i></a> {% endcomment %}
+              <a href="#" class="small-box-footer" target="_blank">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          
+          <!-- ./col -->
+          <div class="col-12 col-sm-6 col-md-4 col-lg">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <h3>{{data.total_production_data}}</h3>
+                <p>Total Production Data</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              
+              <a href="#" class="small-box-footer" target="_blank">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          
+          <!-- ./col -->
+          <div class="col-12 col-sm-6 col-md-4 col-lg">
+            <!-- small box -->
+            <div class="small-box bg-teal">
+              <div class="inner">
+                <h3>{{data.total_seismic2ds}}</h3>
+                <p>Total Seismic-2D</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              
+              <a href="#" class="small-box-footer" target="_blank">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          
+          <!-- ./col -->
+          <div class="col-12 col-sm-6 col-md-4 col-lg">
+            <!-- small box -->
+            <div class="small-box bg-purple">
+              <div class="inner">
+                <h3>{{data.total_seismic3ds}}</h3>
+                <p>Total Seismic-3D</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              
+              <a href="#" class="small-box-footer" target="_blank">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          
+        </div>
+        
+
+        {% endif %}
+
+        <div class="row">
+            <div class="col-md-4">
+            <!-- small box -->
+            <div class="small-box bg-info">
+                <div class="inner">
+                <h3>7</h3>
+
+                <p>Total Requests</p>
+                </div>
+                <div class="icon">
+                <i class="ion ion-bag"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+            </div>
+        
+            <div class="col-md-4 ">
+            <!-- small box -->
+            <div class="small-box bg-success">
+                <div class="inner">
+                <h3>4</h3>
+
+                <p>Completed</p>
+                </div>
+                <div class="icon">
+                <ion-icon name="bowling-ball-outline"></ion-icon>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+            </div>
+
+            <div class="col-md-4 ">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+                <div class="inner">
+                <h3>3</h3>
+
+                <p>Pending</p>
+                </div>
+                <div class="icon">
+                <i class="fa fa-bank"></i>
+                </div>
+                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+            </div>
+        
+        </div>
+
+    </div>
+  </section>
+
+{% endblock content %}
+
+
+{% block custom_scripts_block %}
+
+{% endblock custom_scripts_block %}

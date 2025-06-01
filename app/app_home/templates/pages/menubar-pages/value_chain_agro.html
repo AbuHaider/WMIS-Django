@@ -1,0 +1,332 @@
+{% extends "layouts/home_master.html" %}
+{% load static %}
+{% static "" as baseUrl %}
+
+{% block title %} Value Chain Argo {% endblock title %}
+
+{% block content %}
+
+<style>
+
+    p {
+        font-size: 15px !important;
+        text-align: justify;
+    }
+
+    a {
+        color: #03623f;
+    }
+
+    a:hover {
+        color: #00b75c;
+    }
+
+
+    .animate .animat-icon i {
+    position: relative !important;
+    /* -webkit-animation:  1s infinite !important; */
+    /* animation: mymove 1s infinite !important; */
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-fill-mode: none;
+    animation-play-state: running;
+    /* animation-name: mymove; */
+    /* animation-timeline: auto;
+    animation-range-start: normal;
+    animation-range-end: normal; */
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+}
+
+</style>
+
+
+<div class="main-container mt-2">
+    <div class="row">
+        <div class="col-md-12" >
+
+            <!-- Row -->
+            <div class="col-md-12">                   
+                <div class="card parent-card" style="border-radius: 0px;">
+                    <div class="page-header" style="background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                        <h4 class="main-content-title tx-24 mg-b-5" style="padding: 5px 0px 2px 20px;">Agro-forestry Value Chain</h4>   
+                    </div>
+
+                    <div class="col-md-8" style="padding: 20px 20px 0px 20px;">
+                        <div class="card-body" style="max-height: 65vh; overflow-y: auto;">
+
+                            <div class="card">
+                                <div class="card-body">
+
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-pills nav-justified bg-body-secondary" role="tablist">
+                                        <li class="nav-item waves-effect waves-light" role="presentation">
+                                            <a class="nav-link active" data-bs-toggle="tab" href="#navpills2-home" role="tab" aria-selected="true">
+                                                <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
+                                                <span class="d-none d-sm-block">Mango</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item waves-effect waves-light" role="presentation">
+                                            <a class="nav-link" data-bs-toggle="tab" href="#navpills2-profile" role="tab" aria-selected="false" tabindex="-1">
+                                                <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                                                <span class="d-none d-sm-block">Broom Grass</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item waves-effect waves-light" role="presentation">
+                                            <a class="nav-link" data-bs-toggle="tab" href="#navpills2-messages" role="tab" aria-selected="false" tabindex="-1">
+                                                <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
+                                                <span class="d-none d-sm-block">Bambo</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item waves-effect waves-light" role="presentation">
+                                            <a class="nav-link" data-bs-toggle="tab" href="#navpills2-settings" role="tab" aria-selected="false" tabindex="-1">
+                                                <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
+                                                <span class="d-none d-sm-block">Sample</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                    <!-- Tab panes -->
+                                    <div class="tab-content p-3 text-muted">
+                                        <div class="tab-pane active show" id="navpills2-home" role="tabpanel">
+                                            <i><h4>Channel-I</h4></i>
+                                            <p>First channel stands as the simplest and shortest chain where homestead and small-scale farmers sell directly to the consumers. Farmers can gain considerable profit (more than 100%) if they can reach the nearest favorable market. Even though this chain appears to be the most efficient one, yet their low production and the poor transportation system often discourage farmers to catch high value markets. As a result, traders grab the advantage of this condition.</p>                                                        
+                                            <div class="row"><img alt="Responsive image" class="col-md-10 mx-auto img-fit-cover" src="{% static 'assets/images/value_chain/img_1.png' %}"></div>
+                                            <div class="col-md-12 text-center mb-3"><label class="mx-auto">Figure: Channel-I for Mango Value Chain</label></div>
+                                            
+                                            <i><h4>Channel-II</h4></i>                                                        
+                                            <p>Looking at the second channel illustrates five actors involved in the chain.  As usual, farmers stand at the very beginning and can gain only 50% profit from this chain. The outreach of the market is able to catch the regional cities like CHT bazars (Ghagra, Matiranga, Guimara, Kutukchari), Chattogram (Folmondi and Firingi Bazar), Feni and Cumilla. The whole intermediate system is dominated by this channel as 60% of mangos reach these markets. It seems that faria, bepari and aratdars extract from 15% to 18% revenues in every kg.</p>
+                                            <div class="row"><img alt="Responsive image" class="col-md-10 mx-auto img-fit-cover" src="{% static 'assets/images/value_chain/img_2.png' %}"></div>
+                                            <div class="col-md-12 text-center mb-3"><label class="mx-auto">Figure: Channel-II for Mango Value Chain</label></div>
+
+                                            <i><h4>Channel-III</h4></i>                                                        
+                                            <p>Illustration of the third channel makes it evident that farmers’ contribution added values about 44% (35 BDT/kg) and bepari made 25% (20 BDT/kg) whereas the retailers’ contribution accounted for 21% (17 BDT/kg) and the rest of 10% comes from wholesalers. Most of value addition stems from the production, post-harvesting activities, and packaging which are usually performed by the farmers and beparis. Other intermediate actors rarely contribute in the process except adjusting for the transportation costs. However, most striking feature of this channel is that it reaches the national market where per kg mango is sole for 80 BDT, the highest price among three channels. Yet farmers do not enjoy any benefits from this high price rather it goes to the pockets of retailers.</p>
+                                            <div class="row"><img alt="Responsive image" class="col-md-10 mx-auto img-fit-cover" src="{% static 'assets/images/value_chain/img_3.png' %}"></div>
+                                            <div class="col-md-12 text-center mb-3"><label class="mx-auto">Figure: Channel-III for Mango Value Chain</label></div>
+                                            <!-- <p class="mb-0">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. </p> -->
+
+                                            <h4>Cost-benefit Analysis of Mango</h4>
+                                            <div class="table-responsive">
+                                                <table class="table card-table text-nowrap table-bordered border-top mb-1">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Cost-Benefit Sources</th>
+                                                            <th>Mango (Amrapali)</th>                                                                        
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Lease Cost in BDT/hectare</td>                                                                        
+                                                            <td>24,700</td>                                                                        
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Land Preparation in BDT/hectare</td>                                                                        
+                                                            <td>22,230</td>                                                                        
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Sapling Cost in BDT/hectare</td>                                                                        
+                                                            <td>9,880</td>                                                                        
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Fertilizers (Organic and Chemical) Cost in BDT/hectare</td>                                                                        
+                                                            <td>35,963</td>                                                                        
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Pesticides Cost in BDT/hectare</td>                                                                        
+                                                            <td>7,904</td>                                                                        
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Harvesting Cost in BDT/hectare</td>                                                                        
+                                                            <td>11,856</td>                                                                        
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Labor Cost in BDT/hectare</td>                                                                        
+                                                            <td>44,460</td>                                                                        
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Irrigation Cost in BDT/hectare</td>                                                                        
+                                                            <td>7,706</td>                                                                        
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Transport Cost in BDT/hectare</td>                                                                        
+                                                            <td>4,800</td>                                                                        
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Other Costs (Bagging, Taxes etc.) </td>                                                                        
+                                                            <td>7,410</td>                                                                        
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Total Cost in BDT/hectare</td>                                                                        
+                                                            <td>176,909</td>                                                                        
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Yield Rate in ton/hectare</td>                                                                        
+                                                            <td>6.3</td>                                                                        
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Revenue in BDT/hectare</td>                                                                        
+                                                            <td>220,500</td>                                                                        
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Profit in BDT/hectare</td>                                                                        
+                                                            <td>43,591</td>                                                                        
+                                                        </tr>
+                                                    </tbody>
+                                                </table>                                                            
+                                            </div>
+                                            <label style="font-size: 13px;"><i><b>Note:</b> Monetary values have been quoted in BDT and calculated against per hectare. In case of transportation, the cost indicates 0.8 BDT/kg based on 5 km distance. Source: In-depth Interviews with farmers and Key Informant Interviews with experts of DAE.</i></label>
+
+                                            <div class="row"><img alt="Responsive image" class="col-md-10 mx-auto img-fit-cover mt-2" src="{% static 'assets/images/value_chain/img_4_.png' %}"></div>
+                                            <label style="font-size: 13px;"><b>Note:</b> Regional market indicates the district market where rural indicates the upazila and union markets. *Faria is involved in upazila level trading where bepari is active in regional and national level market.</label>
+                                            <div class="col-md-12 text-center mb-3"><label class="mx-auto">Figure: Supply Chain Mapping of Mango</label></div>
+                                        </div>
+                                        <div class="tab-pane" id="navpills2-profile" role="tabpanel">
+                                            <div class="row"><img alt="Responsive image" class="col-md-10 mx-auto img-fit-cover" src="{% static 'assets/images/value_chain/img_BG_1.png' %}"></div>
+                                            <div class="col-md-12 text-center mb-3"><label class="mx-auto">Figure: Most Common Marketing Channels of Broom Flower in CHT</label></div>                                                        
+
+                                            <h4>Cost-benefit Analysis of Broom Flower</h4>
+                                            <div class="table-responsive">
+                                                <table class="table card-table text-nowrap table-bordered border-top mb-1">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Cost-benefit Elements</th>
+                                                            <th>Unit</th>    
+                                                            <th>Unit cost (BDT)</th>  
+                                                            <th>Amount (for 1 acre)</th>  
+                                                            <th>Total (BDT)</th>                                                                      
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>Labor- Land preparation</td>
+                                                            <td>Man days</td>
+                                                            <td>500</td>
+                                                            <td>10</td>
+                                                            <td>5000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Labor – Sapling/root collection and planting</td>
+                                                            <td>Man days</td>
+                                                            <td>500</td>
+                                                            <td>20</td>
+                                                            <td>10000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Labor- weeding</td>
+                                                            <td>Man days</td>
+                                                            <td>500</td>
+                                                            <td>15</td>
+                                                            <td>7500</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Labor- Harvesting, sun drying</td>
+                                                            <td>Man days</td>
+                                                            <td>500</td>
+                                                            <td>30</td>
+                                                            <td>15000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Transportation</td>
+                                                            <td>Lump sum</td>
+                                                            <td>500</td>
+                                                            <td>For 1-2 km</td>
+                                                            <td>500</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Pesticides</td>
+                                                            <td>kg</td>
+                                                            <td>23</td>
+                                                            <td>200</td>
+                                                            <td>4600</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Land Lease cost</td>
+                                                            <td>Acre</td>
+                                                            <td>4000</td>
+                                                            <td>1</td>
+                                                            <td>4000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Total cost</td>
+                                                            <td>Nos of Sticks</td>
+                                                            <td>0.466</td>
+                                                            <td>100000</td>
+                                                            <td>46600</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Total Benefit</td>
+                                                            <td>Nos of Sticks</td>
+                                                            <td>0.6</td>
+                                                            <td>100000</td>
+                                                            <td>60000</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Profit</td>
+                                                            <td>Nos of Sticks</td>
+                                                            <td>0.134</td>
+                                                            <td>100000</td>
+                                                            <td>13400</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Per unit cost of sticks</td>
+                                                            <td colspan="3" style="background-color: #000;"></td>
+                                                            <td>0.46</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Per unit price of sticks</td>
+                                                            <td colspan="3" style="background-color: #000;"></td>
+                                                            <td>0.6</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="4">Cost of 1 set of broom flower (20 sticks) at farmgate</td>
+                                                            <td>9.2</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="4">Selling Price of 1 set of broom flower (20 sticks) at farmgate</td>
+                                                            <td>45644</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>                                                            
+                                            </div>
+                                            <label style="font-size: 13px;"><i><b>Source:</b> In-depth Interviews with farmers and Key Informant Interviews with experts of DAE.</i></label>
+                                        </div>
+                                        <div class="tab-pane" id="navpills2-messages" role="tabpanel">
+                                            <i><h4>Most Common Marketing Channels of Bamboo in CHT</h4></i>
+                                            <div class="row"><img alt="Responsive image" class="col-md-10 mx-auto img-fit-cover" src="{% static 'assets/images/value_chain/img_B_1.png' %}"></div>
+                                            <div class="col-md-12 text-center mb-3"><label class="mx-auto">Figure: Most Common Marketing Channels of Bamboo in CHT</label></div>                                                        
+                                            
+                                            <i><h4>Supply Chain Mapping of Bamboo</h4></i>
+                                            <div class="row"><img alt="Responsive image" class="col-md-10 mx-auto img-fit-cover" src="{% static 'assets/images/value_chain/img_B_2.png' %}"></div>
+                                            <div class="col-md-12 text-center mb-3"><label class="mx-auto">Figure: Supply Chain Mapping of Bamboo</label></div>    
+                                        </div>
+                                        <div class="tab-pane" id="navpills2-settings" role="tabpanel">
+                                            <p class="mb-0">
+                                                Trust fund seitan letterpress, keytar raw denim keffiyeh etsy
+                                                art party before they sold out master cleanse gluten-free squid
+                                                scenester freegan cosby sweater. Fanny pack portland seitan DIY,
+                                                art party locavore wolf cliche high life echo park Austin. Cred
+                                                vinyl keffiyeh DIY salvia PBR, banh mi before they sold out
+                                                farm-to-table.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>    
+            <!-- End Row -->
+
+        </div>
+    </div>    
+</div>
+
+{% endblock %}

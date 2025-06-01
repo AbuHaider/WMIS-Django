@@ -1,0 +1,91 @@
+{% load static %}
+  
+<nav class="main-header navbar navbar-expand navbar-dark border-0 elevation-4 navbar-color" style="margin-left: 0px;">
+  <!-- Left navbar links -->
+  <ul class="navbar-nav">
+    
+    <!-- <li class="nav-item">
+      <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+    </li> -->
+   
+    <li class="nav-item">
+      <h3 class="m-0 d-none d-md-inline-block" style="color: #FFFFFF;padding-left: 20px; font-size: 18px;">
+        <strong> Watershed Information Management System </strong>
+      </h3>
+    </li>
+
+  </ul>
+
+  <!-- Right navbar links -->
+  <ul class="navbar-nav ml-auto">
+
+    <li class="nav-item d-none d-sm-inline-block">
+      <a href="{% url 'home' %}" class="nav-link" style="color: #FFFFFF;"> <strong> Home  &nbsp;</strong> </a>
+    </li>
+    
+    <li class="nav-item d-none d-sm-inline-block">
+      <a href="{% url 'map_view' %}" class="nav-link " style="color: white;">
+        <strong>Map View  &nbsp;</strong>
+      </a>
+    </li>
+
+    <!-- 
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link" style="color: #FFFFFF;"> <strong> FAQ </strong> </a>
+      </li>
+      
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link" style="color: #FFFFFF;"> <strong> Contact Us </strong> </a>
+      </li>
+
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link" style="color: #FFFFFF;"> <strong> Credit </strong> </a>
+      </li> 
+
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link" style="color: #FFFFFF;"> <strong> Link </strong> </a>
+      </li>
+    -->
+    
+    <li class="nav-item d-none d-sm-inline-block">
+      <span class="nav-link" style="color: #FFFFFF;"> &nbsp; &nbsp;</span>
+    </li>
+
+    <li class="nav-item dropdown">
+      <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" 
+              data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: #FFFFFF;">
+        {% comment %} <img src="{% static 'assets/img/user_icon.png' %}" alt="log_out" height="20" width="20">
+        <img src="{% static 'assets/{{user.profile_img}}' %}" alt="log_out" height="20" width="20"> {% endcomment %}
+        <i class="fas fa-user-circle" alt="Log out"></i> <strong> {{ user.username }} </strong>
+      </a>
+
+      {% if request.user.is_authenticated %}
+      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+        
+        {% comment %} <a href="{% url 'password_change' %}" class="nav-link">Change Password</a> {% endcomment %}
+
+        <a class="dropdown-item" href="#">
+          <i class="fas fa-key"></i> Profile
+        </a>
+
+        <hr class="m-1" />
+
+        <button class="dropdown-item" onclick="document.getElementById('logout-form').submit();">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </button>
+
+        <form id="logout-form" action="{% url 'logout' %}" method="POST" class="d-none">
+          {% csrf_token %}
+        </form>
+      </div>
+      {% endif %}
+    </li>
+      
+    <li class="nav-item">
+      <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+        <i class="fas fa-expand-arrows-alt"></i>
+      </a>
+    </li>
+  </ul>
+</nav>
+<!-- /.navbar -->

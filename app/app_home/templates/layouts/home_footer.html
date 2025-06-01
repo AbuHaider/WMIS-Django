@@ -1,0 +1,83 @@
+
+{% load static %}
+
+<!-- Fixed Footer -->
+<footer class="footer d-flex align-items-center py-3" 
+    style="background-color: #008080; padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; position: fixed; bottom: 0; width: 100%; z-index: 1000;">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-sm-6 d-flex justify-content-center justify-content-sm-start ps-sm-4">
+                <ul class="footer-bar list-inline" style="padding-top: 5px; margin-bottom: 0;">
+                    <li class="nav-item list-inline-item d-none d-sm-inline-block me-3">
+                        <a href="#" class="nav-link" style="color: #FFFFFF;"> <strong>FAQ</strong> </a>
+                    </li>
+                    
+                    <li class="nav-item list-inline-item d-none d-sm-inline-block me-3">
+                        <a href="#" class="nav-link" style="color: #FFFFFF;"> <strong>Contact Us</strong> </a>
+                    </li>
+                
+                    <li class="nav-item list-inline-item d-none d-sm-inline-block me-3">
+                        <a href="#" class="nav-link" style="color: #FFFFFF;"> <strong>Credit</strong> </a>
+                    </li> 
+                
+                    <li class="nav-item list-inline-item d-none d-sm-inline-block me-3">
+                        <a href="#" class="nav-link" style="color: #FFFFFF;"> <strong>Link</strong> </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-6 d-flex justify-content-center justify-content-sm-end mt-2 mt-sm-0">
+                <div class="footer-logo d-flex align-items-center" style="color: #ffffff;">
+                    Copyright © <span id="year"></span> 
+                    <strong style="font-family: Cambria;">
+                        <a href="https://www.adb.org/" target="_blank" style="color: black;"> &nbsp; ADB &nbsp;</a>
+                    </strong> | All rights reserved. Designed by &nbsp;
+                    <strong>
+                        <a href="https://www.cegisbd.com/" target="_blank" style="color: black;">
+                            <!-- <img src="{% static 'assets/images/CEGIS_logo.png' %}" alt="CEGIS" style="width: 50px;" /> -->
+                            <span> CEGIS </span>
+                        </a>
+                    </strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+<!-- Without Fixed -->
+<!-- 
+<footer class="footer d-flex align-items-center justify-content-center text-center py-3" 
+    style="background-image: linear-gradient(60deg, #1b5e20, #004d40); padding-top: 2.5rem !important; padding-bottom: 2.5rem !important;">
+    <div class="container-fluid">
+        <div class="row align-items-center text-center">
+            <div class="col-sm-6 d-flex justify-content-center justify-content-sm-start">
+                <a class="footer-logo d-flex align-items-center" href="#" target="_blank">
+                    <img src="{% static 'assets/images/logo_rhd.png' %}" alt="MOWR" title="RHD" style="width: 50px;">
+                    <label style="color: white;" class="ms-2 mb-0">
+                        <script>document.write(new Date().getFullYear())</script> © WMIS.
+                    </label>
+                </a>
+            </div>
+            <div class="col-sm-6 d-flex justify-content-center justify-content-sm-end">
+                <a class="footer-logo d-flex align-items-center">
+                    Copyright © <span id="year"></span> 
+                    <strong><a href="https://www.adb.org/" target="_blank" style="color: #019f5e;">ADB &nbsp;</a> </strong> | All rights reserved. Designed by &nbsp; <strong>
+                        <a href="https://www.cegisbd.com/" target="_blank">
+                            <img src="{% static 'images/CEGIS_logo.png' %}" alt="CEGIS" style="width: 50px; filter: brightness(150%);" />
+                        </a>
+                    </strong>
+                </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+-->
+
+
+<script>
+    // Set the current year in the footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script> 

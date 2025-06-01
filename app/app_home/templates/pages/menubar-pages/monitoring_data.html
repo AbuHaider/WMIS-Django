@@ -1,0 +1,336 @@
+{% extends "layouts/home_master.html" %}
+{% load static %}
+{% static "" as baseUrl %}
+
+{% block title %} Monitoring Data {% endblock title %}
+
+{% block content %}
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+<style>
+
+    
+    a {
+        color: #03623f;
+    }
+
+    a:hover {
+        color: #00b75c;
+    }   
+
+    .highcharts-figure,
+    .highcharts-data-table table {
+        min-width: 360px;
+        max-width: 800px;
+        margin: 1em auto;
+    }
+
+    .highcharts-data-table table {
+        font-family: Verdana, sans-serif;
+        border-collapse: collapse;
+        border: 1px solid #ebebeb;
+        margin: 10px auto;
+        text-align: center;
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .highcharts-data-table caption {
+        padding: 1em 0;
+        font-size: 1.2em;
+        color: #555;
+    }
+
+    .highcharts-data-table th {
+        font-weight: 600;
+        padding: 0.5em;
+    }
+
+    .highcharts-data-table td,
+    .highcharts-data-table th,
+    .highcharts-data-table caption {
+        padding: 0.5em;
+    }
+
+    .highcharts-data-table thead tr,
+    .highcharts-data-table tr:nth-child(even) {
+        background: #f8f8f8;
+    }
+
+    .highcharts-data-table tr:hover {
+        background: #f1f7ff;
+    }
+</style>
+
+<!-- <link rel="stylesheet" type="text/css" href="https://www.highcharts.com/samples/static/highslide.css" /> -->
+
+<div class="main-container pt-2">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card parent-card" style="border-radius: 0px;">
+                <div class="page-header" style="background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    <h4 class="main-content-title tx-24 mg-b-5" style="padding: 5px 0px 2px 20px;">Watershed Health Monitoring</h4>   
+                </div>
+
+            
+                <div class="col-md-12">
+
+                    <div class="card-body" style="max-height: 65vh; overflow-y: auto;">
+
+                        <div class="row">
+                            <figure class="highcharts-figure">
+                                <div id="container"></div>
+                                <!-- <p class="highcharts-description">
+                                    This chart shows the use of a logarithmic y-axis. Logarithmic axes can
+                                    be useful when dealing with data with spikes or large value gaps,
+                                    as they allow variance in the smaller values to remain visible.
+                                </p> -->
+                            </figure>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8">
+                                <div class="table-responsive">
+                                    <table class="table card-table text-nowrap table-bordered border-top mb-1">
+                                        <thead>
+                                            <tr>
+                                                <th colspan="2"></th>
+                                                <th colspan="4" style="text-align: center;">Target</th>
+                                            </tr>
+                                            <tr>
+                                                <th>Unit</th>
+                                                <th>Baseline (2024)</th>                                                      
+                                                <th>2030</th>   
+                                                <th>2035</th>   
+                                                <th>2041</th>  
+                                                <th>2050</th>                                                                                                                        
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>ton/ha/year</td>  
+                                                <td>15.61</td> 
+                                                <td>15</td> 
+                                                <td>12</td>                                                
+                                                <td>12</td>   
+                                                <td>12</td>                                                                                                                                                                                          
+                                            </tr>                                                                           
+                                        </tbody>
+                                    </table>                                                            
+                                </div>
+                            </div>
+                            <div class="col-md-2"></div>                                
+                        </div>
+    
+                    </div>
+
+
+                </div>    
+
+
+            </div>
+
+        </div>
+    </div>    
+</div>
+
+
+<script>
+
+    // $(document).ready(function () {
+
+    //     const urlParams = new URLSearchParams(window.location.search);
+    //     const docCat = urlParams.get('docCat');
+
+    //     if(docCat == 'MonitoringData'){
+    //         GetMonitoringData();
+    //     }
+    //     else if(docCat == 'MonitoringData') {
+    //         GetData();
+    //     }
+    // });
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const docCat = urlParams.get('MonitoringDataCat');
+
+    if(docCat == 'AnnualSoil'){
+        GetAnnualSoilData();
+    }
+    else if(docCat == 'WaterDepthDrySeason') {
+        GetWaterDepthDrySeasonData();
+    }
+
+
+    function GetAnnualSoilData() {
+
+        var monitoring_Data = [  
+            [2024, 15.61],
+            [2030, 15],
+            [2035, 12],
+            [2041, 12],
+            [2050, 12]  
+        ]
+
+        monitoring_BaselinrData = [  
+            [2024, 15.61]
+            // [2035, 15.61],
+            // [2041, 15.61],
+            // [2050, 15.61]  
+        ]
+
+        Highcharts.chart('container', {
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: 'Watershed Health Monitoring'
+            },
+            xAxis: {                                
+                title: {
+                    text: 'Year'
+                },
+                min: 2024,
+                // categories: [
+                // '2010', '2020', '2030', '2040', '2050', '2060', '2070']				
+            },
+            yAxis: {                			                
+                title: {
+                    text: 'Target'
+                }                
+            },
+            legend: {
+                reversed: true
+            },
+            plotOptions: {
+                line: {
+                    dataLabels: {
+                        enabled: true
+                    },
+                    enableMouseTracking: true
+                }				
+            },
+
+            tooltip: {
+                headerFormat: '<b>{series.name}</b><br />',
+                pointFormat: 'Year = {point.x}, Target = {point.y}'
+            },
+
+            series: [{
+                name: 'Target',	
+                data: monitoring_Data,
+                pointStart: 5			
+            },
+            {
+                name: 'Baseline',	
+                data: monitoring_BaselinrData,
+                pointStart: 5				
+            },
+            
+            ]
+        });
+
+    }
+
+        
+    function GetWaterDepthDrySeasonData() {
+        
+        var monitoring_Data = [  
+            [2030, 0.7],
+            [2035, 0.8],
+            [2041, 0.9],
+            [2050, 1]  
+        ]
+
+        monitoring_BaselinrData = [  
+            [2030, 0.6],
+            [2035, 0.6],
+            [2041, 0.6],
+            [2050, 0.6]  
+        ]
+
+        Highcharts.chart('container', {
+            chart: {
+                type: 'line'
+            },
+            title: {
+                text: 'Watershed Health Monitoring'
+            },
+            xAxis: {                                
+                title: {
+                    text: 'Year'
+                }			
+            },
+            yAxis: {                			                
+                title: {
+                    text: 'Target'
+                }                
+            },
+            legend: {
+                reversed: true
+            },
+            plotOptions: {
+                line: {
+                    dataLabels: {
+                        enabled: true
+                    },
+                    enableMouseTracking: true
+                }				
+            },
+
+            tooltip: {
+                headerFormat: '<b>{series.name}</b><br />',
+                pointFormat: 'Year = {point.x}, Target = {point.y}'
+            },
+
+            series: [{
+                name: 'Target',	
+                data: monitoring_Data,
+                pointStart: 0			
+            },
+            {
+                name: 'Baseline',	
+                data: monitoring_BaselinrData,
+                pointStart: 0				
+            },
+            
+            ]
+        });
+
+    }
+
+
+</script>
+
+
+{% endblock %}
+
+
+{% block script_content %}
+
+    <script>
+        console.log("here I am..");
+
+        function setFixedHeaderWidth() {
+            const card = document.querySelector('.parent-card');
+            const header = document.querySelector('.page-header');
+            if (card && header) {
+            // header.style.width = card.offsetWidth + 'px';
+            const cardWidth = card.offsetWidth;
+            header.style.width = (cardWidth - 2) + 'px';
+            }
+        }
+
+        // Initial setup
+        window.addEventListener('load', setFixedHeaderWidth);
+
+        // Adjust on resize
+        window.addEventListener('resize', setFixedHeaderWidth);
+    </script>
+
+{% endblock %}

@@ -1,0 +1,1188 @@
+{% extends 'layouts/home_master.html' %}
+{% load static %}
+
+{% static "" as baseUrl %}
+
+{% block title %} Home : WMIS {% endblock title %}
+
+{% block style_content %}
+
+<style>
+    .categories_guide_item {
+        padding: 0px !important;
+        background: transparent !important;
+        box-shadow: none !important;
+    }
+    .categories_guide_item img {
+        margin-bottom: 0px !important;
+    }
+    .tab-pane {
+        margin-top: 75px;
+    }
+    .tab-content {
+        padding: 0 20px;
+        box-shadow: 5px 6px 5px 0 rgba(33, 39, 40, 0.2);
+        border: 1px Solid rgba(130, 148, 151, 0.2)
+    }
+    .com-title {
+        font-size: 0.8rem !important;
+        font-style: italic;
+        text-transform: uppercase;
+    }
+
+    .community-box {
+        padding: 20px 15px;
+        box-shadow: 1px 2px 3px 2px rgba(2, 47, 57, 0.14);
+    }
+
+    .community-content {
+        min-height: 160px; 
+    }
+
+    .fact_navigation_info {
+        box-shadow: 5px 6px 5px 0 rgba(33, 39, 40, 0.2);
+        padding: 40px 30px 28px;
+        border: 1px Solid rgba(130, 148, 151, 0.2)
+    }
+
+    .org-content {
+        background: #f5fcfd;
+        /* background-color: #dde3ee; */
+        /* background-image: linear-gradient(to left bottom, #eeeeee, #ecedee, #eaebee, #e7eaee, #e4e9ee); */
+        /* border: 1px solid #d9ddea; */
+        padding: 10px;
+        margin: 10px;
+    }
+
+    .org-img {
+        width: 90px; 
+        margin-bottom: 10px;
+    }
+
+    /*=========== Start Slider css (MNH) ============*/
+
+    .slide_section {
+    position: inherit ;
+    width: 100%;
+    height: auto;
+    display: flex;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    /* margin-bottom: 100px; */
+    z-index: 100;
+    }
+
+    .slide:last-child
+    {
+        border-right: none;
+    }
+
+    .slide:hover
+    {
+        flex-grow: 6;      /* Widely Open Width */
+        /* transform: scale(1.05, 1.05); */
+        /* -ms-flex-negative: 0;
+        flex-shrink: 0;
+        width: 65%; */    
+    }
+
+    .inner {
+        height: auto; /* height: 650px; */
+        width: 100%;     
+        display: block;
+        background-repeat: no-repeat;
+        transition: all 1s;
+        background-size: auto 100%;
+    }
+
+    .slide img {  
+        transition: all 1s;
+    }
+
+    /* .slide:nth-child(1)
+    {
+        background: url(../static/img/slider-img/S1.jpg);
+        background-position: center center;
+    }
+
+    .slide:nth-child(2)
+    {
+        background: url(../static/img/slider-img/S2.jpg);
+        background-position: center center;
+    }
+
+    .slide:nth-child(3)
+    {
+        background: url(../static/img/slider-img/S3.jpg);
+        background-position: center center;
+    }
+
+    .slide:nth-child(4)
+    {
+        background: url(../static/img/slider-img/S4.jpg);
+        background-position: center center;
+    } */
+
+    .slide a
+    {
+        position: absolute;
+        bottom: 233px;   /*  150px  */
+        /* margin: 20px; */
+        padding: 10px;
+        left: 0px;
+        /* background: #000;
+        color: #fff;
+        visibility: hidden;
+        opacity: 0;
+        transition: 0s;
+        transform: translateY(100px); */
+        /* width:100%; */
+    }
+
+    .slide .content
+    {
+        position: absolute;
+        bottom:0;
+        /* margin: 20px; */
+        padding: 10px;
+        background: #000;
+        color: #fff;
+        visibility: hidden;
+        opacity: 0;
+        transition: 0s;
+        transform: translateY(100px);
+        width:100%;
+    }
+
+    .slide:hover img {       /* .slide:hover .inner { */ 
+        transform: scale(1.05);     /*   scale(1.2);  Zoom Level */
+        /* transition-delay: 0.1s; */     /* Zoom Delay*/
+    }
+
+    .slide:hover .content{
+        visibility: visible;
+        opacity: 0.7;
+        transition: 0.5s;
+        transition-delay: 0.2s;
+        transform: translateY(0px);    
+    } 
+
+    /*.slick-track {
+        /* transition-delay: 2s !important; 
+        /* transition: transform 1s !important; 
+    } */
+
+    .item {
+        margin: 20px;
+    }
+
+    .tip_content {
+        text-align: justify;
+    }
+
+    /* https://www.youtube.com/watch?v=uDDGsq0Xf2Y */
+    /*=========== End Slider css (MNH) ============*/
+
+    /* Starts Responsive Image Slider Image ---- MNH */
+    
+    @media (min-width: 2200px) {
+        /* .slide, .inner {
+            height:850px;
+        } */
+        .content {
+            display:block;
+        }
+        .slide a {
+            bottom: 50px;        /* 100px; */
+            font-size: 0.8rem;
+            padding:10px 5px;
+        }
+    }
+
+    @media (max-width: 2199px) {
+        /* .slide, .inner {
+            height:750px;
+        } */
+        .content {
+            display:block;
+        }
+        .slide a {
+            bottom: 50px;        /* 100px; */
+            font-size: 0.8rem;
+            padding:10px 5px;
+        }
+    }
+
+    /* @media (min-width: 1200px) { */
+    @media (max-width: 1999px) {
+        /* .slide, .inner {
+            height:650px;
+        } */
+        .content {
+            display:block;
+        }
+        .slide a {
+            bottom: 50px;        /* 100px; */
+            font-size: 0.8rem;
+            padding:10px 5px;
+        }
+    }
+
+    @media (max-width: 1450px) {
+        /* .slide, .inner {
+            height:450px;
+        } */
+        .content {
+            display:block;
+        }
+        .slide a {
+            bottom: 50px;        /* 100px; */
+            font-size: 0.8rem;
+            padding:10px 5px;
+        }
+    }
+
+    @media (max-width: 1199px) {
+        /* .slide, .inner {
+            height:350px;
+        } */
+        .content {
+            display:block;
+        }
+        .slide a {
+            bottom: 50px;        /* 130px; */
+            font-size: 0.8rem;
+            padding:10px 5px;
+        }
+    }
+
+
+    @media (max-width: 776px) {
+        /* .slide, .inner {
+            height:250px;
+        } */
+        .content {
+            display:none;
+        }
+        .slide a {
+            bottom:30px;
+            font-size: 0.7rem;
+            padding:10px 5px;
+        }
+    }
+
+
+    @media (max-width: 567px) {
+        /* .slide, .inner {
+            height:190px;
+        } */
+        .content {
+            display:none;
+        }
+        .slide a {
+            bottom:30px;
+            padding:0;
+            /* font-size: 0.6rem; */
+        }
+    }
+
+
+    @media (max-width: 350px) {
+        /* .slide, .inner {
+            height:110px;
+        } */
+        .content {
+            display:none;
+        }
+        .slide a {
+            bottom:30px;
+            padding:0;
+            /* font-size: 0.5rem; */
+        }
+    }
+</style>
+
+
+<style>
+
+    /*=========== SVG css (MNH) ============*/
+    .water-wave {
+    display: block;
+    width: 100%;
+    height: 9rem;
+    max-height: 100vh;
+    margin: 0;
+    }
+
+    .parallax > use {
+    animation:move-forever 10s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+    }
+
+    .parallax > use:nth-child(1){animation-delay:-5s;}
+    .parallax > use:nth-child(2){animation-delay:-7s; animation-duration:5.25s}
+    .parallax > use:nth-child(3){animation-delay:1s; animation-duration:8.25s}
+    .parallax > use:nth-child(4){animation-delay:-3s; animation-duration:10.25s}
+
+    @keyframes move-forever{
+    0%{transform: translate(-90px , 0%)}
+    100%{transform: translate(85px , 0%)} 
+    }
+
+    /*=========== SVG css (MNH) ============*/
+
+
+    /* Center the modal on the page */
+    /* .modal {
+      display: none;
+      position: fixed;
+      z-index: 10000;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+    } */
+
+    /* Style the modal content */
+    /* .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    } */
+
+    /* Style the table */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    /* th {
+        background-color: #d0e9ea;
+    } */
+
+    table,
+    th,
+    td {
+      border: 1px solid #06a8cb;  
+      padding: 10px;
+      text-align: left;
+    }
+</style>
+
+<!-- /* Slider */ -->
+<style>
+
+    @media (max-width:991.98px) {
+        .padding {
+            padding: 1.5rem
+        }
+    }
+
+    @media (max-width:767.98px) {
+        .padding {
+            padding: 1rem
+        }
+    }
+
+
+    
+    .padding {
+        padding: 5rem
+    }
+
+    .card {
+        position: relative;
+        display: flex;
+        width: 350px;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: none;
+        /* border: 1px solid #d2d2dc;
+        border-radius: 11px;
+        -webkit-box-shadow: 0px 0px 5px 0px rgb(249, 249, 250);
+        -moz-box-shadow: 0px 0px 5px 0px rgba(212,182,212,1);
+        box-shadow: 0px 0px 5px 0px rgb(161, 163, 164); */
+    }
+
+    .card .card-body {
+        padding: 0px;
+            /* padding: 1rem 1rem; */
+    }
+
+    .card-body {
+        flex: 1 1 auto;
+        padding: 1.25rem;
+        background-color: #ececec;
+    }
+
+    /* p {
+        font-size: 0.875rem;
+        margin-bottom: .5rem;
+        line-height: 1.5rem
+    }
+
+    h4{
+            line-height: .2 !important;
+    } */
+    .profile{
+        margin-top: 16px;
+        margin-left: 11px;
+    }
+    .profile-pic{
+        width: 58px;
+    }
+    .cust-name{
+        font-size: 18px;
+    }
+    .cust-profession{
+        font-size: 10px;
+    }
+    .items {
+        width: 90%;    
+        margin: 0px auto;   
+        /* margin-top: 100px */
+    }
+
+    .slick-slide {
+        margin: 10px
+    }
+
+    .slick-slide img {
+    display: initial !important;
+    }
+
+    .slick-prev, .slick-next {
+        background: #95adb1 !important;     /* #188799 !important; */
+        border-radius: 10px;
+    }
+
+
+
+    /* highcharts */
+    .highcharts-figure,
+    .highcharts-data-table table {
+        min-width: 310px;
+        max-width: 800px;
+        margin: 1em auto;
+    }
+
+    #container1 {
+        height: 400px;
+    }
+
+
+
+    .highcharts-data-table table {
+        font-family: Verdana, sans-serif;
+        border-collapse: collapse;
+        border: 1px solid #ebebeb;
+        margin: 10px auto;
+        text-align: center;
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .highcharts-data-table caption {
+        padding: 1em 0;
+        font-size: 1.2em;
+        color: #555;
+    }
+
+    .highcharts-data-table th {
+        font-weight: 600;
+        padding: 0.5em;
+    }
+
+    .highcharts-data-table td,
+    .highcharts-data-table th,
+    .highcharts-data-table caption {
+        padding: 0.5em;
+    }
+
+    .highcharts-data-table thead tr,
+    .highcharts-data-table tr:nth-child(even) {
+        background: #f8f8f8;
+    }
+
+    .highcharts-data-table tr:hover {
+        background: #f1f7ff;
+    }
+
+    .highcharts-credits{
+        display: none!important;
+    }
+
+
+</style>
+
+
+<!-- Sliding Section -->
+<style>
+    #componentScroll {
+      perspective: 1000px;
+    }
+  
+    .scroll-box {
+      flex: 0 0 auto;
+      cursor: pointer;
+      text-align: center;
+      padding: 20px;
+      background: #1b5e20;
+      border-radius: 10px;
+      text-decoration: none;
+      color: white;
+      width: 200px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.15);
+      transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+    }
+  
+    .scroll-box:hover {
+      transform: translateZ(60px) scale(1.08);
+      z-index: 1;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+      filter: brightness(1.1);
+    }
+  
+    .scroll-box img {
+      margin-bottom: 10px;
+    }
+</style>
+<!-- Sliding Section -->
+
+
+<!-- Image Slider CSS -->
+<style>
+  .slider-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 650px;
+  }
+
+  .slider-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .slider-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .slide .content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    color: wheat;
+  }
+</style>
+
+
+{% endblock %}
+
+{% block content %}
+
+<div class="main-container" style="padding-top: 0px; ">
+
+<section class="slide_section" style="display: none;">
+    <div class="d-inline-flex bg-secondary text-white w-100">  
+
+            <div class="row m-0">
+                <div class="col-md-4 p-0">
+                    <div class="slide border" >
+                        <img src="{% static 'assets/images/slider-img/CHT.jpeg' %}" style="width:100%;">
+                                                                                                           <!-- <span class="inner" style="background-image:url(../static/img/slider-img/MWR_Slide_1.jpg);"></span>  <img src="{% static 'img/slider-img/MWR_Slide1.jpg' %}" style="width:100%;"> -->        
+                     
+                        <div class="content">            
+                            <h4 style="color:wheat;">Chittagong Hill Tracts</h4>
+                            <p></p>            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 p-0">
+                    <div class="slide border">
+                        <img src="{% static 'assets/images/slider-img/kaptai_lake.jpg' %}" style="width:100%;">
+                                                                                                        <!-- <span class="inner" style="background-image:url(../static/img/slider-img/MWR_Slide_2.jpg);"></span>  -->
+                     
+                        <div class="content">
+                            <h4 style="color:wheat;">Kaptai Lake Beauty</h4>
+                            <p></p>            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 p-0">
+                    <div class="slide border">
+                        <img src="{% static 'assets/images/slider-img/keokradong.jpg' %}" style="width:100%;">
+                                                                                                            <!-- <span class="inner" style="background-image:url(../static/img/slider-img/MWR_Slide_3.jpg);"></span> -->
+                  
+                        <div class="content">
+                            <h4 style="color:wheat;">The Charmming Boga Lake</h4>
+                            <p></p>            
+                        </div>
+                    </div>
+                </div>
+            </div>                           
+            
+    </div>
+</section>
+
+<!-- Image Slider -->
+<section class="slide_section">
+    <div class="slider-container">
+        <div class="slider-wrapper" id="sliderWrapper">
+            <div class="slide">
+            <img src="{% static 'assets/images/slider-img/CHT.jpeg' %}" class="slider-image" />
+            <div class="content"><h4>Chittagong Hill Tracts</h4></div>
+            </div>
+            <div class="slide">
+            <img src="{% static 'assets/images/slider-img/kaptai_lake.jpg' %}" class="slider-image" />
+            <div class="content"><h4>Kaptai Lake Beauty</h4></div>
+            </div>
+            <div class="slide">
+            <img src="{% static 'assets/images/slider-img/keokradong.jpg' %}" class="slider-image" />
+            <div class="content"><h4>The Charming Boga Lake</h4></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overview text section -->
+    <div class="col-md-4 p-0 overview-section" style="background-image: linear-gradient(180deg, rgb(244, 248, 251) 0%, rgb(166, 206, 224) 90%);">
+        <div class="h-100 d-flex flex-column justify-content-center px-4 py-3" style="gap: 1.5rem; color: black;">
+            <h2 class="mb-0" style="padding-left: 0px;text-align: left; color: black;">About the WMIS</h2>
+            <p style="text-align: justify; font-weight: 400; font-size: 16px; max-width: 95%;">
+                Watershed Management Information System (WMIS) of the Chittagong Hill Tracts Area aims at facilitating informed decision making at policy 
+                level for integrated management of CHT watersheds, agro-ecological landscape restoration as nature-based solutions for climate change 
+                adaptation and livelihoods improvement of indigenous communities. WMIS will further facilitate to monitor the watershed health rejuvenation 
+                and track the resilience building among indigenous communities against climate change.
+            </p>
+        </div>
+    </div>
+
+</section>
+
+<br />
+
+<!-- About the Project -->
+<section style="background: linear-gradient(60deg,rgb(247, 201, 101),rgb(117, 96, 63)); padding: 50px; text-align: center; color: black;">
+    <h2 style="font-weight: bold; text-transform: uppercase; padding-bottom: 15px; font-size: 28px; letter-spacing: 1px; color: black;">About the Project</h2>
+    <p style="max-width: 800px; margin: auto; text-align: center; line-height: 1.8; font-size: 20px;">
+        The Asian Development Bank (ADB) is committed to achieving a prosperous, inclusive, resilient, and sustainable Asia and the Pacific, while sustaining its efforts to eradicate extreme poverty. It assists its members and partners by providing loans, technical assistance, grants, and equity investments to promote social and economic development.
+    </p>
+</section>
+
+<section style="display: none; padding: 15px 0px; border-top: 2px solid #618c8e; border-bottom:2px solid #618c8e; margin-top: 3px; background: #cfe5f9; background-image: linear-gradient(180deg, rgb(244, 248, 251) 0%, rgb(176, 211, 227) 90%);">
+    <div class="form-group">
+        <div class="border-bottom-0 pt-3" style="padding: 0px 50px;">
+            <label class="main-content-label" >About the WMIS</label>
+        </div>
+        <div class="col-md-12" style="padding: 0px 50px;">
+            <label style="text-align: justify; font-weight: 400; font-size: 14px;">
+                Watershed Management Information System (WMIS) of the
+                Chittagong Hill Tracts Area aims at facilitating informed decision making
+                at policy level for integrated management of CHT watersheds, agro-
+                ecological landscape restoration as nature-based solutions for climate
+                change adaptation and livelihoods improvement of indigenous
+                communities. WMIS will further facilitate to monitor the watershed
+                health rejuvenation and track the resilience building among indigenous
+                communities against climate change.
+            </label>
+        </div>
+        
+    </div>
+</section>
+
+<br />
+
+<section>
+    <div class="row"> 
+        
+        <div class="col-md-2">
+            <div class="card-body" style="border-radius: 10px; background-image: linear-gradient(60deg,rgb(160, 202, 241),rgb(65, 122, 228));">
+                <div class="card-item">
+                    <div class="card-item-title text-center mb-2 mt-4">
+                        <span class="HeadColor tx-15 font-weight-bold mb-1 text-white">No. of Watersheds</span>
+                    </div>
+                    <div class="text-center mb-3">
+                        <h2 class="font-weight-bold HeadColor text-white">9</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card-body" style="border-radius: 10px; background-image: linear-gradient(60deg,rgb(160, 202, 241),rgb(65, 122, 228));">
+                <div class="card-item">
+                    <div class="card-item-title text-center mb-2 mt-4">
+                        <span class="HeadColor tx-15 font-weight-bold mb-1 text-white">No. of Beneficiary Para</span>
+                    </div>
+                    <div class="text-center mb-3">
+                        <h2 class="font-weight-bold HeadColor text-white">180+</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card-body" style="border-radius: 10px; background-image: linear-gradient(60deg,rgb(160, 202, 241),rgb(65, 122, 228));">
+                <div class="card-item">
+                    <div class="card-item-title text-center mb-2 mt-4">
+                        <span class="HeadColor tx-15 font-weight-bold mb-1 text-white">Total Population</span>
+                    </div>
+                    <div class="text-center mb-3">
+                        <h2 class="font-weight-bold HeadColor text-white">45000+</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card-body" style="border-radius: 10px; background-image: linear-gradient(60deg,rgb(160, 202, 241),rgb(65, 122, 228));">
+                <div class="card-item">
+                    <div class="card-item-title text-center mb-2 mt-4">
+                        <span class="HeadColor tx-15 font-weight-bold mb-1 text-white">Total Water Sources</span>
+                    </div>
+                    <div class="text-center mb-3">
+                        <h2 class="font-weight-bold HeadColor text-white">150</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card-body" style="border-radius: 10px; background-image: linear-gradient(60deg,rgb(160, 202, 241),rgb(65, 122, 228));">
+                <div class="card-item">
+                    <div class="card-item-title text-center mb-2 mt-4">
+                        <span class="HeadColor tx-15 font-weight-bold mb-1 text-white">No. of Ethnicity</span>
+                    </div>
+                    <div class="text-center mb-3">
+                        <h2 class="font-weight-bold HeadColor text-white">5</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card-body" style="border-radius: 10px; background-image: linear-gradient(60deg,rgb(160, 202, 241),rgb(65, 122, 228));">
+                <div class="card-item">
+                    <div class="card-item-title text-center mb-2 mt-4">
+                        <span class="HeadColor tx-15 font-weight-bold mb-1 text-white">No. of Ethnicity</span>
+                    </div>
+                    <div class="text-center mb-3">
+                        <h2 class="font-weight-bold HeadColor text-white">5</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>            
+</section>
+
+<br />
+
+<!-- Demonstration Activitie -->
+<section>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card-body" style="background-color: #438D80;">
+                <div class="border-bottom-0 pb-0">
+                    <label class="main-content-label" style="padding-left: 4px;">Demonstration Activities</label>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4">           
+                            <a href="#">
+                                <div class="card-body" style="border-radius: 20px;">
+                                    <div class="counter-body-2">
+                                        <div class="bg-img mb-2 mt-2 text-center hexagon-wrapper">                                                
+                                            <div class="counter-icon mx-auto">
+                                                <img class="wd-100" src="{% static 'assets/images/demonstration/agro-forestry.png' %}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center counter-body" style="padding-bottom: 0px;">
+                                        <h5>Community based agro-forestry</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-md-4">           
+                            <a href="#">
+                                <div class="card-body" style="border-radius: 20px;">
+                                    <div class="counter-body-2">
+                                        <div class="bg-img mb-2 mt-2 text-center hexagon-wrapper">                                                
+                                            <div class="counter-icon mx-auto">
+                                                <img class="wd-100" src="{% static 'assets/images/demonstration/climate-change.png' %}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center counter-body">
+                                        <h5>Community based climate risk and adaptation assessment</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-md-4">           
+                            <a href="#">
+                                <div class="card-body" style="border-radius: 20px;">
+                                    <div class="counter-body-2">
+                                        <div class="bg-img mb-2 mt-2 text-center hexagon-wrapper">                                                
+                                            <div class="counter-icon mx-auto">
+                                                <img class="wd-100" src="{% static 'assets/images/demonstration/waterhed-health.png' %}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center counter-body">
+                                        <h5>Watershed health monitoring using drones</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="row pt-3">
+                        <div class="col-md-4">           
+                            <a href="#">
+                                <div class="card-body" style="border-radius: 20px;">
+                                    <div class="counter-body-2">
+                                        <div class="bg-img mb-2 mt-2 text-center hexagon-wrapper">                                                
+                                            <div class="counter-icon mx-auto">
+                                                <img class="wd-100" src="{% static 'assets/images/demonstration/participatory.png' %}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center counter-body">
+                                        <h5>Participatory climate resilience tracking</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-md-4">           
+                            <a href="#">
+                                <div class="card-body" style="border-radius: 20px;">
+                                    <div class="counter-body-2">
+                                        <div class="bg-img mb-2 mt-2 text-center hexagon-wrapper">                                                
+                                            <div class="counter-icon mx-auto">
+                                                <img class="wd-100" src="{% static 'assets/images/demonstration/agro-nursery.png' %}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center counter-body">
+                                        <h5>Agro-forestry nursery development</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col-md-4">           
+                            <a href="#">
+                                <div class="card-body" style="border-radius: 20px;">
+                                    <div class="counter-body-2">
+                                        <div class="bg-img mb-2 mt-2 text-center hexagon-wrapper">                                                
+                                            <div class="counter-icon mx-auto">
+                                                <img class="wd-100" src="{% static 'assets/images/demonstration/native.png' %}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center counter-body">
+                                        <h5>Native regenerative tree plantations</h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card-body" style="background-color: #A0D6B4;">
+                <div class="border-bottom-0 pb-0">
+                    <label class="main-content-label">News/Events</label>
+                </div>
+                <div class="col-md-12">
+
+                    <ul class="list-unstyled">
+                        <!-- News Item 1 -->
+                        <li class="media mb-4 p-2 d-flex align-items-center">
+                            <img src="{% static 'assets/images/news_events/inception.png' %}" 
+                                 class="mr-3 img-fluid rounded" 
+                                 style="width: 120px; height: 90px; object-fit: cover;"
+                                 alt="Inception">
+                            <div class="media-body" style="padding-left: 20px;">
+                                <a href="#" class="text-decoration-none">
+                                    <h6 class="mt-0 mb-1 font-weight-bold">Inception of Climate Resilient Livelihood Improvement and Watershed Management...</h6>
+                                </a>
+                                <small class="text-muted">1 day ago</small>
+                            </div>
+                        </li>
+                    
+                        <!-- News Item 2 -->
+                        <li class="media mb-4 p-2 d-flex align-items-center">
+                            <img src="{% static 'assets/images/news_events/wmis.png' %}" 
+                                 class="mr-3 img-fluid rounded" 
+                                 style="width: 120px; height: 90px; object-fit: cover;"
+                                 alt="WMIS Launch">
+                            <div class="media-body" style="padding-left: 20px;">
+                                <a href="#" class="text-decoration-none">
+                                    <h6 class="mt-0 mb-1 font-weight-bold">Launch of Watershed Management Information System (WMIS) for Chittagong...</h6>
+                                </a>
+                                <small class="text-muted">2 days ago</small>
+                            </div>
+                        </li>
+
+                        <!-- News Item 3 -->
+                        <li class="media mb-4 p-2 d-flex align-items-center">
+                            <img src="{% static 'assets/images/news_events/final-workshop.png' %}" 
+                                 class="mr-3 img-fluid rounded" 
+                                 style="width: 120px; height: 90px; object-fit: cover;"
+                                 alt="WMIS Launch">
+                            <div class="media-body" style="padding-left: 20px;">
+                                <a href="#" class="text-decoration-none">
+                                    <h6 class="mt-0 mb-1 font-weight-bold">Final workshop of ADB TA REG 6539 Investing in Climate Change Adaptation...</h6>
+                                </a>
+                                <small class="text-muted">2 days ago</small>
+                            </div>
+                        </li>
+
+                        <!-- News Item 4 -->
+                        <li class="media mb-4 p-2 d-flex align-items-center">
+                            <img src="{% static 'assets/images/news_events/drone.png' %}" 
+                                 class="mr-3 img-fluid rounded" 
+                                 style="width: 120px; height: 90px; object-fit: cover;"
+                                 alt="WMIS Launch">
+                            <div class="media-body" style="padding-left: 20px;">
+                                <a href="#" class="text-decoration-none">
+                                    <h6 class="mt-0 mb-1 font-weight-bold">Demonstration of drone-based watershed health monitoring by CEGIS and ADB in...</h6>
+                                </a>
+                                <small class="text-muted">2 days ago</small>
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <div class="card-footer border-0" style="padding: 15px 0px 78px 10px;">
+                    <a href="{% url 'news_events_list' %}" class="text-decoration-none font-weight-bold text-black">See More >> </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<br />
+
+<!-- Main Content Section -->
+<section style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 40px; background: #e4f1e5;">
+    <!-- Title Header -->
+    <div style="width: 100%; text-align: center; margin-bottom: 10px;">
+        <h2 style="font-size: 32px; font-weight: bold; color: #1b5e20; margin: 0;">Success Stories</h2>
+    </div>
+
+    <!-- Objective -->
+    <div style="flex: 1; min-width: 300px; max-width: 400px; background: white; padding: 30px; text-align: center; border-radius: 12px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);">
+        <img src="{% static 'assets/images/success_stories/irrigation.png' %}" width="350px" style="margin-bottom: 15px;">
+        <p style="text-align: justify; font-size: 16px; line-height: 1.6; color: #333;">
+            Solar Irrigation Flourishing Agriculture at Gilachhari
+        </p>
+        <a href="#" class="btn ripple btn-success btn-sm mt-3">View Story</a>
+    </div>
+
+    <!-- Scop of Work -->
+    <div style="flex: 1; min-width: 300px; max-width: 400px; background: white; padding: 30px; text-align: center; border-radius: 12px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);">
+        <img src="{% static 'assets/images/success_stories/Proshanto-chakma.png' %}" width="350px" style="margin-bottom: 15px;">
+        <p style="text-align: justify; font-size: 16px; line-height: 1.6; color: #333;">
+            Agro-forestry Improves Life of Proshanto Chakma in Dighinala
+        </p>
+        <a href="#" class="btn ripple btn-success btn-sm mt-3">View Story</a>
+    </div>
+
+    <!-- Overview -->
+    <div style="flex: 1; min-width: 300px; max-width: 400px; background: white; padding: 30px; text-align: center; border-radius: 12px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);">
+        <img src="{% static 'assets/images/success_stories/broom-grass.png' %}" width="350px" style="margin-bottom: 15px;">
+        <p style="text-align: justify; font-size: 16px; line-height: 1.6; color: #333;">
+            Broom Grass based Industries surging with Robust Growth
+        </p>
+        <a href="#" class="btn ripple btn-success btn-sm mt-3">View Story</a>
+    </div>
+
+</section>
+
+<br />
+
+<!-- Patners Sliding -->
+<section style="background: #FAEBD7; padding: 90px; position: relative; overflow: hidden;">
+    <h2 style="font-weight: bold; text-transform: uppercase; text-align: center; padding-bottom: 30px; font-size: 28px; letter-spacing: 1px; color: #1b5e20;">
+        Implementors and Partners
+    </h2>
+  
+    <div style="position: relative; display: flex; align-items: center; justify-content: center;">
+        <div id="componentScroll" style="display: flex; overflow: hidden; gap: 20px; padding: 10px 0; max-width: 1000px; scroll-behavior: smooth;">
+            
+            <!-- Boxes -->
+            <a href="#" class="scroll-box">
+            <img style="width:70px; padding-top: 20px;" src="{% static 'assets/images/patners/ADB-02.png' %}" alt="Icon" />
+            </a>
+    
+            <a href="#">
+            <img style="width:150px; padding-top: 20px;" src="{% static 'assets/images/patners/JFPR-03.png' %}" alt="Icon" />
+            </a>
+    
+            <a href="#" class="scroll-box">
+            <img style="width:130px;" src="{% static 'assets/images/patners/Japan-Gov-04.png' %}" alt="Icon" />
+            </a>
+    
+            <a href="#">
+            <img style="width:80px; padding-top: 25px;" src="{% static 'assets/images/patners/bd_govt.png' %}" alt="Icon" />
+            </a>
+
+            <a href="#" class="scroll-box">
+            <img style="width:130px;" src="{% static 'assets/images/patners/CHTRC-05.png' %}" alt="Icon" />
+            </a>
+        
+            <a href="#">
+            <img style="width:120px; padding-top: 50px;" src="{% static 'assets/images/patners/CEGIS_logo.png' %}" alt="Icon" />
+            </a>
+            
+        </div>
+    </div>
+</section>
+
+</div>
+
+
+<!-- Image Slider Script -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const sliderWrapper = document.getElementById("sliderWrapper");
+    const originalSlides = Array.from(document.querySelectorAll(".slide"));
+    const totalSlides = originalSlides.length;
+
+    if (totalSlides === 0) return;
+
+    // Clone first and last slides
+    const firstClone = originalSlides[0].cloneNode(true);
+    const lastClone = originalSlides[totalSlides - 1].cloneNode(true);
+
+    firstClone.classList.add("clone");
+    lastClone.classList.add("clone");
+
+    sliderWrapper.insertBefore(lastClone, sliderWrapper.firstChild);
+    sliderWrapper.appendChild(firstClone);
+
+    const allSlides = document.querySelectorAll(".slide");
+    let currentIndex = 1;
+    const slideWidth = 100; // percentage
+    let isTransitioning = false;
+
+    // Set initial position after DOM update
+    sliderWrapper.style.transition = "none";
+    sliderWrapper.style.transform = `translateX(-${slideWidth * currentIndex}%)`;
+
+    setTimeout(() => {
+      sliderWrapper.style.transition = "transform 0.5s ease-in-out";
+    }, 50); // give time for DOM to paint
+
+    function goToSlide(index) {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      currentIndex = index;
+      sliderWrapper.style.transform = `translateX(-${slideWidth * currentIndex}%)`;
+    }
+
+    sliderWrapper.addEventListener("transitionend", () => {
+      isTransitioning = false;
+
+      if (allSlides[currentIndex].classList.contains("clone")) {
+        sliderWrapper.style.transition = "none";
+
+        currentIndex = currentIndex === 0 ? totalSlides : 1;
+        sliderWrapper.style.transform = `translateX(-${slideWidth * currentIndex}%)`;
+
+        // restore transition after a tiny delay to avoid flicker
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            sliderWrapper.style.transition = "transform 0.5s ease-in-out";
+          });
+        });
+      }
+    });
+
+    function nextSlide() {
+      goToSlide(currentIndex + 1);
+    }
+
+    setInterval(nextSlide, 5000); // autoplay
+  });
+</script>
+
+
+{% endblock %}
+
+
+{% block script_content %}
+
+
+    <!-- Sliding Section -->
+    <script>
+        const scrollContainer = document.getElementById("componentScroll");
+        const scrollBoxes = scrollContainer.querySelectorAll(".scroll-box");
+        let scrollAmount = 2;  // Adjust speed here
+        let autoScrollInterval;
+        
+        // Clone enough boxes to make it seamless
+        scrollBoxes.forEach(box => {
+            const clone = box.cloneNode(true);
+            scrollContainer.appendChild(clone);
+        });
+        
+        // Start auto scroll
+        function startAutoScroll() {
+            if (!autoScrollInterval) {
+                autoScrollInterval = setInterval(() => {
+                    scrollContainer.scrollLeft += scrollAmount;
+        
+                    // If reached end, reset to start smoothly
+                    if (scrollContainer.scrollLeft >= (scrollContainer.scrollWidth - scrollContainer.clientWidth)) {
+                        scrollContainer.scrollLeft = 0;
+                    }
+                }, 20); // 20ms interval for smoothness
+            }
+        }
+        
+        // Stop auto scroll
+        function stopAutoScroll() {
+            clearInterval(autoScrollInterval);
+            autoScrollInterval = null;
+        }
+        
+        // Hover stop/start logic
+        scrollContainer.addEventListener("mouseover", stopAutoScroll);
+        scrollContainer.addEventListener("mouseout", startAutoScroll);
+        
+        // Start immediately
+        startAutoScroll();
+    </script>
+        
+      
+{% endblock %}

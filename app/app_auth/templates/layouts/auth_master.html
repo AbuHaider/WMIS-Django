@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token }}">
+        <title>{% block title %}{% endblock title %}</title>
+        <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon" />
+        <!-- Google Font: Source Sans Pro -->
+        <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
+        <!-- Theme style -->
+        <link type="text/css" rel="stylesheet" href="{% static 'plugins/adminlte/css/adminlte.min.css' %}" />
+        <!-- overlayScrollbars -->
+        <link type="text/css" rel="stylesheet" href="{% static 'plugins/overlayScrollbars/css/OverlayScrollbars.min.css' %}" />
+        <!-- Font Awesome -->
+        <link type="text/css" rel="stylesheet" href="{% static 'plugins/fontawesome-free/css/all.min.css' %}" />
+        <!-- Common custom CSS -->
+        <link type="text/css" rel="stylesheet" href="{% static 'styles/app.css' %}" />
+
+        {% block custom_styles_block %}{% endblock custom_styles_block %}
+    </head>
+
+    <body class="sidebar-mini control-sidebar-slide-open layout-fixed layout-navbar-fixed layout-footer-fixed">
+        <div class="wrapper">
+
+            {% block header %}
+            {% include 'layouts/auth_navbar.html' %}
+            {% endblock header %}
+
+            <main class="content-wrapper" id="content_wrapper" style="background-color: #f2ebe1; margin-left: 0px;">
+                {% block content %}{% endblock content %}
+            </main>
+
+            {% block footer %}
+            {% include 'layouts/auth_footer.html' %}
+            {% endblock footer %}
+        
+        </div>
+
+        <!-- jQuery -->
+        <script src="{% static 'scripts/jquery/jquery.min.js' %}"></script>
+        <!-- Bootstrap 5 -->
+        <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+        <!-- Select2 -->
+        <script src="{% static 'plugins/select2/select2.full.min.js' %}"></script>
+        <!-- AdminLTE App -->
+        <script src="{% static 'plugins/adminlte/js/adminlte.min.js' %}"></script>
+
+        {% block custom_scripts_block %}{% endblock custom_scripts_block %}
+    </body>
+</html>

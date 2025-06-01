@@ -1,0 +1,390 @@
+{% load static %}
+
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar bg-success elevation-4 sidebar-color" style="top: 56px;">
+    
+    <div class="m-0 p-0 border-1">
+        <!-- <div class="row m-0 fw-bold" style="width: 100%; background-color: #257358 !important; padding: 13px 0px;border-bottom: 1px solid #175942;">
+            <div class="col-12 border-round">
+                <strong style="font-size: 1.25rem; color: white;padding-left: 10px;">BOGDP, BAPEX</strong>  
+            </div>
+
+        </div> -->
+		<div class="form-group" id="watershedDiv">
+			<div class="row m-0 fw-bold p-2" style="width: 100%; background-color: #F2BB66 !important;">
+				<div class="col-12 border-round">
+					<span style="font-size: 1rem; color: Black;"> Watershed Selection</span> 
+				</div>
+			</div>
+
+			<div class="col-md-12" style="font-size: 14px; height: 18vh;"> 
+				<div class="form-group" style="font-size: 14px; margin: 20px 0px 0px 0px;">
+					<div class="w-full px-3">
+						<label>CHT Districts</label> 
+						<select class="block px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-blue-500 focus:outline-none focus:ring" style="width: 100%" 
+								id="district-select" name="district" value="" >
+							<option value="" disabled selected class="text-gray-400">Select One</option>
+							<option value="Rangamati" class="text-gray-800">Rangamati</option>
+							<option value="Bandarban" class="text-gray-800">Bandarban</option>
+							<option value="Khagrachhari" class="text-gray-800">Khagrachhari</option>
+						</select>
+					</div>
+				
+					<div class="w-full px-3" style="margin-top: 10px">
+						<label>Watershed</label> 
+						<select 
+							class="block px-4 py-2 text-gray-700 bg-white border rounded-lg focus:border-blue-500 focus:outline-none focus:ring" 
+							style="width: 100%"
+							id="watershed-select" name="watershed" value="" disabled
+						>
+						<option value="" class="text-gray-400">Select District First</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div> 
+
+		<div class="row m-0 fw-bold p-2" style="width: 100%; background-color: #F2BB66 !important;">
+            <div class="col-6 border-round">
+                <span style="font-size: 1rem;"> 
+                    <a class="nav-link text-left active" id="contentLink" href="#" role="tab" style="width: auto; color: Black;padding-left: 10px;">Content</a>
+                </span> 
+            </div>
+
+            <div class="col-6 border-round">
+                <span style="font-size: 1rem;"> 
+                    <a class="nav-link text-right" id="legendLink" href="#" role="tab" style="width: auto; color: black;padding-right: 10px;">&nbsp; </a>
+                </span> 
+            </div>
+        </div>
+
+		<div class="col-md-12" id="contentDiv" style="font-size: 14px; height: 55vh;"> 
+			<div class="form-group" style="max-height: 50vh; overflow-y: auto; margin: 10px 0px 0px 0px;">
+				<ul class="treeview">
+					
+					<!-- Administrative -->
+					<li>
+						<input type="checkbox" id="category-2-2">
+						<label for="category-2-2">Administrative</label>
+						<ul>
+							<li>
+								<label>Para Boundary
+									<input class="admin-category" type="checkbox" value="para_boundary" style="margin: 2px 0px 0px 10px;">
+								</label>
+							</li>
+							<li>
+								<label>Districts
+									<input class="admin-category" type="checkbox" value="districts" style="margin: 2px 0px 0px 10px;">
+								</label>
+							</li>
+							<li>
+								<label>Upazilla
+									<input class="admin-category" type="checkbox" value="upazilla" style="margin: 2px 0px 0px 10px;">
+								</label>
+							</li>
+							<li>
+								<label>River
+									<input class="admin-category" type="checkbox" value="river" style="margin: 2px 0px 0px 10px;">
+								</label>
+							</li>
+							<li>
+								<label>Road
+									<input class="admin-category" type="checkbox" value="road" style="margin: 2px 0px 0px 10px;">
+								</label>
+							</li>
+						</ul>
+					</li>
+
+					<!-- Para Boundary (moved below Basemaps) 
+					<li>
+						<label>Para Boundary
+							<input class="admin-category" type="checkbox" value="para_boundary" style="margin: 2px 0px 0px 10px;">
+						</label>
+					</li> 
+					-->
+
+					<!-- Watershed Resources -->
+					<li>
+						<input type="checkbox" id="category-1">
+						<label for="category-1">Watershed Resources</label>
+						<ul>
+							<!-- Social -->
+							<li>
+								<input type="checkbox" id="social-category">
+								<label for="social-category">Social</label>
+								<ul>
+									<li>
+										<label>Population
+											<input class="content-category" type="checkbox" value="population" style="margin: 2px 0px 0px 10px;">
+										</label>
+									</li>
+									<li>
+										<label>Income
+											<input class="content-category" type="checkbox" value="income" style="margin: 2px 0px 0px 10px;">
+										</label>
+									</li>
+									<li>
+										<label>Expense
+											<input class="content-category" type="checkbox" value="expense" style="margin: 2px 0px 0px 10px;">
+										</label>
+									</li>
+									<li>
+										<label>Education
+											<input class="content-category" type="checkbox" value="education" style="margin: 2px 0px 0px 10px;">
+										</label>
+									</li>
+									<li>
+										<label>Literacy
+											<input class="content-category" type="checkbox" value="literacy" style="margin: 2px 0px 0px 10px;">
+										</label>
+									</li>
+								</ul>
+							</li>
+
+							<!-- Natural -->
+							<li>
+								<input type="checkbox" id="natural-category">
+								<label for="natural-category">Natural</label>
+								<ul>
+									<li>
+										<label>Soil
+											<input class="content-category" type="checkbox" value="soil" style="margin: 2px 0px 0px 10px;">
+										</label>
+									</li>
+									<li>
+										<label>Slope
+											<input class="content-category" type="checkbox" value="slope" style="margin: 2px 0px 0px 10px;">
+										</label>
+									</li>
+									<li>
+										<label>Land-use
+											<input class="content-category" type="checkbox" value="land_use" style="margin: 2px 0px 0px 10px;">
+										</label>
+									</li>
+									<li>
+										<label>Topography
+											<input class="content-category" type="checkbox" value="topography" style="margin: 2px 0px 0px 10px;">
+										</label>
+									</li>
+								</ul>
+							</li>
+
+							<!-- Economic -->
+							<li>
+								<input type="checkbox" id="economic-category">
+								<label for="economic-category">Economic</label>
+								<ul>
+									<li>
+										<label>Agriculture
+											<input class="content-category" type="checkbox" value="agriculture" style="margin: 2px 0px 0px 10px;">
+										</label>
+									</li>
+									<li>
+										<label>Fisheries
+											<input class="content-category" type="checkbox" value="fisheries" style="margin: 2px 0px 0px 10px;">
+										</label>
+									</li>
+									<li>
+										<label>Livestock
+											<input class="content-category" type="checkbox" value="livestock" style="margin: 2px 0px 0px 10px;">
+										</label>
+									</li>
+									<li>
+										<label>Foresty
+											<input class="content-category" type="checkbox" value="foresty" style="margin: 2px 0px 0px 10px;">
+										</label>
+									</li>
+									<li>
+										<label>Agro Foresty
+											<input class="content-category" type="checkbox" value="agro_foresty" style="margin: 2px 0px 0px 10px;">
+										</label>
+									</li>
+									<li>
+										<label>Agro F. Business
+											<input class="content-category" type="checkbox" value="agro_foresty_business" style="margin: 2px 0px 0px 10px;">
+										</label>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+
+
+					<!-- Watershed Situation -->
+					<li>
+						<input type="checkbox" id="category-2">
+						<label for="category-2">Watershed Situation</label>
+						<ul>
+							<!-- Climate & Climate Change -->
+							<li>
+								<input type="checkbox" id="climate-category">
+								<label for="climate-category">Climate & Climate Change</label>
+								<ul>
+									<li>
+										<label>Hazard
+											<input class="content-category" type="checkbox" value="hazard" style="margin: 2px 0px 0px 10px;">
+										</label>
+									</li>
+									<li>
+										<label>Vulnerability
+											<input class="content-category" type="checkbox" value="vulnerability" style="margin: 2px 0px 0px 10px;">
+										</label>
+									</li>
+									<li>
+										<label>Sensitivity
+											<input class="content-category" type="checkbox" value="sensitivity" style="margin: 2px 0px 0px 10px;">
+										</label>
+									</li>
+									<li>
+										<label>Exposure
+											<input class="content-category" type="checkbox" value="exposure" style="margin: 2px 0px 0px 10px;">
+										</label>
+									</li>
+									<li>
+										<label>Adaptive Capacity
+											<input class="content-category" type="checkbox" value="adaptive_capacity" style="margin: 2px 0px 0px 10px;">
+										</label>
+									</li>
+									<li>
+										<label>Climate Risk
+											<input class="content-category" type="checkbox" value="climate_risk" style="margin: 2px 0px 0px 10px;">
+										</label>
+									</li>
+								</ul>
+							</li>
+
+							<!-- Other Watershed Situation Items -->
+							<li>
+								<label>Water Availability
+									<input class="content-category" type="checkbox" value="water_availability" style="margin: 2px 0px 0px 10px;">
+								</label>
+							</li>
+							<li>
+								<label>Water Quality
+									<input class="content-category" type="checkbox" value="water_quality" style="margin: 2px 0px 0px 10px;">
+								</label>
+							</li>
+							<li>
+								<label>Soil Erosion Risk
+									<input class="content-category" type="checkbox" value="soil_erosion_risk" style="margin: 2px 0px 0px 10px;">
+								</label>
+							</li>
+							<li>
+								<label>Soil Quality
+									<input class="content-category" type="checkbox" value="soil_quality" style="margin: 2px 0px 0px 10px;">
+								</label>
+							</li>
+							<li>
+								<label>Forest & Biodiversity Degradation
+									<input class="content-category" type="checkbox" value="forest_biodiversity" style="margin: 2px 0px 0px 10px;">
+								</label>
+							</li>
+						</ul>
+					</li>
+
+					<!-- CCA & Landscape Restoration -->
+					<li>
+						<input type="checkbox" id="category-3">
+						<label for="category-3">CCA & Landscape Restoration</label>
+						<ul>
+							<!-- Current Practices -->
+							<li>
+								<input type="checkbox" id="current-practices">
+								<label for="current-practices">Current Practices</label>
+								<ul>
+									<li>
+										<label>Watershed Conservation
+											<input class="content-category" type="checkbox" value="current_watershed_conservation" style="margin: 2px 0px 0px 10px;">
+										</label>
+									</li>
+									<li>
+										<label>Coping mechanism for CCI
+											<input class="content-category" type="checkbox" value="current_coping_mechanism" style="margin: 2px 0px 0px 10px;">
+										</label>
+									</li>
+									<li>
+										<label>Restoration measures
+											<input class="content-category" type="checkbox" value="current_restoration_measures" style="margin: 2px 0px 0px 10px;">
+										</label>
+									</li>
+								</ul>
+							</li>
+
+							<!-- Future Preferences -->
+							<li>
+								<input type="checkbox" id="future-preferences">
+								<label for="future-preferences">Future Preferences</label>
+								<ul>
+									<li>
+										<label>Watershed Conservation
+											<input class="content-category" type="checkbox" value="future_watershed_conservation" style="margin: 2px 0px 0px 10px;">
+										</label>
+									</li>
+									<li>
+										<label>Coping mechanism for CCI
+											<input class="content-category" type="checkbox" value="future_coping_mechanism" style="margin: 2px 0px 0px 10px;">
+										</label>
+									</li>
+									<li>
+										<label>Restoration measures
+											<input class="content-category" type="checkbox" value="future_restoration_measures" style="margin: 2px 0px 0px 10px;">
+										</label>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+
+					
+				</ul>
+			</div>
+		</div>        
+		       
+
+        <div class="col-md-12" id="legendDiv" style="font-size: 14px; display: none;">
+            <div class="form-group" style="margin: 10px 0px 0px 0px; height: 66vh;"> 
+                <ul class="treeview">
+					
+					<!-- Basemap -->
+					<li>
+						<input type="checkbox" id="category-2-2">
+						<label for="category-2-2">Administrative</label>
+						<ul>
+							<li>
+								<label>Districts
+									<input class="admin-category" type="checkbox" value="districts" style="margin: 2px 0px 0px 10px;">
+								</label>
+							</li>
+							<li>
+								<label>Upazilla
+									<input class="admin-category" type="checkbox" value="upazilla" style="margin: 2px 0px 0px 10px;">
+								</label>
+							</li>
+							<li>
+								<label>River
+									<input class="admin-category" type="checkbox" value="river" style="margin: 2px 0px 0px 10px;">
+								</label>
+							</li>
+							<li>
+								<label>Road
+									<input class="admin-category" type="checkbox" value="road" style="margin: 2px 0px 0px 10px;">
+								</label>
+							</li>
+						</ul>
+					</li>
+
+					<!-- Para Boundary (moved below Basemaps) -->
+					<li>
+						<label>Para Boundary
+							<input class="admin-category" type="checkbox" value="para_boundary" style="margin: 2px 0px 0px 10px;">
+						</label>
+					</li>
+
+				</ul>
+            </div>
+
+        </div>
+    </div>
+    
+
+</aside>

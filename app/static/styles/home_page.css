@@ -1,0 +1,20 @@
+
+
+.parent-card {
+    /* background-color: aliceblue;  */
+    min-height: 72vh;
+}
+
+.footer-link {
+    color: #FFFFFF !important;
+    margin-right: 1.5rem; /* Adjust as needed */
+}
+
+.footer-bar {
+    padding-top: 15px;
+    margin-bottom: 0;
+}
+
+a {
+    text-decoration: none;
+}

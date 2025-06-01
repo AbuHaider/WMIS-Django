@@ -1,0 +1,148 @@
+{% extends "layouts/map_master.html" %}
+{% load static %}
+
+
+{% block title %} Map View {% endblock title %}
+
+{% block custom_styles_block %}
+    <!-- Map View Custom CSS   -->
+    <link type="text/css" rel="stylesheet" href="{% static 'styles/map_view.css' %}" />
+
+{% endblock custom_styles_block %}
+
+
+{% block content %}
+
+<div id="map" class="map-container">
+    <!-- Map content here -->
+</div>
+
+
+<!-- Map view right side icon -->
+<div id="map_icon" class="map-icon" style="position: absolute; z-index: 1021; top: 2rem; right: 1rem; display: block; ">
+        
+    <div class="tooltip-container">
+        <a href="#" id="show_search_menu" style="display: block; width: 40px; height: 40px; border-radius: 50%; overflow: hidden; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);">
+            <img src="{% static 'assets/images/search.png' %}" alt="Not found" style="width: 100%; height: 100%; object-fit: cover;">
+        </a>
+        <span class="tooltip-text left">Map Search</span> 
+    </div>
+    
+    <div class="tooltip-container">
+        <a href="#" id="fullExtendMap" style="display: block; margin: 10px 0px 0px 3px; width: 40px; height: 40px; border-radius: 50%; overflow: hidden; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);">
+            <img src="{% static 'assets/images/extend_map.jpg' %}" alt="Not found" style="width: 100%; height: 100%; object-fit: cover;" >
+        </a>
+        <span class="tooltip-text left">Full Extend Map</span> 
+    </div>
+
+    <div class="tooltip-container">
+        <a href="#" id="mapLayer" style="display: block; margin: 10px 0px 0px 3px; width: 40px; height: 40px; border-radius: 50%; overflow: hidden; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);">
+            <img src="{% static 'assets/images/map_layer.png' %}" alt="Not found" style="width: 100%; height: 100%; object-fit: cover;" >
+        </a>
+        <span class="tooltip-text left">Map Layers</span> 
+    </div>
+
+    <div class="tooltip-container">
+        <a href="#" id="refresh_page" style="display: block; margin: 10px 0px 0px 3px; width: 40px; height: 40px; border-radius: 50%; overflow: hidden; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);">
+            <img src="{% static 'assets/images/refresh.png' %}" alt="Not found" style="width: 100%; height: 100%; object-fit: cover;" >
+        </a>
+        <span class="tooltip-text left">Refresh Page</span> 
+    </div>
+
+</div>
+
+<!-- Legend icon -->
+<div id="legend_icon" class="legend-icon" style="position: absolute; z-index: 1021; bottom: 4.25rem; left: 18rem; display: block;">
+        
+    <div class="tooltip-container">
+        <a href="#" id="show_map_legend" style="display: block; width: 40px; height: 40px; border-radius: 50%; overflow: hidden; box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);">
+            <img src="{% static 'assets/images/map_legend_icon2.png' %}" alt="Not found" style="width: 100%; height: 100%; object-fit: cover;">
+        </a>
+        <!-- <span class="tooltip-text right">Show Map Legend</span> -->
+    </div>
+
+</div>
+
+<!-- Legend content div -->
+<div class="mapLegendCont" id="map_legend_cont" style="z-index: 1050; position: absolute; width: 250px; bottom: 4.25rem; left: 18.25rem; display: none; 
+        background-color: #f9f9f9; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);">
+    <div class="card-div">
+        <div class="card-header-custom" style="padding: 5px 10px 5px 15px; background-color: #1353A3;">
+            <div class="row"> 
+                <div class="col-md-10" style="margin: 0; padding: 0px 10px 0px 10px; color: #ffffff;"> 
+                    <span style="color: #FFFFFF; font-size: 13px;"> Map Legend </span>
+                </div>
+                <div class="col-md-2" style="margin: 0; padding: 0px 10px 0px 10px; text-align: right; "> 
+                    <a id="map_legend_hide" href="#" style="color: #ffffff;"> <strong> <i class="fa fa-close"></i> </strong> </a> 
+                </div>
+            </div>
+        </div>
+        <div class="card-body" style="margin: 0px; padding: 10px 10px 0px 25px; height: 250px;"> 
+            <div id="legend-items" class="mapView-legend" style="max-height: 220px; overflow-y: auto;">
+                <!-- Legend items go here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Map Layers div -->
+<div class="dropdown-content" id="dropdown" style="position: absolute; z-index: 1050; right: 4rem; top: 11rem; display: none; 
+        background-color: #fafafa; border-radius: 5px; box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.25);">
+    <a href="#" id="open-street">
+        <img src="{% static '/assets/icons/open_street.jpg' %}" alt="no_image" class="dropdown-image" style="width: 40px; height: 30px;" />
+        Open Street
+    </a>
+    <a href="#" id="google-hybrid">
+        <img src="{% static '/assets/icons/topographic.jpg' %}" alt="no_image" class="dropdown-image" style="width: 40px; height: 30px;" />
+        Google Hybrid
+    </a>
+    <a href="#" id="google-satellite">
+        <img src="{% static '/assets/icons/google_satelite.jpg' %}" alt="no_image" class="dropdown-image" style="width: 40px; height: 30px;" />
+        Google Satellite
+    </a>
+    <a href="#" id="google-street">
+        <img src="{% static '/assets/icons/google_street.png' %}" alt="no_image" class="dropdown-image" style="width: 40px; height: 30px;" />
+        Google Street
+    </a>
+</div>
+
+<!-- Popup div for tabular data -->
+<div id="tabular_div_popup" class="tabular-div-popup" style="display: none; right: 1rem; bottom: 4.25rem; position: absolute; background-color: #f9f9f9; min-width: 25rem;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);z-index: 9999;">
+        <div class="col-md-12" style="padding: 0px;">
+            <div class="header-cont" style="background: #1353A3;">
+                <div class="row"> 
+                    <div class="col-md-10" style="margin: 0; padding: 5px 10px 5px 20px; color: #ffffff;"> 
+                        <span id="content_title">  <span>
+                    </div>
+                    <div class="col-md-2" style="margin: 0; padding: 5px 20px 5px 10px; text-align: right; "> 
+                        <a id="close_tabular_popup_div" href="#" style="color: black;"> <strong> <i class="fa fa-close"></i> </strong> </a> 
+                    </div>
+                </div>
+            </div>
+            <div class="cont-body" style="padding: 5px 20px; min-height: 25vh; margin: 5px 0px 0px 5px; font-size: 12px;">
+                <table width="100%" class="table table-bordered table-striped dtr-inline" id="my_table">                        
+                    <tbody id="table_body">
+                        
+                    </tbody>
+                </table>
+                <span id="show_error"></span>
+            </div>
+        </div>
+</div>
+
+
+{% endblock content %}
+
+
+{% block popup_content %}
+<!-- Add code here..   -->
+
+{% endblock popup_content %}
+
+
+{% block custom_scripts_block %}
+    <!-- Map View Custom Script   -->
+    <script src="{% static 'scripts/pages/map_view.js' %}"></script>
+
+{% endblock custom_scripts_block %}
