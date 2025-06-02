@@ -73,9 +73,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'adb_wmis_test',
         'USER': 'postgres',
-        'PASSWORD': 'talha@123',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'PASSWORD': 'postgres24',
+        'HOST': '10.55.0.146',
+        'PORT': '5436',
     }
 }
 
