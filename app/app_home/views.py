@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 import json
+from app_model.models import *
+from app_model.models import Components
+
 
 # Create your views here.
 
@@ -23,8 +26,25 @@ def map_gallery(request):
 def news_events_list(request):
     return render(request, "pages/menubar-pages/news_events_list.html")
 
+
+
+
+
 def watershed_health(request):
-    return render(request, "pages/menubar-pages/watershed_health.html")
+    components = Components.objects.all().values('id', 'component_name')
+
+
+
+    context = {'components': components
+               }
+    
+    return render(request, "pages/menubar-pages/watershed_health.html", context)
+
+
+
+
+
+
 
 def climate_resilience(request):
     return render(request, "pages/menubar-pages/climate_resilience.html") 
