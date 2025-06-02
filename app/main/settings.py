@@ -68,19 +68,29 @@ WSGI_APPLICATION = 'main.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 # +-- Server DB --+
-
-
-# +-- Local DB --+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'adb_wmis',
+        'NAME': 'adb_wmis_test',
         'USER': 'postgres',
-        'PASSWORD': 'cegis',
+        'PASSWORD': 'talha@123',
         'HOST': 'localhost',
         'PORT': '5432',
     }
 }
+
+
+# +-- Local DB --+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'adb_wmis',
+#         'USER': 'postgres',
+#         'PASSWORD': 'cegis',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 
 
 # Password validation
