@@ -252,6 +252,7 @@ class Units(models.Model):
 class Components(models.Model):
     id = models.AutoField(primary_key=True)
     component_name = models.CharField(max_length=250, null=True, blank=True)
+    monitoring_type = models.CharField(max_length=50, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
 
@@ -266,6 +267,7 @@ class Components(models.Model):
 class Indicators(models.Model):
     id = models.AutoField(primary_key=True)
     indicator_name = models.CharField(max_length=250, null=True, blank=True)
+    monitoring_type = models.CharField(max_length=50, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
     # FK --
@@ -282,6 +284,7 @@ class Indicators(models.Model):
 class Parameters(models.Model):
     id = models.AutoField(primary_key=True)
     parameter_name = models.CharField(max_length=250, null=True, blank=True)
+    monitoring_type = models.CharField(max_length=50, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
     # FK --
@@ -337,6 +340,5 @@ class ClimateResilience(models.Model):
     class Meta:
         db_table = 'tbl_climate_resilience'
         ordering = ['-created_at']
-
 
 

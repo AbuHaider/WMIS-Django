@@ -92,6 +92,19 @@ DATABASES = {
 # }
 
 
+# +-- Local DB --+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'adb_wmis',
+#         'USER': 'postgres',
+#         'PASSWORD': 'cegis',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+
+
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
