@@ -79,6 +79,18 @@ DATABASES = {
     }
 }
 
+# +-- Local DB --+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'adb_wmis',
+#         'USER': 'postgres',
+#         'PASSWORD': 'cegis',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+
 
 # +-- Local DB --+
 # DATABASES = {

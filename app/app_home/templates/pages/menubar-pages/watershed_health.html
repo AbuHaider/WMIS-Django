@@ -53,10 +53,10 @@
 
                             <!-- Tab Navigation -->
                             <div class="d-flex flex-wrap gap-2 mb-3" role="tablist">
-                                <a class="btn btn-primary active" data-bs-toggle="pill" href="#navpills2-profile" role="tab" aria-selected="true">
+                                <a class="btn btn-primary active" data-bs-toggle="pill" href="#overall_status" role="tab" aria-selected="true">
                                     Overall Status
                                 </a>
-                                <a class="btn btn-secondary" data-bs-toggle="pill" href="#navpills2-messages" role="tab" aria-selected="false">
+                                <a class="btn btn-secondary" data-bs-toggle="pill" href="#watershed_status" role="tab" aria-selected="false">
                                     Component Wise Status
                                 </a>
                             </div>
@@ -66,7 +66,7 @@
                                
                                 <div class="tab-content text-muted">
                                     
-                                    <div class="tab-pane fade show active" id="navpills2-profile" role="tabpanel">
+                                    <div class="tab-pane fade show active" id="overall_status" role="tabpanel">
                                         <div class="row">
                                             <div class="col-md-5" style="padding: 0px;">
                                                 <div class="card custom-card" style="box-shadow: none; border: none;" id="list">
@@ -132,7 +132,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="tab-pane fade" id="navpills2-messages" role="tabpanel">
+                                    <div class="tab-pane fade" id="watershed_status" role="tabpanel">
                                         <div class="col-xl-12">
                                             <div class="card">
                                                 <div class="card-body">
@@ -140,6 +140,68 @@
                                                     <h4 class="card-title" style="padding-bottom: 10px;">Component Wise Status</h4>
 
                                                     <div class="row">
+                                                        <div class="col-md-3">
+                                                            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                                                {% for component in components %}
+                                                                    <a class="nav-link mb-2 {% if forloop.first %}active{% endif %}" 
+                                                                       id="component_{{ component.id }}-tab" 
+                                                                       data-bs-toggle="pill" 
+                                                                       href="#component_{{ component.id }}" 
+                                                                       role="tab" 
+                                                                       aria-controls="component_{{ component.id }}" 
+                                                                       aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">
+                                                                        {{ component.component_name }}
+                                                                    </a>
+                                                                {% endfor %}
+                                                            </div>
+                                                        </div>
+                                                    
+                                                        <div class="col-md-9">
+                                                            <div class="tab-content text-muted mt-4 mt-md-0" id="v-pills-tabContent">
+                                                                {% for component in components %}
+                                                                    <div class="tab-pane fade {% if forloop.first %}active show{% endif %}" 
+                                                                         id="component_{{ component.id }}" 
+                                                                         role="tabpanel" 
+                                                                         aria-labelledby="component_{{ component.id }}-tab">
+                                                                         
+                                                                        <div class="accordion" id="accordion_{{ component.id }}" role="tablist">
+                                                                            {% for indicator in component.indicators.all %}
+                                                                                <div class="card">
+                                                                                    <div class="card-header" id="indicator_{{ indicator.id }}" role="tab">
+                                                                                        <a data-bs-toggle="collapse" href="#component_{{ component.id }}_indicator_{{ indicator.id }}" aria-expanded="true" aria-controls="component_{{ component.id }}_indicator_{{ indicator.id }}">
+                                                                                            {{ indicator.indicator_name }}
+                                                                                        </a>
+                                                                                    </div>
+                                                    
+                                                                                    <div id="component_{{ component.id }}_indicator_{{ indicator.id }}" class="collapse {% if forloop.first %}show{% endif %}" role="tabpanel" aria-labelledby="indicator_{{ indicator.id }}" data-bs-parent="#accordion_{{ component.id }}">
+                                                                                        <div class="card-body component-item">
+                                                                                            <h6 class="pb-2">List of Parameters</h6>
+                                                                                            <nav class="nav d-block flex-column">
+                                                                                                {% for parameter in indicator.parameters.all %}
+                                                                                                    <li>
+                                                                                                        <i class="uil-angle-right-b" style="font-size:15px; padding: 7px 0px 0px 0px; float: left;"></i>
+                                                                                                        <a class="nav-link" href="{% url 'monitoring_data' %}?MonitoringDataCat={{ parameter.monitoring_type }}">{{ parameter.parameter_name }} (View Status)</a>
+                                                                                                    </li>
+                                                                                                {% empty %}
+                                                                                                    <p>No parameters available.</p>
+                                                                                                {% endfor %}
+                                                                                            </nav>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            {% empty %}
+                                                                                <p>No indicators available.</p>
+                                                                            {% endfor %}
+                                                                        </div>
+                                                                    </div>
+                                                                {% endfor %}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <!-- <div class="row">
                                                         <div class="col-md-3">
                                                             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                                                 <a class="nav-link mb-2 active" id="v-pills-home-tab" data-bs-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Soil and Land</a>
@@ -182,19 +244,7 @@
                                                                                                         <label class="form-label">Data collection approach:</label>
                                                                                                         <label>Watershed Modeling, Mapping and Field survey data </label>
                                                                                                     </div>
-                                                                                                </div>
-                                                                                                <!-- <div class="col-md-4">
-                                                                                                    <div class="form-group">
-                                                                                                        <label class="form-label">MRV tools and techniques:</label>
-                                                                                                        <label></label>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="col-md-4">
-                                                                                                    <div class="form-group">
-                                                                                                        <label class="form-label">Assumptions:</label>
-                                                                                                        <label></label>
-                                                                                                    </div>
-                                                                                                </div> -->
+                                                                                                </div>                                                                                                
                                                                                             </div>
                                                                                         </li>
                                                                                     </nav>                                                                               
@@ -1135,7 +1185,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    </div> -->
                                                 </div><!-- end card-body -->
                                             </div><!-- end card -->
                                         </div>

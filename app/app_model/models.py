@@ -272,7 +272,8 @@ class Indicators(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
     # FK --
-    component = models.OneToOneField('Components', on_delete=models.CASCADE, null=True, blank=True, related_name='indicator')
+    # component = models.OneToOneField('Components', on_delete=models.CASCADE, null=True, blank=True, related_name='indicator')
+    component = models.ForeignKey('Components', on_delete=models.CASCADE, null=True, blank=True, related_name='indicators')
 
     def __str__(self) -> str:
         return self.indicator_name
@@ -289,7 +290,8 @@ class Parameters(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
     # FK --
-    indicator = models.OneToOneField('Indicators', on_delete=models.CASCADE, null=True, blank=True, related_name='parameter')
+    # indicator = models.OneToOneField('Indicators', on_delete=models.CASCADE, null=True, blank=True, related_name='parameter')
+    indicator = models.ForeignKey('Indicators', on_delete=models.CASCADE, null=True, blank=True, related_name='parameters')
 
     def __str__(self) -> str:
         return self.parameter_name or f"Parameter {self.id}"
