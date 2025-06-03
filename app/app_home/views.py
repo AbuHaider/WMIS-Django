@@ -31,12 +31,13 @@ def news_events_list(request):
 
 
 def watershed_health(request):
-    components = Components.objects.all().values('id', 'component_name')
+    components = Components.objects.filter(monitoring_type='WH').prefetch_related('indicators__parameters').all()
+    # components = Components.objects.filter(monitoring_type='WH').values('id', 'component_name').distinct()            
+    # components = Components.objects.all().values('id', 'component_name')
+    # filter(monitoring_type='WH').values_list('road_type_id', flat=True).distinct()
 
 
-
-    context = {'components': components
-               }
+    context = {'components': components }
     
     return render(request, "pages/menubar-pages/watershed_health.html", context)
 
