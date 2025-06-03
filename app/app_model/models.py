@@ -96,10 +96,11 @@ class District(models.Model):
         
 
 class Watershed(models.Model):
-    watershed_code = models.CharField(primary_key=True, max_length=8)
+    id = models.AutoField(primary_key=True)
+    watershed_code = models.CharField(unique=True, max_length=8)
     watershed_name = models.CharField(max_length=200)
     watershed_name_bng = models.CharField( max_length=200, blank=True)
-    serial = models.PositiveSmallIntegerField(null=True, blank=True)
+    order = models.PositiveSmallIntegerField(null=True, blank=True)
     district = models.ForeignKey(District, on_delete=models.PROTECT, null=True, db_column='district_name')
 
     def __str__(self) -> str:
@@ -309,8 +310,8 @@ class WatershedHealth(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
     # FK --
-    watershed = models.OneToOneField('Watershed', on_delete=models.CASCADE, null=True, blank=True, related_name='watershed_health')
-    parameter = models.OneToOneField('Parameters', on_delete=models.CASCADE, null=True, blank=True, related_name='watershed_health')
+    watershed = models.ForeignKey('Watershed', on_delete=models.CASCADE, null=True, blank=True, related_name='watershed_healths')
+    parameter = models.ForeignKey('Parameters', on_delete=models.CASCADE, null=True, blank=True, related_name='watershed_healths')
 
     def __str__(self) -> str:
         return f"Watershed Health {self.id} - Baseline: {self.baseline_2024}"
@@ -331,8 +332,8 @@ class ClimateResilience(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
     # FK --
-    watershed = models.OneToOneField('Watershed', on_delete=models.CASCADE, null=True, blank=True, related_name='climate_resilience')
-    parameter = models.OneToOneField('Parameters', on_delete=models.CASCADE, null=True, blank=True, related_name='climate_resilience')
+    watershed = models.ForeignKey('Watershed', on_delete=models.CASCADE, null=True, blank=True, related_name='climate_resiliences')
+    parameter = models.ForeignKey('Parameters', on_delete=models.CASCADE, null=True, blank=True, related_name='climate_resiliences')
 
     def __str__(self) -> str:
         return self.baseline_2024
