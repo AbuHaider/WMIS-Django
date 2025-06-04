@@ -180,7 +180,7 @@
                                                                                                 {% for parameter in indicator.parameters.all %}
                                                                                                     <li>
                                                                                                         <i class="uil-angle-right-b" style="font-size:15px; padding: 7px 0px 0px 0px; float: left;"></i>
-                                                                                                        <a class="nav-link" href="{% url 'monitoring_data' %}?MonitoringDataCat={{ parameter.monitoring_type }}">{{ parameter.parameter_name }} (View Status)</a>
+                                                                                                        <a class="nav-link" href="{% url 'monitoring_data' %}?param_val={{ parameter.id }}">{{ parameter.parameter_name }} (View Status)</a>
                                                                                                     </li>
                                                                                                 {% empty %}
                                                                                                     <p>No parameters available.</p>

@@ -84,7 +84,7 @@
 
                         <div class="row">
                             <figure class="highcharts-figure">
-                                <div id="container"></div>
+                                <div id="chart_container"></div>
                                 <!-- <p class="highcharts-description">
                                     This chart shows the use of a logarithmic y-axis. Logarithmic axes can
                                     be useful when dealing with data with spikes or large value gaps,
@@ -156,16 +156,102 @@
     //     }
     // });
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const docCat = urlParams.get('MonitoringDataCat');
+    document.addEventListener('DOMContentLoaded', function () {
 
-    if(docCat == 'AnnualSoil'){
-        GetAnnualSoilData();
-    }
-    else if(docCat == 'WaterDepthDrySeason') {
-        GetWaterDepthDrySeasonData();
-    }
+        // const paramVal = new URLSearchParams(window.location.search).get('param_val');
+        // const dataUrl = "{% url 'monitoring_data' %}?param_val=" + paramVal;
+        const urlParams = new URLSearchParams(window.location.search);        
+        const paramVal = urlParams.get('param_val');
 
+
+        // const docCat = urlParams.get('MonitoringDataCat');
+        // if(docCat == 'AnnualSoil'){
+        //     GetAnnualSoilData();
+        // }
+        // else if(docCat == 'WaterDepthDrySeason') {
+        //     GetWaterDepthDrySeasonData();
+        // }
+
+        if (!paramVal) {
+            alert("Parameter ID (param_val) not provided.");
+            return;
+        }
+
+        
+        // // $.ajax({
+        // //     url: '/monitoring_data/',
+        // //     type: 'GET',
+        // //     data: { param_val: paramVal },
+        // //     dataType: 'json',
+        // //     success: function(data) {
+            
+        // fetch(`../../monitoring_data/?param_val=${paramVal}`)
+        //fetch(dataUrl)
+        fetch(`/monitoring_data?param_val=${paramVal}`, {
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            Highcharts.chart('chart_container', {
+                chart: {
+                    type: 'line'
+                },
+                title: {
+                    text: 'Watershed Health Monitoring'
+                },
+                xAxis: {
+                    title: { text: 'Year' },
+                    categories: data.categories,
+                    type: 'linear',
+                    tickInterval: 5,                        
+                    min: 2024                        
+                },
+                yAxis: {
+                    title: {
+                        text: 'Target'
+                    }
+                },
+                // series: data.series
+                legend: {
+                    reversed: true
+                },
+                plotOptions: {
+                    line: {
+                        dataLabels: {
+                            enabled: true
+                        },
+                        enableMouseTracking: true
+                    }				
+                },
+
+                tooltip: {
+                    headerFormat: '<b>{series.name}</b><br />',
+                    pointFormat: 'Year = {point.x}, Target = {point.y}'
+                },
+
+                series: [{
+                    name: 'Target',
+                    data: data.target,
+                    pointStart: 5
+                },
+                {
+                    name: 'Baseline',
+                    data: data.baseline,
+                    pointStart: 5
+                }]
+            });
+        })
+        .catch(error => console.error('Error loading chart:', error));
+
+        // },
+        // error: function(xhr, status, error) {
+        //     console.error('Error loading chart:', error);
+        //     alert('Failed to load data');
+        // }
+            
+    });
 
     function GetAnnualSoilData() {
 
