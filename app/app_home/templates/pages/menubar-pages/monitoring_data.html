@@ -114,12 +114,12 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>ton/ha/year</td>  
+                                                <!-- <td>ton/ha/year</td>  
                                                 <td>15.61</td> 
                                                 <td>15</td> 
                                                 <td>12</td>                                                
                                                 <td>12</td>   
-                                                <td>12</td>                                                                                                                                                                                          
+                                                <td>12</td>                                                                                                                                                                                           -->
                                             </tr>                                                                           
                                         </tbody>
                                     </table>                                                            
@@ -162,6 +162,7 @@
         // const dataUrl = "{% url 'monitoring_data' %}?param_val=" + paramVal;
         const urlParams = new URLSearchParams(window.location.search);        
         const paramVal = urlParams.get('param_val');
+        const watershedId = urlParams.get('watershedid');
 
 
         // const docCat = urlParams.get('MonitoringDataCat');
@@ -172,8 +173,10 @@
         //     GetWaterDepthDrySeasonData();
         // }
 
-        if (!paramVal) {
-            alert("Parameter ID (param_val) not provided.");
+
+        
+        if (!paramVal || !watershedId) {
+            alert("Parameter ID and Watershed ID are required.");
             return;
         }
 
@@ -187,12 +190,17 @@
             
         // fetch(`../../monitoring_data/?param_val=${paramVal}`)
         //fetch(dataUrl)
-        fetch(`/monitoring_data?param_val=${paramVal}`, {
+        fetch(`/monitoring_data?param_val=${paramVal}&watershedid=${watershedId}`, {
             headers: {
                 'X-Requested-With': 'XMLHttpRequest'
             }
+        })       
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            return response.json();
         })
-        .then(response => response.json())
         .then(data => {
             Highcharts.chart('chart_container', {
                 chart: {
@@ -206,7 +214,8 @@
                     categories: data.categories,
                     type: 'linear',
                     tickInterval: 5,                        
-                    min: 2024                        
+                    min: 2024
+                    // max: 2055                        
                 },
                 yAxis: {
                     title: {
@@ -242,6 +251,40 @@
                     pointStart: 5
                 }]
             });
+
+
+
+            // === TABLE BINDING ===
+            const tableRow = document.querySelector('table tbody tr');
+
+            // Optional hardcoded unit (replace with dynamic value if needed)
+            const unit = 'tons/ha/year';
+
+            const baseline = data.baseline.length > 0 ? data.baseline[0][1] : '';
+            const targets = {
+                2030: '',
+                2035: '',
+                2041: '',
+                2050: ''
+            };
+
+            data.target.forEach(([year, value]) => {
+                if (targets.hasOwnProperty(year)) {
+                    targets[year] = value;
+                }
+            });
+
+            tableRow.innerHTML = `
+                <td>${unit}</td>
+                <td>${baseline}</td>
+                <td>${targets[2030]}</td>
+                <td>${targets[2035]}</td>
+                <td>${targets[2041]}</td>
+                <td>${targets[2050]}</td>
+            `;
+
+
+
         })
         .catch(error => console.error('Error loading chart:', error));
 
@@ -250,6 +293,7 @@
         //     console.error('Error loading chart:', error);
         //     alert('Failed to load data');
         // }
+
             
     });
 

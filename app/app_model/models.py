@@ -312,7 +312,10 @@ class WatershedHealth(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
     # FK --
-    watershed = models.ForeignKey('Watershed', on_delete=models.CASCADE, null=True, blank=True, related_name='watershed_healths')
+    # watershed = models.ForeignKey('Watershed', on_delete=models.CASCADE, null=True, blank=True, related_name='watershed_healths')    
+    
+    # watershed_id = models.IntegerField('Order', null=True, blank=True)
+    watershed_id = models.CharField(max_length=8)  # override FK for now
     parameter = models.ForeignKey('Parameters', on_delete=models.CASCADE, null=True, blank=True, related_name='watershed_healths')
 
     def __str__(self) -> str:

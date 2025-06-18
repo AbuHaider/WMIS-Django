@@ -5,6 +5,10 @@ import json
 from app_model.models import *
 from app_model.models import Components
 
+from django.views.decorators.csrf import csrf_exempt
+from app_model.models import WatershedHealth
+from app_model.models import Watershed, Indicators
+
 
 # Create your views here.
 
@@ -31,13 +35,53 @@ def news_events_list(request):
 
 
 def watershed_health(request):
-    components = Components.objects.filter(monitoring_type='WH').prefetch_related('indicators__parameters').all()
-    # components = Components.objects.filter(monitoring_type='WH').values('id', 'component_name').distinct()            
-    # components = Components.objects.all().values('id', 'component_name')
-    # filter(monitoring_type='WH').values_list('road_type_id', flat=True).distinct()
+
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        watershed_id = request.GET.get('watershed_id')
+        if not watershed_id:
+            return JsonResponse({'error': 'watershed_id is required'}, status=400)
+
+        components = Components.objects.filter(monitoring_type='WH', indicators__parameters__watershed_healths__watershed_id=watershed_id).distinct().prefetch_related('indicators__parameters')
+        
+        # Build JSON structure
+        data = []
+        for component in components:
+            indicators_data = []
+            for indicator in component.indicators.all():
+                parameters_data = [
+                    {'id': p.id, 'name': p.parameter_name}
+                    for p in indicator.parameters.all()
+                    if p.watershed_healths.filter(watershed_id=watershed_id).exists()
+                ]
+                if parameters_data:
+                    indicators_data.append({
+                        'id': indicator.id,
+                        'name': indicator.indicator_name,
+                        'parameters': parameters_data
+                    })
+
+            if indicators_data:
+                data.append({
+                    'id': component.id,
+                    'name': component.component_name,
+                    'indicators': indicators_data
+                })
+
+        return JsonResponse({'components': data})
+
+    # Regular page render
+    watersheds = Watershed.objects.all().values('id', 'watershed_name', 'watershed_code')
+    components = Components.objects.filter(monitoring_type='WH').prefetch_related('indicators__parameters')
+    context = {'watersheds': watersheds, 'components': components}
 
 
-    context = {'components': components }
+    # watersheds = Watershed.objects.all().values('id', 'watershed_name', 'watershed_code')
+    # components = Components.objects.filter(monitoring_type='WH').prefetch_related('indicators__parameters').all()
+    # # # # components = Components.objects.filter(monitoring_type='WH').values('id', 'component_name').distinct()            
+    # # # # components = Components.objects.all().values('id', 'component_name')
+    # # # # filter(monitoring_type='WH').values_list('road_type_id', flat=True).distinct()
+
+    # context = {'watersheds':watersheds, 'components': components }
     
     return render(request, "pages/menubar-pages/watershed_health.html", context)
 
@@ -53,26 +97,41 @@ def climate_resilience(request):
 
 
 def monitoring_data(request):
-
-    # if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-    # if request.headers.get('x-requested-with') == 'XMLHttpRequest' or request.headers.get('Accept') == 'application/json': 
-    if request.headers.get('x-requested-with') == 'XMLHttpRequest':   
+    # if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+    # if request.headers.get('X-Requested-With') == 'XMLHttpRequest' or request.headers.get('Accept') == 'application/json':
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         param_id = request.GET.get('param_val')
+        watershed_id = request.GET.get('watershedid')
 
         if not param_id:
             return JsonResponse({'error': 'param_val is required'}, status=400)
 
-        data_qs = WatershedHealth.objects.filter(parameter_id=param_id)
-        
+        if not watershed_id:
+            return JsonResponse({'error': 'watershedid is required'}, status=400)
+
+
+        try:
+            param_id = int(param_id)
+            watershed_id = int(watershed_id)
+        except ValueError:
+            return JsonResponse({'error': 'Invalid parameter ID or watershed ID'}, status=400)
+
+
+
+        data_qs = WatershedHealth.objects.filter(parameter_id=param_id, watershed_id=watershed_id)        
+        # data_qs = WatershedHealth.objects.filter(parameter_id=param_id, watershed_id=str(watershed_id))
+        # data_qs = WatershedHealth.objects.filter(parameter_id=param_id)
+
+        print(data_qs)
+
         monitoring_data = []
         monitoring_baseline = []
+        
 
         for record in data_qs:
-            # Add baseline only once
             if record.baseline_2024 is not None:
                 monitoring_baseline.append([2024, float(record.baseline_2024)])
 
-            # Add targets if available
             targets = []
             if record.target_2030 is not None:
                 targets.append([2030, float(record.target_2030)])
@@ -90,10 +149,22 @@ def monitoring_data(request):
             'baseline': monitoring_baseline,
             'target': monitoring_data,
         })
-        
+    
     else:
-        # Initial page load — render HTML
-        return render(request, 'pages/menubar-pages/monitoring_data.html')
+        # Regular page load — return full HTML template 
+        # from .models import Watershed, Indicators  # adjust if needed
+        watersheds = Watershed.objects.all()
+        indicators = Indicators.objects.prefetch_related('parameters').all()
+
+        return render(request, 'pages/menubar-pages/monitoring_data.html', {
+            'watersheds': watersheds,
+            'indicators': indicators,
+        })
+
+    # return JsonResponse({'error': 'Invalid request type'}, status=400)  
+    # else:
+    #     # Initial page load — render HTML
+    #     return render(request, 'pages/menubar-pages/monitoring_data.html')
 
 
 

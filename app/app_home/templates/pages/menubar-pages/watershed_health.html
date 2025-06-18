@@ -17,6 +17,109 @@
     }
 
 
+    /* *********** Range Bar Style ************* */
+    .mod-form-control-range {
+        border: initial;
+        border-radius: 10px;
+        display: block;
+    }
+
+    /* .form-range:focus {
+        box-shadow: 0 2px 4px rgb(15 34 58 / 32%);
+    } */
+    
+    .form-range {
+      height: 0.5rem;
+      background: transparent;
+      -webkit-appearance: none;
+      appearance: none;
+	  border-radius: 10px;
+      /* box-shadow: 0 2px 4px rgb(15 34 58 / 32%);       */
+    }
+
+    .form-range::-webkit-slider-runnable-track {
+      height: 0px;
+      /* background: linear-gradient(to right, #b2c6e3 50%, #e9ecef 50%); */
+      border-radius: 5px;
+    }
+
+    .form-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      /* height: 1.2rem; */
+	  height: 16px;
+      width: 5px;
+      /* background-color: #0d6efd;
+      box-shadow: 0 2px 4px rgba(15,34,58,.12); */
+      border: none;      
+      border-radius: 5%;
+      margin-top: -0.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .form-range::-moz-range-track {
+      height: 4px;
+      /* background: linear-gradient(to right, #b2c6e3 50%, #e9ecef 50%); */
+      border-radius: 5px;
+    }
+
+    .form-range::-moz-range-thumb {
+      height: 1.2rem;
+      width: 1.2rem;
+      background-color: #0d6efd;
+      border: none;
+      border-radius: 50%;
+      position: relative;
+      z-index: 2;
+    }
+
+    .form-range::-ms-fill-lower {
+      /* background: #b2c6e3; */
+      border-radius: 5px;
+    }
+
+    .form-range::-ms-fill-upper {
+      /* background: #e9ecef; */
+      border-radius: 5px;
+    }
+
+
+    .form-range::-webkit-slider-thumb {
+        background: #00cbab;
+    }
+    .form-range::-moz-range-thumb {
+        background: #00cbab;
+    }
+    .form-range::-ms-thumb {
+        background: #00cbab;
+    }
+
+    .range-label {
+        position: absolute;
+        top: -20px;
+        background-color: #00bef8;
+        color: #fff;
+        padding: 6px;
+        border-radius: 5px;
+        font-size: 12px;
+        font-weight: bold;
+        white-space: nowrap;
+        transform: translateX(-40%);
+        /* pointer-events: none; */
+    }
+
+    input[type=range]:disabled {
+        
+        cursor: not-allowed;
+    }
+
+    input[type=range]:disabled, .form-range::-ms-thumb {
+        background: #00cbab;
+    }
+
+    /* *********** Range Bar Style Ends ************* */
+
 </style>
 
 <div class="main-container" style="padding-top: 10px;">
@@ -35,20 +138,15 @@
                                                 
                             <div class="row mt-2 mb-4">
                                 <div class="col-md-2">
-                                    <select class="form-control select2">
-                                        <option value="" selected disabled>Select Wstershed</option>
-                                        <option value="R65">Bangaltali and Rupakari</option>
-                                        <option value="K71">Bhaibon Chhara</option>
-                                        <option value="R99">Bhushan Chhara</option>
-                                        <option value="K76">Dighinala</option>
-                                        <option value="R114">Ghilachari</option>
-                                        <option value="K98">Logang</option>
-                                        <option value="B76">Tangkabati 1</option>
-                                        <option value="B77">Tangkabati 2</option>
-                                        <option value="B173">Thanchi</option>
-                                    </select>
-                                </div>
-                                <!-- <div class="col-md-2" style="padding-top: 5px; text-align: left;">Select Watershed</div>  -->                             
+                                    <div clas="form-group">                                        
+                                        <label for="ddlWatersheds" style="color: rgb(39, 39, 151); font-weight: 500;">Select a Watershed</label>
+                                        <select id="ddlWatersheds" name="ddlWatersheds" class="form-control-sm select2">                                            
+                                            {% for watershed in watersheds %}
+                                                <option value="{{ watershed.id }}" data-watershed_code="{{ watershed.watershed_code }}" {% if forloop.first %} selected {% endif %}>{{ watershed.watershed_name }}</option>
+                                            {% endfor %}                                        
+                                        </select>                                    
+                                    </div>
+                                </div>                                                         
                             </div>
 
                             <!-- Tab Navigation -->
@@ -117,12 +215,16 @@
                                                     </div>
                                                 </div>                                                              
                                             </div>
-                                            <div class="col-md-8" style="padding: 0px;">
-                                                <div class="row p-4">
-                                                    <div class="col-md-12" style="padding: 10px 20px 20px 10px; ">
+                                            <div class="col-md-8" style="padding: 0px;">                                                
+                                                <div class="row p-3">
+                                                    <div class="col-md-12 mb-4">
                                                         <h6>Watershed Health Standardized Rating </h6>
-                                                        <div class="counter-icon">
-                                                            <img src="{% static 'assets/images/watershed_monitoring/current-status.png' %}">
+                                                    </div>
+                                                    <div class="col-md-12" style="padding: 10px 20px 20px 10px; ">                                                        
+                                                        <div class="col-md-6 counter-icon">
+                                                            <div class="range-label" id="rangeLabel">Current Status</div>
+                                                            <input type="range" class="mod-form-control-range form-range" min="0" max="1" step="0.1" value="0.7" id="customRange2" disabled>
+                                                            <img width="100%" src="{% static 'assets/images/watershed_monitoring/current_status.png' %}">
                                                         </div>
                                                         <p style="text-align: justify;">Currently, standardized rating is reflecting ‘Bad’ condition of Gilachhari watershed in terms of watershed health composite index.</p>
                                                     </div>
@@ -172,6 +274,8 @@
                                                                                             {{ indicator.indicator_name }}
                                                                                         </a>
                                                                                     </div>
+
+                                                                                    
                                                     
                                                                                     <div id="component_{{ component.id }}_indicator_{{ indicator.id }}" class="collapse {% if forloop.first %}show{% endif %}" role="tabpanel" aria-labelledby="indicator_{{ indicator.id }}" data-bs-parent="#accordion_{{ component.id }}">
                                                                                         <div class="card-body component-item">
@@ -180,7 +284,7 @@
                                                                                                 {% for parameter in indicator.parameters.all %}
                                                                                                     <li>
                                                                                                         <i class="uil-angle-right-b" style="font-size:15px; padding: 7px 0px 0px 0px; float: left;"></i>
-                                                                                                        <a class="nav-link" href="{% url 'monitoring_data' %}?param_val={{ parameter.id }}">{{ parameter.parameter_name }} (View Status)</a>
+                                                                                                        <a class="nav-link parameter-link" href="#" data-base-url="{% url 'monitoring_data' %}?param_val={{ parameter.id }}">{{ parameter.parameter_name }}</a>
                                                                                                     </li>
                                                                                                 {% empty %}
                                                                                                     <p>No parameters available.</p>
@@ -1212,7 +1316,126 @@
 {% block script_content %}
 
     <script>
-        console.log("here I am..");
+        // console.log("here I am..");
+
+        const range = document.getElementById('customRange2');
+        const label = document.getElementById('rangeLabel');
+
+        function updateLabel() {
+            const rangeWidth = range.offsetWidth;
+            const max = parseFloat(range.max);
+            const min = parseFloat(range.min);
+            const val = parseFloat(range.value);
+
+            // Calculate the position as a percentage
+            const percent = (val - min) / (max - min);
+            const left = percent * rangeWidth;
+
+            // Update label text and position
+            label.textContent = "Current Status (" + val.toFixed(1) + ")";
+            label.style.left = `${left}px`;
+        }
+
+        // Initialize and bind event
+        updateLabel();
+        range.addEventListener('input', updateLabel);
+
+
+
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const dropdown = document.getElementById("ddlWatersheds");
+
+            dropdown.addEventListener("change", function () {
+                const watershedId = this.value;
+
+                fetch(`/your-url-path/?watershed_id=${watershedId}`, {
+                    headers: { 'X-Requested-With': 'XMLHttpRequest' }
+                })
+                .then(response => response.json())
+                .then(data => updateTabs(data.components))
+                .catch(error => console.error('Error loading components:', error));
+            });
+
+            function updateTabs(components) {
+                const tabList = document.querySelector(".nav-pills");
+                const tabContent = document.querySelector("#v-pills-tabContent");
+
+                tabList.innerHTML = "";
+                tabContent.innerHTML = "";
+
+                components.forEach((component, idx) => {
+                    const tabId = `component_${component.id}`;
+                    const isActive = idx === 0 ? 'active' : '';
+                    const isShow = idx === 0 ? 'show' : '';
+
+                    tabList.innerHTML += `
+                        <a class="nav-link mb-2 ${isActive}" id="${tabId}-tab"
+                        data-bs-toggle="pill" href="#${tabId}" role="tab"
+                        aria-controls="${tabId}" aria-selected="${idx === 0}">
+                        ${component.name}
+                        </a>`;
+
+                    const indicatorsHtml = component.indicators.map(ind => `
+                        <div class="card">
+                            <div class="card-header" id="indicator_${ind.id}" role="tab">
+                                <a data-bs-toggle="collapse" href="#${tabId}_indicator_${ind.id}" aria-expanded="true">
+                                    ${ind.name}
+                                </a>
+                            </div>
+                            <div id="${tabId}_indicator_${ind.id}" class="collapse show" data-bs-parent="#accordion_${component.id}">
+                                <div class="card-body component-item">
+                                    <h6 class="pb-2">List of Parameters</h6>
+                                    <nav class="nav d-block flex-column">
+                                        ${ind.parameters.map(p => `
+                                            <li>
+                                                <i class="uil-angle-right-b" style="font-size:15px; padding: 7px 0px 0px 0px; float: left;"></i>
+                                                <a class="nav-link parameter-link" href="#" data-base-url="/monitoring_data?param_val=${p.id}">
+                                                    ${p.name}
+                                                </a>
+                                            </li>
+                                        `).join("")}
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    `).join("");
+
+                    tabContent.innerHTML += `
+                        <div class="tab-pane fade ${isActive} ${isShow}" id="${tabId}" role="tabpanel" aria-labelledby="${tabId}-tab">
+                            <div class="accordion" id="accordion_${component.id}" role="tablist">
+                                ${indicatorsHtml}
+                            </div>
+                        </div>`;
+                });
+            }
+
+            // const watershedDropdown = document.getElementById("ddlWatersheds");
+            document.querySelectorAll(".parameter-link").forEach(link => {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
+
+                    const baseUrl = this.getAttribute("data-base-url");
+                    const selectedWatershedId = dropdown.value;
+
+                    console.log("Base URL:", baseUrl);
+                    console.log("Selected watershed:", selectedWatershedId); 
+                    // Construct full URL
+                    const fullUrl = `${baseUrl}&watershedid=${selectedWatershedId}`;
+
+                    // Redirect
+                    window.location.href = fullUrl;
+                });
+            });
+
+
+        });
+
+
+        
+
 
         function setFixedHeaderWidth() {
             const card = document.querySelector('.parent-card');
