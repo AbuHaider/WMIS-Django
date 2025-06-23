@@ -39,7 +39,7 @@ def watershed_health(request):
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         watershed_id = request.GET.get('watershed_id')
         if not watershed_id:
-            return JsonResponse({'error': 'watershed_id is required'}, status=400)
+            return JsonResponse({'error': 'A watershed_id is required.'}, status=400)
 
         components = Components.objects.filter(monitoring_type='WH', indicators__parameters__watershed_healths__watershed_id=watershed_id).distinct().prefetch_related('indicators__parameters')
         
