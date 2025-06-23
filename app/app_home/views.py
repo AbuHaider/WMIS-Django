@@ -126,7 +126,7 @@ def monitoring_data(request):
 
         monitoring_data = []
         monitoring_baseline = []
-        
+        unit = ""
 
         for record in data_qs:
             if record.baseline_2024 is not None:
@@ -144,10 +144,14 @@ def monitoring_data(request):
 
             monitoring_data.extend(targets)
 
+            if record.unit:
+                unit = record.unit.unit_name
+
         return JsonResponse({
             'categories': ['2024', '2030', '2035', '2041', '2050'],
             'baseline': monitoring_baseline,
             'target': monitoring_data,
+            'unit' : unit
         })
     
     else:

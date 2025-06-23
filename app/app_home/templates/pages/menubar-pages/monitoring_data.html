@@ -258,7 +258,7 @@
             const tableRow = document.querySelector('table tbody tr');
 
             // Optional hardcoded unit (replace with dynamic value if needed)
-            const unit = 'tons/ha/year';
+            const unit = data.unit;  //'tons/ha/year';
 
             const baseline = data.baseline.length > 0 ? data.baseline[0][1] : '';
             const targets = {

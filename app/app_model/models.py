@@ -317,7 +317,7 @@ class WatershedHealth(models.Model):
     # watershed_id = models.IntegerField('Order', null=True, blank=True)
     watershed_id = models.CharField(max_length=8)  # override FK for now
     parameter = models.ForeignKey('Parameters', on_delete=models.CASCADE, null=True, blank=True, related_name='watershed_healths')
-    
+    unit = models.ForeignKey('Units', on_delete=models.CASCADE, null=True, blank=True, related_name='watershed_healths')
 
     def __str__(self) -> str:
         return f"Watershed Health {self.id} - Baseline: {self.baseline_2024}"
