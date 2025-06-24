@@ -125,7 +125,7 @@ def monitoring_data(request):
         # data_qs = WatershedHealth.objects.filter(parameter_id=param_id)
 
         # print(data_qs)
-
+        categories = []
         monitoring_data = []
         monitoring_baseline = []
         unit = ""
@@ -134,7 +134,10 @@ def monitoring_data(request):
         for record in data_qs:
 
             
-            if record.is_special == 0:                
+            if record.is_special == 0:     
+
+                categories = ['2024', '2030', '2035', '2041', '2050']
+
                 if record.baseline_2024 is not None:
                     monitoring_baseline.append([2024, float(record.baseline_2024)])
 
@@ -151,38 +154,43 @@ def monitoring_data(request):
                 monitoring_data.extend(targets)
                 is_special = record.is_special
 
-            else:               
+            else:         
+
                 if record.baseline_2024 is not None:
                     baseline_obj = Units.objects.filter(id=int(record.baseline_2024)).first()
                     if baseline_obj:
-                        monitoring_baseline.append([2024, baseline_obj.unit_name])                   
-
+                        monitoring_baseline.append([2024, baseline_obj.unit_name]) 
+                        
                 targets = []
                 if record.target_2030 is not None:
                     unit_obj = Units.objects.filter(id=int(record.target_2030)).first()
                     if unit_obj:
                         targets.append([2030, unit_obj.unit_name])
+                        
                 if record.target_2035 is not None:
                     unit_obj = Units.objects.filter(id=int(record.target_2035)).first()
                     if unit_obj:
                         targets.append([2035, unit_obj.unit_name])
+                        
                 if record.target_2041 is not None:
                     unit_obj = Units.objects.filter(id=int(record.target_2041)).first()
                     if unit_obj:
                         targets.append([2041, unit_obj.unit_name])
+                        
                 if record.target_2050 is not None:
                     unit_obj = Units.objects.filter(id=int(record.target_2050)).first()
                     if unit_obj:
                         targets.append([2050, unit_obj.unit_name])
-
+                        
                 monitoring_data.extend(targets)
                 is_special = record.is_special
 
             if record.unit:
                 unit = record.unit.unit_name
+                categories = unit.split('/')
 
         return JsonResponse({
-            'categories': ['2024', '2030', '2035', '2041', '2050'],
+            'categories': categories,
             'baseline': monitoring_baseline,
             'target': monitoring_data,
             'unit' : unit,
