@@ -160,6 +160,7 @@
 
         // const paramVal = new URLSearchParams(window.location.search).get('param_val');
         // const dataUrl = "{% url 'monitoring_data' %}?param_val=" + paramVal;
+
         const urlParams = new URLSearchParams(window.location.search);        
         const paramVal = urlParams.get('param_val');
         const watershedId = urlParams.get('watershedid');
@@ -202,55 +203,112 @@
             return response.json();
         })
         .then(data => {
-            Highcharts.chart('chart_container', {
-                chart: {
-                    type: 'line'
-                },
-                title: {
-                    text: 'Watershed Health Monitoring'
-                },
-                xAxis: {
-                    title: { text: 'Year' },
-                    categories: data.categories,
-                    type: 'linear',
-                    tickInterval: 5,                        
-                    min: 2024
-                    // max: 2055                        
-                },
-                yAxis: {
+
+            if(data.is_special == false)
+            {
+                Highcharts.chart('chart_container', {
+                    chart: {
+                        type: 'line'
+                    },
                     title: {
-                        text: 'Target'
-                    }
-                },
-                // series: data.series
-                legend: {
-                    reversed: true
-                },
-                plotOptions: {
-                    line: {
-                        dataLabels: {
-                            enabled: true
-                        },
-                        enableMouseTracking: true
-                    }				
-                },
+                        text: 'Watershed Health Monitoring'
+                    },
+                    xAxis: {
+                        title: { text: 'Year' },
+                        categories: data.categories,
+                        type: 'linear',
+                        tickInterval: 5,                        
+                        min: 2024
+                        // max: 2055                        
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Target'
+                        }
+                    },
+                    // series: data.series
+                    legend: {
+                        reversed: true
+                    },
+                    plotOptions: {
+                        line: {
+                            dataLabels: {
+                                enabled: true
+                            },
+                            enableMouseTracking: true
+                        }				
+                    },
 
-                tooltip: {
-                    headerFormat: '<b>{series.name}</b><br />',
-                    pointFormat: 'Year = {point.x}, Target = {point.y}'
-                },
+                    tooltip: {
+                        headerFormat: '<b>{series.name}</b><br />',
+                        pointFormat: 'Year = {point.x}, Target = {point.y}'
+                    },
 
-                series: [{
-                    name: 'Target',
-                    data: data.target,
-                    pointStart: 5
-                },
-                {
-                    name: 'Baseline',
-                    data: data.baseline,
-                    pointStart: 5
-                }]
-            });
+                    series: [{
+                        name: 'Target',
+                        data: data.target,
+                        pointStart: 5
+                    },
+                    {
+                        name: 'Baseline',
+                        data: data.baseline,
+                        pointStart: 5
+                    }]
+                });
+            }
+            else
+            {
+                Highcharts.chart('chart_container', {
+                    chart: {
+                        type: 'bar'
+                    },
+                    title: {
+                        text: 'Watershed Health Monitoring'
+                    },
+                    xAxis: {
+                        title: { text: 'Year' },
+                        categories: data.categories,
+                        type: 'linear',
+                        tickInterval: 5,                        
+                        min: 2024
+                        // max: 2055                        
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Target'
+                        }
+                    },
+                    // series: data.series
+                    legend: {
+                        reversed: true
+                    },
+                    plotOptions: {
+                        line: {
+                            dataLabels: {
+                                enabled: true
+                            },
+                            enableMouseTracking: true
+                        }				
+                    },
+
+                    tooltip: {
+                        headerFormat: '<b>{series.name}</b><br />',
+                        pointFormat: 'Year = {point.x}, Target = {point.y}'
+                    },
+
+                    series: [{
+                        name: 'Target',
+                        data: data.target,
+                        pointStart: 5
+                    },
+                    {
+                        name: 'Baseline',
+                        data: data.baseline,
+                        pointStart: 5
+                    }]
+                });
+            }
+            
 
 
 

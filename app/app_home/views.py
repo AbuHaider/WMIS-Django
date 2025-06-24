@@ -92,7 +92,9 @@ def watershed_health(request):
 
 
 def climate_resilience(request):
-    return render(request, "pages/menubar-pages/climate_resilience.html") 
+    watersheds = Watershed.objects.all().values('id', 'watershed_name', 'watershed_code')    
+    context = {'watersheds': watersheds}
+    return render(request, "pages/menubar-pages/climate_resilience.html", context) 
 
 
 
@@ -122,27 +124,59 @@ def monitoring_data(request):
         # data_qs = WatershedHealth.objects.filter(parameter_id=param_id, watershed_id=str(watershed_id))
         # data_qs = WatershedHealth.objects.filter(parameter_id=param_id)
 
-        print(data_qs)
+        # print(data_qs)
 
         monitoring_data = []
         monitoring_baseline = []
         unit = ""
+        is_special = ""
 
         for record in data_qs:
-            if record.baseline_2024 is not None:
-                monitoring_baseline.append([2024, float(record.baseline_2024)])
 
-            targets = []
-            if record.target_2030 is not None:
-                targets.append([2030, float(record.target_2030)])
-            if record.target_2035 is not None:
-                targets.append([2035, float(record.target_2035)])
-            if record.target_2041 is not None:
-                targets.append([2041, float(record.target_2041)])
-            if record.target_2050 is not None:
-                targets.append([2050, float(record.target_2050)])
+            
+            if record.is_special == 0:                
+                if record.baseline_2024 is not None:
+                    monitoring_baseline.append([2024, float(record.baseline_2024)])
 
-            monitoring_data.extend(targets)
+                targets = []
+                if record.target_2030 is not None:
+                    targets.append([2030, float(record.target_2030)])
+                if record.target_2035 is not None:
+                    targets.append([2035, float(record.target_2035)])
+                if record.target_2041 is not None:
+                    targets.append([2041, float(record.target_2041)])
+                if record.target_2050 is not None:
+                    targets.append([2050, float(record.target_2050)])
+
+                monitoring_data.extend(targets)
+                is_special = record.is_special
+
+            else:               
+                if record.baseline_2024 is not None:
+                    baseline_obj = Units.objects.filter(id=int(record.baseline_2024)).first()
+                    if baseline_obj:
+                        monitoring_baseline.append([2024, baseline_obj.unit_name])                   
+
+                targets = []
+                if record.target_2030 is not None:
+                    unit_obj = Units.objects.filter(id=int(record.target_2030)).first()
+                    if unit_obj:
+                        targets.append([2030, unit_obj.unit_name])
+                if record.target_2035 is not None:
+                    unit_obj = Units.objects.filter(id=int(record.target_2035)).first()
+                    if unit_obj:
+                        targets.append([2035, unit_obj.unit_name])
+                if record.target_2041 is not None:
+                    unit_obj = Units.objects.filter(id=int(record.target_2041)).first()
+                    if unit_obj:
+                        targets.append([2041, unit_obj.unit_name])
+                if record.target_2050 is not None:
+                    unit_obj = Units.objects.filter(id=int(record.target_2050)).first()
+                    if unit_obj:
+                        targets.append([2050, unit_obj.unit_name])
+
+                monitoring_data.extend(targets)
+                is_special = record.is_special
 
             if record.unit:
                 unit = record.unit.unit_name
@@ -151,7 +185,8 @@ def monitoring_data(request):
             'categories': ['2024', '2030', '2035', '2041', '2050'],
             'baseline': monitoring_baseline,
             'target': monitoring_data,
-            'unit' : unit
+            'unit' : unit,
+            'is_special' : is_special
         })
     
     else:
