@@ -343,5 +343,33 @@ class ClimateResilience(models.Model):
     class Meta:
         db_table = 'tbl_climate_resilience'
         ordering = ['-created_at']
+        
+
+class WatershedOverallStatus(models.Model):
+    id = models.AutoField(primary_key=True)
+    watershed_name = models.CharField(max_length=200, null=True, blank=True)
+    number_of_para = models.IntegerField(null=True, blank=True)
+    area = models.IntegerField(null=True, blank=True)
+    total_population = models.IntegerField(null=True, blank=True)
+    male = models.IntegerField(null=True, blank=True)
+    female = models.IntegerField(null=True, blank=True)
+    number_of_household = models.IntegerField(null=True, blank=True)
+    number_of_community = models.CharField(max_length=250, null=True, blank=True)
+    baseline = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    target_2030 = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    target_2035 = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    target_2041 = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    target_2050 = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
+    # FK --
+    watershed = models.ForeignKey('Watershed', on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self) -> str:
+        return self.watershed_name
+
+    class Meta:
+        db_table = 'tbl_watershed_overall_status'
+        ordering = ['-created_at']
 
 
