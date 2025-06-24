@@ -337,7 +337,7 @@ class ClimateResilience(models.Model):
     # FK --
     watershed = models.ForeignKey('Watershed', on_delete=models.CASCADE, null=True, blank=True, related_name='climate_resiliences')
     parameter = models.ForeignKey('Parameters', on_delete=models.CASCADE, null=True, blank=True, related_name='climate_resiliences')
-    unit = models.ForeignKey('Units', on_delete=models.CASCADE, null=True, blank=True, related_name='climate_resiliences')
+    # unit = models.ForeignKey('Units', on_delete=models.CASCADE, null=True, blank=True, related_name='climate_resiliences')
 
     def __str__(self) -> str:
         return self.baseline_2024

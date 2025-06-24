@@ -258,54 +258,55 @@
             }
             else
             {
+                // SPECIAL categorical chart
+                const categoryMap = data.categories;
+                const mappedTarget = data.target.map(([x, y]) => [parseInt(x), categoryMap.indexOf(y)]);
+                const mappedBaseline = data.baseline.map(([x, y]) => [parseInt(x), categoryMap.indexOf(y)]);
+
                 Highcharts.chart('chart_container', {
-                    chart: {
-                        type: 'bar'
-                    },
-                    title: {
-                        text: 'Watershed Health Monitoring'
-                    },
+                    chart: { type: 'column' },
+                    title: { text: 'Watershed Health Monitoring' },
                     xAxis: {
                         title: { text: 'Year' },
-                        categories: data.categories,
                         type: 'linear',
-                        tickInterval: 5,                        
+                        tickInterval: 5,
                         min: 2024
-                        // max: 2055                        
                     },
                     yAxis: {
-                        title: {
-                            text: 'Target'
+                        title: { text: 'Target' },
+                        categories: categoryMap,
+                        allowDecimals: false,
+                        reversed: true, // Optional: makes 'High' appear at top
+                        min: 0,
+                        max: data.categories.length - 1  // Force display of all levels
+                    },
+                    tooltip: {
+                        formatter: function () {
+                            return `<b>${this.series.name}</b><br/>Year: ${this.x}, Target: ${categoryMap[this.y]}`;
                         }
                     },
-                    // series: data.series
-                    legend: {
-                        reversed: true
-                    },
                     plotOptions: {
-                        line: {
+                        column: {
                             dataLabels: {
-                                enabled: true
-                            },
-                            enableMouseTracking: true
-                        }				
+                                enabled: true,
+                                formatter: function () {
+                                    return categoryMap[this.y];
+                                }
+                            }
+                        }
                     },
-
-                    tooltip: {
-                        headerFormat: '<b>{series.name}</b><br />',
-                        pointFormat: 'Year = {point.x}, Target = {point.y}'
-                    },
-
-                    series: [{
-                        name: 'Target',
-                        data: data.target,
-                        pointStart: 5
-                    },
-                    {
-                        name: 'Baseline',
-                        data: data.baseline,
-                        pointStart: 5
-                    }]
+                    series: [
+                        {
+                            name: 'Target',
+                            data: data.target.map(([x, y]) => [parseInt(x), data.categories.indexOf(y)])
+                        },
+                        {
+                            name: 'Baseline',
+                            data: data.baseline.map(([x, y]) => [parseInt(x), data.categories.indexOf(y)])
+                        }
+                        // { name: 'Target', data: mappedTarget },
+                        // { name: 'Baseline', data: mappedBaseline }
+                    ]
                 });
             }
             
