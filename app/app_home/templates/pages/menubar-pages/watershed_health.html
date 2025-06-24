@@ -6,6 +6,8 @@
 
 {% block content %}
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+
 <style>
 
     body{
@@ -160,10 +162,9 @@
                             </div>
 
                             <!-- Tab Content -->
-                            <div class="collapse show" id="collapseExample" style="border: none;">
-                               
-                                <div class="tab-content text-muted">
-                                    
+                            <div class="collapse show" id="collapseExample" style="border: none;">                               
+                                <div class="tab-content text-muted">   
+
                                     <div class="tab-pane fade show active" id="overall_status" role="tabpanel">
                                         <div class="row">
                                             <div class="col-md-5" style="padding: 0px;">
@@ -174,32 +175,33 @@
                                                                 <li class="media d-block d-sm-flex">  
                                                                         <div class="media-body" style="width: 100%; ">
                                                                             <div class="listgroup-example ">
-                                                                                <ul class="list-group checked" style="padding-left: 0px !important;">
+                                                                                <ul class="list-group checked" id="statusList" style="padding-left: 0px !important;"></ul>
+                                                                                <!-- <ul class="list-group checked" style="padding-left: 0px !important;">                                                                                                                                                                
                                                                                     <li class="list-group-item" style="background-color: #2F539B; ">
-                                                                                            <h5 style="margin-bottom: 3px; color: white;">Overall Status Of Gilachhari </h5>
+                                                                                            <h5 style="margin-bottom: 3px; color: white;">Overall Status Of {{ watershed_status.watershed_name }} </h5>
                                                                                     </li>
                                                                                     <li class="list-group-item"><i class="fa fa-angle-double-right my-2 me-3 tx-13" aria-hidden="true"></i>
-                                                                                        Number of Para: 15
+                                                                                        Number of Para: {{ watershed_status.number_of_para }}
                                                                                     </li>  
                                                                                     <li class="list-group-item"><i class="fa fa-angle-double-right my-2 me-3 tx-13" aria-hidden="true"></i>
-                                                                                        Area: 2920 ha
+                                                                                        Area: {{ watershed_status.area }} ha
                                                                                     </li>
                                                                                     <li class="list-group-item"><i class="fa fa-angle-double-right my-2 me-3 tx-13" aria-hidden="true"></i>
-                                                                                        Total Population: 5034
+                                                                                        Total Population: {{ watershed_status.total_population }}
                                                                                     </li>    
                                                                                     <li class="list-group-item"><i class="fa fa-angle-double-right my-2 me-3 tx-13" aria-hidden="true"></i>
-                                                                                        Male: 2490
+                                                                                        Male: {{ watershed_status.male }}
                                                                                     </li> 
                                                                                     <li class="list-group-item"><i class="fa fa-angle-double-right my-2 me-3 tx-13" aria-hidden="true"></i>
-                                                                                        Female: 2544
+                                                                                        Female: {{ watershed_status.female }}
                                                                                     </li> 
                                                                                     <li class="list-group-item"><i class="fa fa-angle-double-right my-2 me-3 tx-13" aria-hidden="true"></i>
-                                                                                        Number of Household: 1168
+                                                                                        Number of Household: {{ watershed_status.number_of_household }}
                                                                                     </li> 
                                                                                     <li class="list-group-item"><i class="fa fa-angle-double-right my-2 me-3 tx-13" aria-hidden="true"></i>
-                                                                                        Number of Community: 03 (Chakma, Marma and Tripura)
-                                                                                    </li>                                                                                                                                                                                                         
-                                                                                </ul>
+                                                                                        Number of Community: {{ watershed_status.number_of_community }}
+                                                                                    </li>                                                                                                                                                                                                                                                                                       
+                                                                                </ul> -->
                                                                             </div>
                                                                         </div>
                                                                 </li>                                                                                
@@ -223,7 +225,7 @@
                                                     <div class="col-md-12" style="padding: 10px 20px 20px 10px; ">                                                        
                                                         <div class="col-md-6 counter-icon">
                                                             <div class="range-label" id="rangeLabel">Current Status</div>
-                                                            <input type="range" class="mod-form-control-range form-range" min="0" max="1" step="0.1" value="0.6" id="customRange2" disabled>
+                                                            <input type="range" class="mod-form-control-range form-range" min="0" max="1" step="0.1" value="0" id="customRange2" disabled>
                                                             <img width="100%" src="{% static 'assets/images/watershed_monitoring/current_status.png' %}">
                                                         </div>
                                                         <p style="text-align: justify;">Currently, standardized rating is reflecting ‘Bad’ condition of Gilachhari watershed in terms of watershed health composite index.</p>
@@ -275,8 +277,6 @@
                                                                                         </a>
                                                                                     </div>
 
-                                                                                    
-                                                    
                                                                                     <div id="component_{{ component.id }}_indicator_{{ indicator.id }}" class="collapse {% if forloop.first %}show{% endif %}" role="tabpanel" aria-labelledby="indicator_{{ indicator.id }}" data-bs-parent="#accordion_{{ component.id }}">
                                                                                         <div class="card-body component-item">
                                                                                             <h6 class="pb-2">List of Parameters</h6>
@@ -1351,13 +1351,20 @@
             dropdown.addEventListener("change", function () {
                 const watershedId = this.value;
 
-                fetch(`/your-url-path/?watershed_id=${watershedId}`, {
+                fetch(`/watershed_health?watershed_id=${watershedId}`, {
                     headers: { 'X-Requested-With': 'XMLHttpRequest' }
                 })
                 .then(response => response.json())
-                .then(data => updateTabs(data.components))
+                .then(data => {
+                    console.log("Fetched Data:", data); // ✅ Check structure in browser console
+                    updateTabs(data.components); 
+                    updateStatusList(data.watershed_status);
+                })
                 .catch(error => console.error('Error loading components:', error));
             });
+
+            // Optional: auto trigger change event on first load
+            dropdown.dispatchEvent(new Event('change'));
 
             function updateTabs(components) {
                 const tabList = document.querySelector(".nav-pills");
@@ -1378,25 +1385,25 @@
                         ${component.name}
                         </a>`;
 
-                    const indicatorsHtml = component.indicators.map(ind => `
+                    const indicatorsHtml = component.indicators.map((ind, indIdx) => `
                         <div class="card">
                             <div class="card-header" id="indicator_${ind.id}" role="tab">
                                 <a data-bs-toggle="collapse" href="#${tabId}_indicator_${ind.id}" aria-expanded="true">
                                     ${ind.name}
                                 </a>
                             </div>
-                            <div id="${tabId}_indicator_${ind.id}" class="collapse show" data-bs-parent="#accordion_${component.id}">
+                            <div id="${tabId}_indicator_${ind.id}" class="collapse ${indIdx === 0 ? 'show' : ''}" role="tabpanel" aria-labelledby="indicator_${ind.id}" data-bs-parent="#accordion_${component.id}">
                                 <div class="card-body component-item">
                                     <h6 class="pb-2">List of Parameters</h6>
                                     <nav class="nav d-block flex-column">
-                                        ${ind.parameters.map(p => `
+                                        ${ind.parameters.length ? ind.parameters.map(p => `
                                             <li>
                                                 <i class="uil-angle-right-b" style="font-size:15px; padding: 7px 0px 0px 0px; float: left;"></i>
-                                                <a class="nav-link parameter-link" href="#" data-base-url="/monitoring_data?param_val=${p.id}">
+                                                <a class="nav-link parameter-link" href="#" data-param-id="${p.id}" data-base-url="/monitoring_data?param_val=${p.id}">
                                                     ${p.name}
                                                 </a>
                                             </li>
-                                        `).join("")}
+                                        `).join("") : `<p>No parameters available.</p>`}
                                     </nav>
                                 </div>
                             </div>
@@ -1412,24 +1419,59 @@
                 });
             }
 
-            // const watershedDropdown = document.getElementById("ddlWatersheds");
-            document.querySelectorAll(".parameter-link").forEach(link => {
-                link.addEventListener("click", function (e) {
+            function updateStatusList(status) {
+                const container = document.getElementById("statusList");
+                const whRange = document.getElementById("customRange2");
+                
+                if (!status || Object.keys(status).length === 0) {                    
+                    whRange.value = 0; // reset range
+                    return;
+                }
+
+                if (!status || Object.keys(status).length === 0) {
+                    container.innerHTML = '<li class="list-group-item text-danger">No status data available.</li>';
+                    return;
+                }
+
+                container.innerHTML = `
+                    <li class="list-group-item" style="background-color: #2F539B;">
+                        <h5 style="margin-bottom: 3px; color: white;">Overall Status Of ${status.watershed_name || 'Unknown'}</h5>
+                    </li>
+                    <li class="list-group-item"><i class="fa fa-angle-double-right me-2"></i> Number of Para: ${status.number_of_para ?? 'N/A'}</li>
+                    <li class="list-group-item"><i class="fa fa-angle-double-right me-2"></i> Area: ${status.area ?? 'N/A'} ha</li>
+                    <li class="list-group-item"><i class="fa fa-angle-double-right me-2"></i> Total Population: ${status.total_population ?? 'N/A'}</li>
+                    <li class="list-group-item"><i class="fa fa-angle-double-right me-2"></i> Male: ${status.male ?? 'N/A'}</li>
+                    <li class="list-group-item"><i class="fa fa-angle-double-right me-2"></i> Female: ${status.female ?? 'N/A'}</li>
+                    <li class="list-group-item"><i class="fa fa-angle-double-right me-2"></i> Number of Household: ${status.number_of_household ?? 'N/A'}</li>
+                    <li class="list-group-item"><i class="fa fa-angle-double-right me-2"></i> Number of Community: ${status.number_of_community ?? 'N/A'}</li>
+                `;
+
+                // 👇 Update the range value if exists
+                if (whRange && status.baseline != null) {
+                    whRange.value = status.baseline;
+                } else {
+                    whRange.value = 0; // fallback
+                }
+
+                updateLabel();
+            }
+            
+
+            document.addEventListener("click", function (e) {
+                const link = e.target.closest(".parameter-link");
+                if (link) {
                     e.preventDefault();
 
-                    const baseUrl = this.getAttribute("data-base-url");
-                    const selectedWatershedId = dropdown.value;
+                    const baseUrl = link.getAttribute("data-base-url");
+                    const selectedWatershedId = document.getElementById("ddlWatersheds").value;
 
                     console.log("Base URL:", baseUrl);
-                    console.log("Selected watershed:", selectedWatershedId); 
-                    // Construct full URL
+                    console.log("Selected watershed:", selectedWatershedId);
+
                     const fullUrl = `${baseUrl}&watershedid=${selectedWatershedId}`;
-
-                    // Redirect
                     window.location.href = fullUrl;
-                });
-            });
-
+                }
+            });           
 
         });
 

@@ -17,6 +17,7 @@ urlpatterns = [
     path('watershed_health', watershed_health, name="watershed_health"),
     path('climate_resilience', climate_resilience, name="climate_resilience"),
     path('monitoring_data', monitoring_data, name="monitoring_data"),
+    path('monitoring_data_cr', monitoring_data_cr, name="monitoring_data_cr"),
     path('value_chain', value_chain, name="value_chain"),
     path('value_chain_agro', value_chain_agro, name="value_chain_agro"),
     path('value_chain_business_model', value_chain_business_model, name="value_chain_business_model"),    
