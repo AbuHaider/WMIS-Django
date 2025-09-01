@@ -24,7 +24,8 @@ urlpatterns = [
     path('demonstration', demonstration, name="demonstration"),
     path('training', training, name="training"),
     path('overview', overview, name="overview"),
-    path('documents', documents, name="documents"),
+    path('reports', reports, name="reports"),
+    path('con_measures', con_measures, name="con_measures"),
     path('success_stories', success_stories, name="success_stories"),
     
 ]

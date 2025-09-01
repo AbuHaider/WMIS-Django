@@ -417,6 +417,13 @@ def monitoring_data_cr(request):
         })
 
 
+def reports(request):
+    return render(request, "pages/menubar-pages/reports.html")
+        
+        
+def con_measures(request):
+    return render(request, "pages/menubar-pages/con_measures.html")
+            
 
 
 def value_chain(request):
@@ -437,9 +444,6 @@ def training(request):
 def overview(request):
     return render(request, "pages/menubar-pages/overview.html")
         
-def documents(request):
-    return render(request, "pages/menubar-pages/documents.html")
-            
 def success_stories(request):
     return render(request, "pages/menubar-pages/success_stories.html")
 

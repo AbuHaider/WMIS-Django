@@ -9,11 +9,11 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
 
 <style>
-
-    body{
+    body {
         overflow-x: hidden;
         overflow-y: hidden;
     }
+
     .main-nav-line .nav-link {
         color: #c6d3cd;
     }
@@ -29,70 +29,72 @@
     /* .form-range:focus {
         box-shadow: 0 2px 4px rgb(15 34 58 / 32%);
     } */
-    
+
     .form-range {
-      height: 0.5rem;
-      background: transparent;
-      -webkit-appearance: none;
-      appearance: none;
-	  border-radius: 10px;
-      /* box-shadow: 0 2px 4px rgb(15 34 58 / 32%);       */
+        height: 0.5rem;
+        background: transparent;
+        -webkit-appearance: none;
+        appearance: none;
+        border-radius: 10px;
+        /* box-shadow: 0 2px 4px rgb(15 34 58 / 32%);       */
     }
 
     .form-range::-webkit-slider-runnable-track {
-      height: 0px;
-      /* background: linear-gradient(to right, #b2c6e3 50%, #e9ecef 50%); */
-      border-radius: 5px;
+        height: 0px;
+        /* background: linear-gradient(to right, #b2c6e3 50%, #e9ecef 50%); */
+        border-radius: 5px;
     }
 
     .form-range::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      /* height: 1.2rem; */
-	  height: 16px;
-      width: 5px;
-      /* background-color: #0d6efd;
+        -webkit-appearance: none;
+        appearance: none;
+        /* height: 1.2rem; */
+        height: 16px;
+        width: 5px;
+        /* background-color: #0d6efd;
       box-shadow: 0 2px 4px rgba(15,34,58,.12); */
-      border: none;      
-      border-radius: 5%;
-      margin-top: -0.5rem;
-      position: relative;
-      z-index: 2;
+        border: none;
+        border-radius: 5%;
+        margin-top: -0.5rem;
+        position: relative;
+        z-index: 2;
     }
 
     .form-range::-moz-range-track {
-      height: 4px;
-      /* background: linear-gradient(to right, #b2c6e3 50%, #e9ecef 50%); */
-      border-radius: 5px;
+        height: 4px;
+        /* background: linear-gradient(to right, #b2c6e3 50%, #e9ecef 50%); */
+        border-radius: 5px;
     }
 
     .form-range::-moz-range-thumb {
-      height: 1.2rem;
-      width: 1.2rem;
-      background-color: #0d6efd;
-      border: none;
-      border-radius: 50%;
-      position: relative;
-      z-index: 2;
+        height: 1.2rem;
+        width: 1.2rem;
+        background-color: #0d6efd;
+        border: none;
+        border-radius: 50%;
+        position: relative;
+        z-index: 2;
     }
 
     .form-range::-ms-fill-lower {
-      /* background: #b2c6e3; */
-      border-radius: 5px;
+        /* background: #b2c6e3; */
+        border-radius: 5px;
     }
 
     .form-range::-ms-fill-upper {
-      /* background: #e9ecef; */
-      border-radius: 5px;
+        /* background: #e9ecef; */
+        border-radius: 5px;
     }
 
 
     .form-range::-webkit-slider-thumb {
         background: #00cbab;
     }
+
     .form-range::-moz-range-thumb {
         background: #00cbab;
     }
+
     .form-range::-ms-thumb {
         background: #00cbab;
     }
@@ -112,47 +114,47 @@
     }
 
     input[type=range]:disabled {
-        
+
         cursor: not-allowed;
     }
 
-    input[type=range]:disabled, .form-range::-ms-thumb {
+    input[type=range]:disabled,
+    .form-range::-ms-thumb {
         background: #00cbab;
     }
 
     /* *********** Range Bar Style Ends ************* */
-
 </style>
 
 <div class="main-container" style="padding-top: 10px;">
-    
+
     <!-- Row -->
     <div class="row">
         <div class="col-lg-12">
             <div class="card parent-card" style="border-radius: 0px;">
                 <div class="page-header " style="position: fixed; top: 162px; z-index: 1000;  background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-                    <h4 class="main-content-title tx-24 mg-b-5" style="padding: 5px 0px 2px 20px;">Watershed Health</h4>  
+                    <h4 class="main-content-title tx-24 mg-b-5" style="padding: 5px 0px 2px 20px;">Watershed Health</h4>
                 </div>
 
                 <div class="col-md-12" style="padding: 40px 20px 20px 20px;">
                     <div class="card" style="border: none;">
                         <div class="card-body" style="max-height: 65vh; overflow-y: auto;">
-                                                
+
                             <div class="row mt-2 mb-4">
-                                <div class="col-md-2">
-                                    <div clas="form-group">                                        
+                                <div class="col-md-6">
+                                    <div clas="form-group">
                                         <label for="ddlWatersheds" style="color: rgb(39, 39, 151); font-weight: 500;">Select a Watershed</label>
-                                        <select id="ddlWatersheds" name="ddlWatersheds" class="form-control-sm select2">                                            
+                                        <select id="ddlWatersheds" name="ddlWatersheds" class="form-control-sm select2">
                                             {% for watershed in watersheds %}
-                                                <option value="{{ watershed.id }}" data-watershed_code="{{ watershed.watershed_code }}" {% if forloop.first %} selected {% endif %}>{{ watershed.watershed_name }}</option>
-                                            {% endfor %}                                        
-                                        </select>                                    
+                                            <option value="{{ watershed.id }}" data-watershed_code="{{ watershed.watershed_code }}" {% if forloop.first %} selected {% endif %}>{{ watershed.watershed_name }}</option>
+                                            {% endfor %}
+                                        </select>
                                     </div>
-                                </div>                                                         
+                                </div>
                             </div>
 
                             <!-- Tab Navigation -->
-                            <div class="d-flex flex-wrap gap-2 mb-3" role="tablist">
+                            <div class="d-flex flex-wrap gap-1" role="tablist">
                                 <a class="btn btn-primary active" data-bs-toggle="pill" href="#overall_status" role="tab" aria-selected="true">
                                     Overall Status
                                 </a>
@@ -162,77 +164,86 @@
                             </div>
 
                             <!-- Tab Content -->
-                            <div class="collapse show" id="collapseExample" style="border: none;">                               
-                                <div class="tab-content text-muted">   
+                            <div class="collapse show" id="collapseExample" style="border: none;">
+                                <div class="tab-content text-muted">
 
                                     <div class="tab-pane fade show active" id="overall_status" role="tabpanel">
                                         <div class="row">
-                                            <div class="col-md-5" style="padding: 0px;">
-                                                <div class="card custom-card" style="box-shadow: none; border: none;" id="list">
-                                                    <div class="card-body">                                                                    
-                                                        <div class="text-wrap">                                                                        
-                                                            <ul class="list-unstyled">
-                                                                <li class="media d-block d-sm-flex">  
+                                            <div class="col-md-7">
+                                                <div class="row">
+                                                    <div class="card custom-card" style="box-shadow: none; border: none;" id="list">
+                                                        <div class="card-body p-0">
+                                                            <div class="text-wrap">
+                                                                <ul class="list-unstyled">
+                                                                    <li class="media d-block d-sm-flex">
                                                                         <div class="media-body" style="width: 100%; ">
                                                                             <div class="listgroup-example ">
                                                                                 <ul class="list-group checked" id="statusList" style="padding-left: 0px !important;"></ul>
                                                                                 <!-- <ul class="list-group checked" style="padding-left: 0px !important;">                                                                                                                                                                
-                                                                                    <li class="list-group-item" style="background-color: #2F539B; ">
-                                                                                            <h5 style="margin-bottom: 3px; color: white;">Overall Status Of {{ watershed_status.watershed_name }} </h5>
-                                                                                    </li>
-                                                                                    <li class="list-group-item"><i class="fa fa-angle-double-right my-2 me-3 tx-13" aria-hidden="true"></i>
-                                                                                        Number of Para: {{ watershed_status.number_of_para }}
-                                                                                    </li>  
-                                                                                    <li class="list-group-item"><i class="fa fa-angle-double-right my-2 me-3 tx-13" aria-hidden="true"></i>
-                                                                                        Area: {{ watershed_status.area }} ha
-                                                                                    </li>
-                                                                                    <li class="list-group-item"><i class="fa fa-angle-double-right my-2 me-3 tx-13" aria-hidden="true"></i>
-                                                                                        Total Population: {{ watershed_status.total_population }}
-                                                                                    </li>    
-                                                                                    <li class="list-group-item"><i class="fa fa-angle-double-right my-2 me-3 tx-13" aria-hidden="true"></i>
-                                                                                        Male: {{ watershed_status.male }}
-                                                                                    </li> 
-                                                                                    <li class="list-group-item"><i class="fa fa-angle-double-right my-2 me-3 tx-13" aria-hidden="true"></i>
-                                                                                        Female: {{ watershed_status.female }}
-                                                                                    </li> 
-                                                                                    <li class="list-group-item"><i class="fa fa-angle-double-right my-2 me-3 tx-13" aria-hidden="true"></i>
-                                                                                        Number of Household: {{ watershed_status.number_of_household }}
-                                                                                    </li> 
-                                                                                    <li class="list-group-item"><i class="fa fa-angle-double-right my-2 me-3 tx-13" aria-hidden="true"></i>
-                                                                                        Number of Community: {{ watershed_status.number_of_community }}
-                                                                                    </li>                                                                                                                                                                                                                                                                                       
-                                                                                </ul> -->
+                                                                                        <li class="list-group-item" style="background-color: #2F539B; ">
+                                                                                                <h5 style="margin-bottom: 3px; color: white;">Overall Status Of {{ watershed_status.watershed_name }} </h5>
+                                                                                        </li>
+                                                                                        <li class="list-group-item"><i class="fa fa-angle-double-right my-2 me-3 tx-13" aria-hidden="true"></i>
+                                                                                            Number of Para: {{ watershed_status.number_of_para }}
+                                                                                        </li>  
+                                                                                        <li class="list-group-item"><i class="fa fa-angle-double-right my-2 me-3 tx-13" aria-hidden="true"></i>
+                                                                                            Area: {{ watershed_status.area }} ha
+                                                                                        </li>
+                                                                                        <li class="list-group-item"><i class="fa fa-angle-double-right my-2 me-3 tx-13" aria-hidden="true"></i>
+                                                                                            Total Population: {{ watershed_status.total_population }}
+                                                                                        </li>    
+                                                                                        <li class="list-group-item"><i class="fa fa-angle-double-right my-2 me-3 tx-13" aria-hidden="true"></i>
+                                                                                            Male: {{ watershed_status.male }}
+                                                                                        </li> 
+                                                                                        <li class="list-group-item"><i class="fa fa-angle-double-right my-2 me-3 tx-13" aria-hidden="true"></i>
+                                                                                            Female: {{ watershed_status.female }}
+                                                                                        </li> 
+                                                                                        <li class="list-group-item"><i class="fa fa-angle-double-right my-2 me-3 tx-13" aria-hidden="true"></i>
+                                                                                            Number of Household: {{ watershed_status.number_of_household }}
+                                                                                        </li> 
+                                                                                        <li class="list-group-item"><i class="fa fa-angle-double-right my-2 me-3 tx-13" aria-hidden="true"></i>
+                                                                                            Number of Community: {{ watershed_status.number_of_community }}
+                                                                                        </li>                                                                                                                                                                                                                                                                                       
+                                                                                    </ul> -->
                                                                             </div>
                                                                         </div>
-                                                                </li>                                                                                
-                                                            </ul>                                                                        
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-5" style="padding: 13px;">
-                                                <div class="col-md-12" style="padding: 20px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);">
-                                                    <div class="counter-icon">
-                                                        <img id="watershed_img" alt="img" class="wd-150 mg-sm-r-20 mg-b-20 mg-sm-b-0" width="100%" height="360px" src="{% static 'assets/images/factsheets/gilachhari.png' %}">
-                                                    </div>
-                                                </div>                                                              
-                                            </div>
-                                            <div class="col-md-8" style="padding: 0px;">                                                
                                                 <div class="row p-3">
                                                     <div class="col-md-12 mb-4">
                                                         <h6>Watershed Health Standardized Rating </h6>
                                                     </div>
-                                                    <div class="col-md-12" style="padding: 10px 20px 20px 10px; ">                                                        
+                                                    <div class="col-md-12" style="padding: 10px 20px 20px 10px; ">
                                                         <div class="col-md-6 counter-icon">
-                                                            <div class="range-label" id="rangeLabel">Current Status</div>
-                                                            <input type="range" class="mod-form-control-range form-range" min="0" max="1" step="0.1" value="0" id="customRange2" disabled>
-                                                            <img width="100%" src="{% static 'assets/images/watershed_monitoring/current_status.png' %}">
+                                                            <div class="range-label" id="rangeLabel">Current Status
+                                                            </div>
+                                                            <input type="range"
+                                                                class="mod-form-control-range form-range" min="0"
+                                                                max="1" step="0.1" value="0" id="customRange2" disabled>
+                                                            <img width="100%"
+                                                                src="{% static 'assets/images/watershed_monitoring/current_status.png' %}">
                                                         </div>
-                                                        <p style="text-align: justify;">Currently, standardized rating is reflecting ‘Bad’ condition of Gilachhari watershed in terms of watershed health composite index.</p>
+                                                        <p style="text-align: justify;">Currently, standardized rating
+                                                            is reflecting ‘Bad’ condition of Gilachhari watershed in
+                                                            terms of watershed health composite index.</p>
                                                     </div>
                                                 </div>
-                                                
                                             </div>
+                                            <div class="col-md-5">
+                                                <div class="col-md-12"
+                                                    style="padding: 20px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);">
+                                                    <div class="counter-icon">
+                                                        <img id="watershed_img" alt="img"
+                                                            class="wd-150 mg-sm-r-20 mg-b-20 mg-sm-b-0" width="100%"
+                                                            height="360px"
+                                                            src="{% static 'assets/images/factsheets/gilachhari.png' %}">
+                                                    </div>
+                                                </div>
+                                            </div>                                            
                                         </div>
                                     </div>
 
@@ -241,63 +252,82 @@
                                             <div class="card">
                                                 <div class="card-body">
 
-                                                    <h4 class="card-title" style="padding-bottom: 10px;">Component Wise Status</h4>
+                                                    <h4 class="card-title" style="padding-bottom: 10px;">Component Wise
+                                                        Status</h4>
 
                                                     <div class="row">
                                                         <div class="col-md-3">
-                                                            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                                            <div class="nav flex-column nav-pills" id="v-pills-tab"
+                                                                role="tablist" aria-orientation="vertical">
                                                                 {% for component in components %}
-                                                                    <a class="nav-link mb-2 {% if forloop.first %}active{% endif %}" 
-                                                                       id="component_{{ component.id }}-tab" 
-                                                                       data-bs-toggle="pill" 
-                                                                       href="#component_{{ component.id }}" 
-                                                                       role="tab" 
-                                                                       aria-controls="component_{{ component.id }}" 
-                                                                       aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">
-                                                                        {{ component.component_name }}
-                                                                    </a>
+                                                                <a class="nav-link mb-2 {% if forloop.first %}active{% endif %}"
+                                                                    id="component_{{ component.id }}-tab"
+                                                                    data-bs-toggle="pill"
+                                                                    href="#component_{{ component.id }}" role="tab"
+                                                                    aria-controls="component_{{ component.id }}"
+                                                                    aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">
+                                                                    {{ component.component_name }}
+                                                                </a>
                                                                 {% endfor %}
                                                             </div>
                                                         </div>
-                                                    
-                                                        <div class="col-md-9">
-                                                            <div class="tab-content text-muted mt-4 mt-md-0" id="v-pills-tabContent">
-                                                                {% for component in components %}
-                                                                    <div class="tab-pane fade {% if forloop.first %}active show{% endif %}" 
-                                                                         id="component_{{ component.id }}" 
-                                                                         role="tabpanel" 
-                                                                         aria-labelledby="component_{{ component.id }}-tab">
-                                                                         
-                                                                        <div class="accordion" id="accordion_{{ component.id }}" role="tablist">
-                                                                            {% for indicator in component.indicators.all %}
-                                                                                <div class="card">
-                                                                                    <div class="card-header" id="indicator_{{ indicator.id }}" role="tab">
-                                                                                        <a data-bs-toggle="collapse" href="#component_{{ component.id }}_indicator_{{ indicator.id }}" aria-expanded="true" aria-controls="component_{{ component.id }}_indicator_{{ indicator.id }}">
-                                                                                            {{ indicator.indicator_name }}
-                                                                                        </a>
-                                                                                    </div>
 
-                                                                                    <div id="component_{{ component.id }}_indicator_{{ indicator.id }}" class="collapse {% if forloop.first %}show{% endif %}" role="tabpanel" aria-labelledby="indicator_{{ indicator.id }}" data-bs-parent="#accordion_{{ component.id }}">
-                                                                                        <div class="card-body component-item">
-                                                                                            <h6 class="pb-2">List of Parameters</h6>
-                                                                                            <nav class="nav d-block flex-column">
-                                                                                                {% for parameter in indicator.parameters.all %}
-                                                                                                    <li>
-                                                                                                        <i class="uil-angle-right-b" style="font-size:15px; padding: 7px 0px 0px 0px; float: left;"></i>
-                                                                                                        <a class="nav-link parameter-link" href="#" data-base-url="{% url 'monitoring_data' %}?param_val={{ parameter.id }}">{{ parameter.parameter_name }}</a>
-                                                                                                    </li>
-                                                                                                {% empty %}
-                                                                                                    <p>No parameters available.</p>
-                                                                                                {% endfor %}
-                                                                                            </nav>
-                                                                                        </div>
-                                                                                    </div>
+                                                        <div class="col-md-9">
+                                                            <div class="tab-content text-muted mt-4 mt-md-0"
+                                                                id="v-pills-tabContent">
+                                                                {% for component in components %}
+                                                                <div class="tab-pane fade {% if forloop.first %}active show{% endif %}"
+                                                                    id="component_{{ component.id }}" role="tabpanel"
+                                                                    aria-labelledby="component_{{ component.id }}-tab">
+
+                                                                    <div class="accordion"
+                                                                        id="accordion_{{ component.id }}"
+                                                                        role="tablist">
+                                                                        {% for indicator in component.indicators.all %}
+                                                                        <div class="card">
+                                                                            <div class="card-header"
+                                                                                id="indicator_{{ indicator.id }}"
+                                                                                role="tab">
+                                                                                <a data-bs-toggle="collapse"
+                                                                                    href="#component_{{ component.id }}_indicator_{{ indicator.id }}"
+                                                                                    aria-expanded="true"
+                                                                                    aria-controls="component_{{ component.id }}_indicator_{{ indicator.id }}">
+                                                                                    {{ indicator.indicator_name }}
+                                                                                </a>
+                                                                            </div>
+
+                                                                            <div id="component_{{ component.id }}_indicator_{{ indicator.id }}"
+                                                                                class="collapse {% if forloop.first %}show{% endif %}"
+                                                                                role="tabpanel"
+                                                                                aria-labelledby="indicator_{{ indicator.id }}"
+                                                                                data-bs-parent="#accordion_{{ component.id }}">
+                                                                                <div class="card-body component-item">
+                                                                                    <h6 class="pb-2">List of Parameters
+                                                                                    </h6>
+                                                                                    <nav
+                                                                                        class="nav d-block flex-column">
+                                                                                        {% for parameter in indicator.parameters.all %}
+                                                                                        <li>
+                                                                                            <i class="uil-angle-right-b"
+                                                                                                style="font-size:15px; padding: 7px 0px 0px 0px; float: left;"></i>
+                                                                                            <a class="nav-link parameter-link"
+                                                                                                href="#"
+                                                                                                data-base-url="{% url 'monitoring_data' %}?param_val={{ parameter.id }}">{{
+                                                                                                parameter.parameter_name
+                                                                                                }}</a>
+                                                                                        </li>
+                                                                                        {% empty %}
+                                                                                        <p>No parameters available.</p>
+                                                                                        {% endfor %}
+                                                                                    </nav>
                                                                                 </div>
-                                                                            {% empty %}
-                                                                                <p>No indicators available.</p>
-                                                                            {% endfor %}
+                                                                            </div>
                                                                         </div>
+                                                                        {% empty %}
+                                                                        <p>No indicators available.</p>
+                                                                        {% endfor %}
                                                                     </div>
+                                                                </div>
                                                                 {% endfor %}
                                                             </div>
                                                         </div>
@@ -1296,7 +1326,7 @@
                                     </div>
 
                                 </div>
-                                
+
                             </div>
 
                         </div>
@@ -1315,77 +1345,77 @@
 
 {% block script_content %}
 
-    <script>
-        // console.log("here I am..");
+<script>
+    // console.log("here I am..");
 
-        const range = document.getElementById('customRange2');
-        const label = document.getElementById('rangeLabel');
+    const range = document.getElementById('customRange2');
+    const label = document.getElementById('rangeLabel');
 
-        function updateLabel() {
-            const rangeWidth = range.offsetWidth;
-            const max = parseFloat(range.max);
-            const min = parseFloat(range.min);
-            const val = parseFloat(range.value);
+    function updateLabel() {
+        const rangeWidth = range.offsetWidth;
+        const max = parseFloat(range.max);
+        const min = parseFloat(range.min);
+        const val = parseFloat(range.value);
 
-            // Calculate the position as a percentage
-            const percent = (val - min) / (max - min);
-            const left = percent * rangeWidth;
+        // Calculate the position as a percentage
+        const percent = (val - min) / (max - min);
+        const left = percent * rangeWidth;
 
-            // Update label text and position
-            label.textContent = "Current Status (" + val.toFixed(1) + ")";
-            label.style.left = `${left}px`;
-        }
+        // Update label text and position
+        label.textContent = "Current Status (" + val.toFixed(1) + ")";
+        label.style.left = `${left}px`;
+    }
 
-        // Initialize and bind event
-        updateLabel();
-        range.addEventListener('input', updateLabel);
-
-
+    // Initialize and bind event
+    updateLabel();
+    range.addEventListener('input', updateLabel);
 
 
 
-        document.addEventListener("DOMContentLoaded", function () {
 
-            const dropdown = document.getElementById("ddlWatersheds");
 
-            dropdown.addEventListener("change", function () {
-                const watershedId = this.value;
+    document.addEventListener("DOMContentLoaded", function () {
 
-                fetch(`/watershed_health?watershed_id=${watershedId}`, {
-                    headers: { 'X-Requested-With': 'XMLHttpRequest' }
-                })
+        const dropdown = document.getElementById("ddlWatersheds");
+
+        dropdown.addEventListener("change", function () {
+            const watershedId = this.value;
+
+            fetch(`/watershed_health?watershed_id=${watershedId}`, {
+                headers: { 'X-Requested-With': 'XMLHttpRequest' }
+            })
                 .then(response => response.json())
                 .then(data => {
                     console.log("Fetched Data:", data); // ✅ Check structure in browser console
-                    updateTabs(data.components); 
+                    updateTabs(data.components);
                     updateStatusList(data.watershed_status);
                 })
                 .catch(error => console.error('Error loading components:', error));
-            });
+        });
 
-            // Optional: auto trigger change event on first load
-            dropdown.dispatchEvent(new Event('change'));
+        // Optional: auto trigger change event on first load
+        dropdown.dispatchEvent(new Event('change'));
 
-            function updateTabs(components) {
-                const tabList = document.querySelector(".nav-pills");
-                const tabContent = document.querySelector("#v-pills-tabContent");
+        function updateTabs(components) {
+            const tabList = document.querySelector(".nav-pills");
+            const tabContent = document.querySelector("#v-pills-tabContent");
 
-                tabList.innerHTML = "";
-                tabContent.innerHTML = "";
+            tabList.innerHTML = "";
+            tabContent.innerHTML = "";
 
-                components.forEach((component, idx) => {
-                    const tabId = `component_${component.id}`;
-                    const isActive = idx === 0 ? 'active' : '';
-                    const isShow = idx === 0 ? 'show' : '';
+            components.forEach((component, idx) => {
+                const tabId = `component_${component.id}`;
+                const isActive = idx === 0 ? 'active' : '';
+                const isShow = idx === 0 ? 'show' : '';
 
-                    tabList.innerHTML += `
+                tabList.innerHTML += `
                         <a class="nav-link mb-2 ${isActive}" id="${tabId}-tab"
                         data-bs-toggle="pill" href="#${tabId}" role="tab"
                         aria-controls="${tabId}" aria-selected="${idx === 0}">
                         ${component.name}
                         </a>`;
 
-                    const indicatorsHtml = component.indicators.map((ind, indIdx) => `
+                const indicatorsHtml = component.indicators.map((ind, indIdx) => `
                         <div class="card">
                             <div class="card-header" id="indicator_${ind.id}" role="tab">
                                 <a data-bs-toggle="collapse" href="#${tabId}_indicator_${ind.id}" aria-expanded="true">
@@ -1410,34 +1440,34 @@
                         </div>
                     `).join("");
 
-                    tabContent.innerHTML += `
+                tabContent.innerHTML += `
                         <div class="tab-pane fade ${isActive} ${isShow}" id="${tabId}" role="tabpanel" aria-labelledby="${tabId}-tab">
                             <div class="accordion" id="accordion_${component.id}" role="tablist">
                                 ${indicatorsHtml}
                             </div>
                         </div>`;
-                });
+            });
+        }
+
+        function updateStatusList(status) {
+            const container = document.getElementById("statusList");
+            const whRange = document.getElementById("customRange2");
+            const watershedImg = document.getElementById("watershed_img");
+
+            if (!status || Object.keys(status).length === 0) {
+                whRange.value = 0; // reset range
+                container.innerHTML = '<li class="list-group-item text-danger">No status data available.</li>';
+                return;
             }
 
-            function updateStatusList(status) {
-                const container = document.getElementById("statusList");
-                const whRange = document.getElementById("customRange2");                
-                const watershedImg = document.getElementById("watershed_img");               
+            if (watershedImg && status.watershed) {
+                watershedImg.src = `/static/assets/images/watersheds/${status.watershed}.png`;
+            }
+            else {
+                watershedImg.src = `/static/assets/images/watersheds/1.png`;
+            }
 
-                if (!status || Object.keys(status).length === 0) {
-                    whRange.value = 0; // reset range
-                    container.innerHTML = '<li class="list-group-item text-danger">No status data available.</li>';
-                    return;
-                }
-
-                if (watershedImg && status.watershed) {
-                    watershedImg.src = `/static/assets/images/watersheds/${status.watershed}.png`;
-                } 
-                else {
-                    watershedImg.src = `/static/assets/images/watersheds/1.png`;
-                }
-
-                container.innerHTML = `
+            container.innerHTML = `
                     <li class="list-group-item" style="background-color: #2F539B;">
                         <h5 style="margin-bottom: 3px; color: white;">Overall Status Of ${status.watershed_name || 'Unknown'}</h5>
                     </li>
@@ -1450,58 +1480,56 @@
                     <li class="list-group-item"><i class="fa fa-angle-double-right me-2"></i> Number of Community: ${status.number_of_community ?? 'N/A'}</li>
                 `;
 
-                // 👇 Update the range value if exists
-                if (whRange && status.baseline != null) {
-                    whRange.value = status.baseline;
-                } else {
-                    whRange.value = 0; // fallback
-                }
-
-                updateLabel();
+            // 👇 Update the range value if exists
+            if (whRange && status.baseline != null) {
+                whRange.value = status.baseline;
+            } else {
+                whRange.value = 0; // fallback
             }
-            
 
-            document.addEventListener("click", function (e) {
-                const link = e.target.closest(".parameter-link");
-                if (link) {
-                    e.preventDefault();
+            updateLabel();
+        }
 
-                    const baseUrl = link.getAttribute("data-base-url");
-                    const selectedWatershedId = document.getElementById("ddlWatersheds").value;
 
-                    console.log("Base URL:", baseUrl);
-                    console.log("Selected watershed:", selectedWatershedId);
+        document.addEventListener("click", function (e) {
+            const link = e.target.closest(".parameter-link");
+            if (link) {
+                e.preventDefault();
 
-                    const fullUrl = `${baseUrl}&watershedid=${selectedWatershedId}`;
-                    window.location.href = fullUrl;
-                }
-            });           
+                const baseUrl = link.getAttribute("data-base-url");
+                const selectedWatershedId = document.getElementById("ddlWatersheds").value;
 
+                console.log("Base URL:", baseUrl);
+                console.log("Selected watershed:", selectedWatershedId);
+
+                const fullUrl = `${baseUrl}&watershedid=${selectedWatershedId}`;
+                window.location.href = fullUrl;
+            }
         });
 
+    });
 
-        
 
 
-        function setFixedHeaderWidth() {
-            const card = document.querySelector('.parent-card');
-            const header = document.querySelector('.page-header');
-            if (card && header) {
+
+
+    function setFixedHeaderWidth() {
+        const card = document.querySelector('.parent-card');
+        const header = document.querySelector('.page-header');
+        if (card && header) {
             // header.style.width = card.offsetWidth + 'px';
             const cardWidth = card.offsetWidth;
             header.style.width = (cardWidth - 2) + 'px';
             header.style.left = '50%';
             header.style.transform = 'translateX(-50%)';
-            }
         }
+    }
 
-        // Initial setup
-        window.addEventListener('load', setFixedHeaderWidth);
+    // Initial setup
+    window.addEventListener('load', setFixedHeaderWidth);
 
-        // Adjust on resize
-        window.addEventListener('resize', setFixedHeaderWidth);
-    </script>
+    // Adjust on resize
+    window.addEventListener('resize', setFixedHeaderWidth);
+</script>
 
 {% endblock %}
-
-

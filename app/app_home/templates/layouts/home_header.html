@@ -12,7 +12,7 @@
             </button>
 
             <span class="title-txt d-none d-md-inline-block mt-3">
-                <span style="color: rgb(240, 203, 135);font: 700 1.40vw/1 Roboto, Noto Sans, Helvetica, Arial, sans-serif">Watershed Management Information System</span><br />
+                <span style="color: #eab600;font: 700 1.40vw/1 Roboto, Noto Sans, Helvetica, Arial, sans-serif">Watershed Management Information System</span><br />
                 <span style="color: #d7ebf0;font: 700 1.20vw/1 Roboto, Noto Sans, Helvetica, Arial, sans-serif">Chittagong Hill Tracts (CHT)</span>  <br>
                 <span style="color:#d7ebf0;font: 700 .80vw/1 Roboto, Noto Sans, Helvetica, Arial, sans-serif">Asian Development Bank</span>        
             </span>
@@ -86,13 +86,14 @@
                             <div class="dropdown-menu" aria-labelledby="topnav-components">
                                 <a href="{% url 'factsheets' %}" class="dropdown-item">Factsheets</a>
                                 <a href="{% url 'map_gallery' %}" class="dropdown-item">Map Gallery</a>
-                                <a href="{% url 'documents' %}" class="dropdown-item">Documents</a>
+                                <a href="{% url 'reports' %}" class="dropdown-item">Reports</a>
+                                <a href="{% url 'con_measures' %}" class="dropdown-item">Conservation Measures</a>
                                 <a href="{% url 'value_chain' %}" class="dropdown-item">Value Chain</a>
                             </div>
                         </li>
 
                         <!--
-                            <li class="nav-item">
+                            {% comment %} <li class="nav-item">
                                 <a class="nav-link"  href="{% url 'factsheets' %}">
                                     <i class="uil uil-file-check-alt me-2"></i> 
                                     Factsheets
@@ -112,7 +113,7 @@
                                     <i class="uil uil-analysis me-2"></i> 
                                     Value Chain
                                 </a>
-                            </li>
+                            </li> {% endcomment %}
                         --> 
 
                         <li class="nav-item dropdown">
