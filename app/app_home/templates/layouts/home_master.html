@@ -19,14 +19,14 @@
     <!-- Bootstrap 5 -->
     <link type="text/css" rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.min.css' %}" />
     
+    <!-- App Css-->
+    <link href="{% static 'styles/template/app.min.css' %}"  rel="stylesheet" type="text/css" />
+    
     <!-- Font Awesome 4 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Icons Css -->
     {% comment %} <link href="{% static 'styles/template/icons.min.css' %}" rel="stylesheet" type="text/css" /> {% endcomment %}
-    
-    <!-- App Css-->
-    <link href="{% static 'styles/template/app.min.css' %}"  rel="stylesheet" type="text/css" />
     
     <link href="{% static 'styles/home_page.css' %}"  rel="stylesheet" type="text/css" />
 
@@ -62,10 +62,10 @@
     </style>
 
     <style>
-        /* For smaller screens (e.g., mobile devices) */
+         {% comment %} For smaller screens (e.g., mobile devices)  {% endcomment %}
         @media (max-width: 768px) {
             .main-content .page-content {
-                margin-top: 0; /* No margin for small screens */
+                margin-top: 0; 
                 padding-top: 0;
             }
         }

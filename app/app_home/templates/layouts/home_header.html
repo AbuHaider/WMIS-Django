@@ -8,7 +8,7 @@
     <div class="navbar-header">
         <div class="d-flex">
             <button type="button" class="btn btn-sm px-3 font-size-16 d-lg-none header-item waves-effect waves-light" data-bs-toggle="collapse" data-bs-target="#topnav-menu-content">
-                <i class="fa fa-fw fa-bars"></i>
+                <i class="fa fa-bars"></i>
             </button>
 
             <span class="title-txt d-none d-md-inline-block mt-3">
@@ -26,7 +26,7 @@
             <div class="dropdown d-inline-block d-lg-none ms-2">
                 <button type="button" class="btn header-item noti-icon waves-effect" id="page-header-search-dropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="uil-search"></i>
+                    <i class="fa fa-search"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
                     aria-labelledby="page-header-search-dropdown">
@@ -48,21 +48,21 @@
                         <!--Dashboard-->
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'home' %}">
-                                <i class="uil-home-alt me-2"></i> 
+                                <i class="fa fa-home me-2"></i> 
                                 Home
                             </a>
                         </li>
 
                         <li class="nav-item dropdown">
                             <a class="nav-link arrow-none" href="{% url 'map_view' %}" id="topnav-components" role="button">
-                                <i class="uil-map me-2"></i> <strong> Map Viewer </strong>
+                                <i class="fa fa-map-marker me-2"></i> <strong> Map Viewer </strong>
                             </a>
                         </li>
 
                         <!--Major Components-->
                         <li class="nav-item dropdown">
                             <a class="nav-link arrow-none" href="#" id="topnav-components" role="button">
-                                <i class="uil-layers me-2"></i><strong>Watershed Monitoring</strong><div class="arrow-down"></div>
+                                <i class="fa fa-ils me-2"></i><strong>Watershed Monitoring</strong><div class="arrow-down"></div>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="topnav-components">
                                 <a href="{% url 'watershed_health' %}" class="dropdown-item">Watershed Health</a>
@@ -81,7 +81,7 @@
                         <!--Major Components-->
                         <li class="nav-item dropdown">
                             <a class="nav-link arrow-none" href="#" id="topnav-components" role="button">
-                                <i class="uil uil-analysis me-2"></i><strong>Major Components</strong><div class="arrow-down"></div>
+                                <i class="fa fa-line-chart me-2"></i><strong>Major Components</strong><div class="arrow-down"></div>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="topnav-components">
                                 <a href="{% url 'factsheets' %}" class="dropdown-item">Factsheets</a>
@@ -118,7 +118,7 @@
 
                         <li class="nav-item dropdown">
                             <a class="nav-link arrow-none" href="#" id="topnav-components" role="button">
-                                <i class="uil uil-parcel me-2"></i><strong>Capacity Building</strong><div class="arrow-down"></div>
+                                <i class="fa fa-graduation-cap me-2"></i><strong>Capacity Building</strong><div class="arrow-down"></div>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="topnav-components">
                                 <a href="{% url 'demonstration' %}" class="dropdown-item">Demonstration</a>
@@ -128,7 +128,7 @@
                         
                         <li class="nav-item dropdown">
                             <a class="nav-link arrow-none" href="#" id="topnav-components" role="button">
-                                <i class="uil uil-sitemap me-2"></i><strong>About CRLIWM-CHT</strong><div class="arrow-down"></div>
+                                <i class="fa fa-info-circle me-2"></i><strong>About CRLIWM-CHT</strong><div class="arrow-down"></div>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="topnav-components">
                                 <a href="#" class="dropdown-item">Overview</a>
@@ -140,11 +140,11 @@
                         <li class="nav-item dropdown">
                             {% if user.is_authenticated %}
                                 <a class="nav-link arrow-none" href="#" id="topnav-components" role="button">
-                                    <i class="uil uil-user me-1"></i><strong>{{user.username}}</strong><div class="arrow-down"></div>
+                                    <i class="fa fa-user-o me-1"></i><strong>{{user.username}}</strong><div class="arrow-down"></div>
                                 </a>
                             {%else%}
                                 <a class="nav-link arrow-none" href="{% url 'login' %}" id="topnav-components" role="button">
-                                    <i class="uil uil-sign-in-alt me-1"></i><strong> Sign In </strong>
+                                    <i class="fa fa-sign-in me-1"></i><strong> Sign In </strong>
                                 </a>
                             {% endif %}
 
@@ -152,7 +152,7 @@
                                 <div class="dropdown-menu" aria-labelledby="topnav-components">
                                     <a href="#" class="dropdown-item">View Profile</a>
                                     <button class="dropdown-item" onclick="document.getElementById('header-logout-form').submit();">
-                                        <i class="uil uil-sign-out-alt me-2"></i> Sign Out
+                                        <i class="fa fa-sign-out me-2"></i> Sign Out
                                     </button>
                                     <form id="header-logout-form" action="{% url 'logout' %}" method="POST" class="d-none">
                                         {% csrf_token %}
