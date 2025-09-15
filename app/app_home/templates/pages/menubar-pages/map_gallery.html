@@ -1,4 +1,5 @@
 {% extends "layouts/home_master.html" %}
+
 {% load static %}
 {% static "" as baseUrl %}
 
@@ -6,15 +7,46 @@
 
 {% block content %}
 
+<!-- Internal Inputtags css-->
+<link href="{% static 'styles/template/app.min.css' %}" href="../assets/plugins/inputtags/inputtags.css" rel="stylesheet">
+
+<!-- Internal Prism css-->
+<link href="{% static 'styles/template/app.min.css' %}" href="../assets/plugins/prism/prism.css" rel="stylesheet">
+
 <style>
 
-    /* a {
-        color: #03623f;
+    .nav-link { 
+        color: #000000;;
+    }
+    .nav-tabs .nav-link {
+        margin-bottom: calc(-2 * var(--bs-nav-tabs-border-width));
+        border-color: var(--bs-nav-tabs-link-hover-border-color);
     }
 
-    a:hover {
-        color: #00b75c;
-    } */
+    {% comment %} .nav-tabs .nav-link:focus,  {% endcomment %}
+    .nav-tabs .nav-link:hover {        
+        border-color: var(--bs-nav-link-color);;
+    }
+
+    .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+        font-weight: 700;
+        color: var(--bs-nav-link-color);
+        background-color: gold;
+    }
+
+    .data-cat-title {
+        display: block;
+        {% comment %} margin: 0.5rem 0 0.75rem 0; {% endcomment %}
+        padding: 0.3rem;
+        padding-left: 0.7rem;
+        color: #fff;
+        font-size: 1rem;
+        font-weight: bold;
+        text-align: left;
+        background-image: linear-gradient(60deg, #1d5eae 0%, #61b5d2 100%);
+        border-radius: 0.25rem;
+        box-shadow: 2px 2px 3px 1px rgba(5, 45, 58, 0.46);
+    }
 
 </style>
 
@@ -27,17 +59,66 @@
                 <div class="page-header" style="background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
                     <h4 class="main-content-title tx-24 mg-b-5" style="padding: 5px 0px 2px 20px;">Map Gallery</h4>   
                 </div>
-
                 <!-- Page Content -->
-                <div class="col-md-12" style="padding: 20px 20px 0px 20px;">
+                <div class="col-xl-12">                    
+                    <div class="m-4">
+                        <!-- Tab headers -->
+                        <!-- Watershed Tabs -->
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            {% for item in watershed_data %}
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link {% if forloop.first %}active{% endif %}" 
+                                            id="{{ item.watershed.watershed_code }}-tab" 
+                                            data-bs-toggle="tab" 
+                                            data-bs-target="#{{ item.watershed.watershed_code }}" 
+                                            type="button" role="tab" 
+                                            aria-controls="{{ item.watershed.watershed_code }}" 
+                                            aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">
+                                        {{ item.watershed.watershed_code }}
+                                    </button>
+                                </li>
+                            {% endfor %}
+                        </ul>
 
-                    <div class="card-body" style="max-height: 65vh; overflow-y: auto;">
-                        
-                    </div>
+                        <!-- Tab Contents -->
+                        <div class="tab-content border rounded-bottom p-3" id="myTabContent">
+                            {% for item in watershed_data %}
+                                <div class="tab-pane fade {% if forloop.first %}show active{% endif %}" 
+                                    id="{{ item.watershed.watershed_code }}" 
+                                    role="tabpanel" 
+                                    aria-labelledby="{{ item.watershed.watershed_code }}-tab">
 
-                </div>    
+                                    {% if item.map_groups %}
+                                        {% for map_type, maps in item.map_groups.items %}
+                                            <div class="row mb-3">
+                                                <div class="col-md-12">
+                                                    <span class="data-cat-title">
+                                                        <i class="fa fa-list"></i>&nbsp;&nbsp;{{ map_type }}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="row row-sm mb-4">
+                                                {% for map in maps %}
+                                                    <div class="col-md-2 mb-3">
+                                                        <a href="{% static 'assets/images/map_gallery/' %}{{ item.watershed.watershed_code }}/{{ map.map_type }}/{{ map.map_file_name }}" target="_blank" style="text-decoration: none; color: inherit;">
+                                                            <img alt="Responsive image" class="img-thumbnail" 
+                                                                src="{% static 'assets/images/map_gallery/' %}{{ item.watershed.watershed_code }}/{{ map.map_type }}/{{ map.map_file_name }}">
+                                                            <label class="mt-2 mb-4 d-block text-center">{{ map.map_display_name }}</label>                                            
+                                                        </a>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        {% endfor %}
+                                    {% else %}
+                                        <p>No maps available for this watershed.</p>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>                        
+                </div>             
                 <!-- End Page Content -->
-
             </div>
         </div>
     </div>    

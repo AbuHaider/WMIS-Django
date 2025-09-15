@@ -7,8 +7,7 @@ from app_model.models import *
 from app_model.models import Components, WatershedOverallStatus
 
 from django.views.decorators.csrf import csrf_exempt
-from app_model.models import Watershed, Indicators
-
+from collections import defaultdict
 
 
 
@@ -26,8 +25,24 @@ def ws_Activity(request):
 def factsheets(request):
     return render(request, "pages/menubar-pages/factsheets.html")
 
+
 def map_gallery(request):
-    return render(request, "pages/menubar-pages/map_gallery.html")
+    watersheds = Watershed.objects.prefetch_related('mapgallery_set').all()
+
+    data = []
+    for ws in watersheds:
+        map_groups = defaultdict(list)
+        for m in ws.mapgallery_set.all():
+            map_groups[m.map_type].append(m)
+        data.append({
+            "watershed": ws,
+            "map_groups": dict(map_groups)
+        })
+
+    context = {"watershed_data": data}
+    
+    return render(request, "pages/menubar-pages/map_gallery.html", context)
+    
 
 def news_events_list(request):
     return render(request, "pages/menubar-pages/news_events_list.html")

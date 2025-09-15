@@ -375,3 +375,20 @@ class WatershedOverallStatus(models.Model):
         ordering = ['-created_at']
 
 
+
+class MapGallery(models.Model):
+    id = models.AutoField(primary_key=True)
+    map_type = models.CharField(max_length=200, null=True, blank=True)
+    map_file_name = models.CharField(max_length=200, null=True, blank=True)
+    map_display_name = models.CharField(max_length=200, null=True, blank=True)    
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
+    # FK --    
+    watershed = models.ForeignKey('Watershed', on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self) -> str:
+        return self.map_type
+
+    class Meta:
+        db_table = 'tbl_map_gallery'
+        ordering = ['-created_at']
