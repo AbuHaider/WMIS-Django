@@ -9,6 +9,9 @@ from app_model.models import Components, WatershedOverallStatus
 from django.views.decorators.csrf import csrf_exempt
 from collections import defaultdict
 
+from itertools import groupby
+from operator import attrgetter
+
 
 
 # Create your views here.
@@ -43,6 +46,20 @@ def map_gallery(request):
     
     return render(request, "pages/menubar-pages/map_gallery.html", context)
     
+
+
+def reports(request):
+    reports = Reports.objects.all().order_by('kp_type', '-id')
+
+    # group reports by kp_type
+    grouped_reports = {}
+    for kp_type, items in groupby(reports, key=attrgetter('kp_type')):
+        grouped_reports[kp_type] = list(items)
+    
+    context = {"reports": grouped_reports}
+    
+    return render(request, "pages/menubar-pages/reports.html", context)
+        
 
 def news_events_list(request):
     return render(request, "pages/menubar-pages/news_events_list.html")
@@ -302,7 +319,6 @@ def monitoring_data(request):
             'indicators': indicators,
         })
 
-    
 
 def monitoring_data_cr(request):        
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
@@ -431,15 +447,22 @@ def monitoring_data_cr(request):
             'indicators': indicators,
         })
 
+        
+def con_measures(request):    
+    # Fetch all categories with related measures
+    con_measure_cat = Conservation_Measure_Categories.objects.prefetch_related("conservation_measure_set").all()
 
-def reports(request):
-    return render(request, "pages/menubar-pages/reports.html")
-        
-        
-def con_measures(request):
-    return render(request, "pages/menubar-pages/con_measures.html")
+    # Build dictionary { "Category Name": [list of measures] }
+    con_measures_data = {}
+    for cmc in con_measure_cat:
+        measures = cmc.conservation_measure_set.all()
+        con_measures_data[cmc.con_measure_category_name] = measures
+
+    context = {"con_measures_data": con_measures_data}
+    
+    return render(request, "pages/menubar-pages/con_measures.html", context)
+    
             
-
 
 def value_chain(request):
     return render(request, "pages/menubar-pages/value_chain.html")

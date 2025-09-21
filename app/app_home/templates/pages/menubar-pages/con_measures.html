@@ -1,13 +1,31 @@
 {% extends "layouts/home_master.html" %}
 {% load static %}
 {% static "" as baseUrl %}
-
 {% block title %} Conservation Measures {% endblock title %}
-
 {% block content %}
 
 <style>
-    
+    .data-cat-title {
+        display: block;
+        {% comment %} margin: 0.5rem 0 0.75rem 0; {% endcomment %}
+        padding: 0.5rem;
+        padding-left: 0.7rem;
+        color: #fff;
+        font-size: 1rem;
+        font-weight: bold;
+        text-align: left;
+        background-image: linear-gradient(60deg, #1d5eae 0%, #61b5d2 100%);
+        border-radius: 0.25rem;
+        box-shadow: 2px 2px 3px 1px rgba(5, 45, 58, 0.46);
+    }
+
+    .community-box {
+        margin: 0 0 1rem 0;
+        padding: 0.5rem 0;
+        box-shadow: 1px 2px 3px 2px rgba(5, 45, 58, 0.15);
+        border-radius: 0.25rem;
+        background-color: #f0f8ff;
+    }
 </style>
 
 
@@ -22,11 +40,54 @@
                 </div>
 
                 <!-- Page content start -->
-                <div class="row">
-                    <div class="col-md-12" style="padding: 40px 40px 5px 40px;">
-                        
+                <div class="row"> 
+                    <div class="col-md-12">   
+                        <div class="row">   
+                            <div class="col-md-1"></div>              
+                            <div class="col-md-5 p-4">
+                                {% if con_measures_data %}
+                                    {% for conservation_measure_categories, items in con_measures_data.items %}
+                                        <div class="row mb-3">
+                                            <div class="col-md-12">
+                                                <span class="data-cat-title mt-4">
+                                                    <i class="fa fa-list"></i>&nbsp;&nbsp;{{ conservation_measure_categories }}
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        {% for item in items %}
+                                        <div class="row community-box">                                                                        
+                                            <div class="col-md-12">   
+                                                {% if item.file_name %}                                                                                                                              
+                                                    <a class="ml-2" href="{% static 'assets/pdf/con_measures/' %}{{ item.file_name }}" target="_blank"><h6>{{ item.code }} - {{ item.conservation_measure_name }}</h6></a>                                                                
+                                                {% else %}
+                                                    <label class="ml-2" style="color: rgba(var(--bs-link-color-rgb),var(--bs-link-opacity,1));" ><h6>{{ item.code }} - {{ item.conservation_measure_name }} <span style="color: red;">(File does't exist)</span></h6></label>  
+                                                {% endif %}  
+                                            </div>                                    
+                                        </div>  
+                                        {% endfor %}
+                                    {% endfor %}
+                                {% else %}
+                                    <p>No conservation measures available!</p>
+                                {% endif %}                      
+                            </div>
+                            <div class="col-md-5 p-4">
+                                <div class="row mt-4 mb-3">
+                                    <div class="col-md-12">
+                                        <img src="{% static 'assets/images/con_measures/con_measures.png' %}" alt="Conservation Measures" class="img-fluid" style="border-radius: 0.25rem; box-shadow: 1px 2px 3px 2px rgba(5, 45, 58, 0.15);">
+                                    </div>
+                                </div> 
+                                <div class="row">
+                                    <div class="col-md-12 text-justify">
+                                        <h6 class="mb-3 text-center"><strong>CONCEPT NOTE OF THE CONSERVATION MEASURES</strong></h6>
+                                        <p style="text-align: justify;">The conceptnote outlines brief description about the measure, its site suitability, slope suitability, probable design consideration, and its feasibility along with benefits and implementation challenges.</p>
+                                    </div>
+                                </div> 
+                            </div>
+                            <div class="col-md-1"></div> 
+                        </div>
                     </div>
-                </div>
+                </div>     
                 
 
             </div>

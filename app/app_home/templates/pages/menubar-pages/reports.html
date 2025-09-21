@@ -1,9 +1,7 @@
 {% extends "layouts/home_master.html" %}
 {% load static %}
 {% static "" as baseUrl %}
-
 {% block title %} Reports {% endblock title %}
-
 {% block content %}
 
 <style>
@@ -46,78 +44,72 @@
                         Reports
                     </h4>    
                 </div>
-
                 <!-- Page content start -->
                 <div class="row">
-                    <div class="col-md-1"></div>
-                    <div class="col-md-10 p-4">
-                        <div class="row mb-3">
-                            <div class="col-md-12">
-                                <span class="data-cat-title">
-                                    <i class="fa fa-list"></i>&nbsp;&nbsp;KR1
-                                </span>
-                            </div>
-                        </div>
-                        <div class="row community-box">
-                            <div class="col-md-2">
-                                <div class="icon-container">                            
-                                    <img height="200px" src="{% static 'assets/images/map_gallery/B173/Basemap and Topography/B173_para_boundary.png' %}" alt="Technical Proposal for Slope Stabilization and Erosion Protection at CHitafonf Hill Tracts (CHT) Area, Bangladesh" style="max-width: 100%; border: 1px solid #ddd;">                                                    
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8 p-4">
+                        {% if reports %}
+                            {% for kp_type, items in reports.items %}
+                                <div class="row mb-3">
+                                    <div class="col-md-12">
+                                        <span class="data-cat-title">
+                                            <i class="fa fa-list"></i>&nbsp;&nbsp;{{ kp_type }}
+                                        </span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-10">                                                           
-                                <p>
-                                    <h6 class="h6"><strong>Title:</strong> Technical Proposal for Slope Stabilization and Erosion Protection at CHitafonf Hill Tracts (CHT) Area, Bangladesh</h6>
-                                </p>   
-                                <p>
-                                    <strong>Category:</strong> Terre Army Reports
-                                </p>
-                                <p>
-                                    <strong>Document Type:</strong> Report
-                                </p>                                
-                                <a class="btn btn-outline-primary waves-effect waves-light smbtn ml-2" href="#"><i class="fa fa-external-link ml-0"></i><span style="margin-left: 10px;">View Report</span></a>                                                                
-                            </div>
-                        </div>
-                        <div class="row community-box">
-                            <div class="col-md-2">
-                                <div class="icon-container">                            
-                                    <img height="200px" src="{% static 'assets/images/map_gallery/B173/Basemap and Topography/B173_watershed_deliniation.png' %}" alt="Technical Proposal for Slope Stabilization and Erosion Protection at CHitafonf Hill Tracts (CHT) Area, Bangladesh" style="max-width: 100%; border: 1px solid #ddd;">                                                    
-                                </div>
-                            </div>
-                            <div class="col-md-10">                                                           
-                                <h6 class="h6">Title: Technical Proposal for Slope Stabilization and Erosion Protection at CHitafonf Hill Tracts (CHT) Area, Bangladesh</h6>
-                                <p>
-                                    <strong>Category:</strong> Terre Army Reports
-                                </p>
-                                <p>
-                                    <strong>Document Type:</strong> Report
-                                </p>                                
-                                <a class="btn btn-outline-primary waves-effect waves-light smbtn ml-2" href="#"><i class="fa fa-external-link ml-0"></i><span style="margin-left: 10px;">View Report</span></a>                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                {% comment %} <div class="row">
-                    <div class="col-md-12" style="padding: 40px 40px 5px 40px;">
-                        <div class="pb-2">
-                            <a data-bs-target="#modalsheet1" data-bs-toggle="modal" href="#">
-                                <h4 class="font-weight-semibold tx-16">1.  User Manual</h4>
-                            </a>
-                        </div>
-                        <div class="pt-2">
-                            <a data-bs-target="#" data-bs-toggle="modal" href="#">
-                                <h4 class="font-weight-semibold tx-16">2.  About the Watershed Management Information System (WMIS)</h4>
-                            </a>
-                        </div>
+                                {% for item in items %}
+                                <div class="row community-box">                                    
+                                    <div class="col-md-2">
+                                        <div class="icon-container">                            
+                                            <img height="185px" src="{% static 'assets/images/report_thumbnails/' %}{{ item.report_thumbnail_file_name|default:'thumbnail.jpg' }}" alt="" style="max-width: 100%; border: 1px solid #ddd;">                                                    
+                                        </div>
+                                    </div>
+                                    <div class="col-md-10">                                                           
+                                        <p>
+                                            <h6 class="h6"><strong>Title:</strong> {{ item.report_title }}</h6>
+                                        </p>   
+                                        <p>
+                                            <strong>Study Watershed/Region:</strong> {{ item.study_watershed_or_region }}
+                                        </p>
+                                        <p>
+                                            <strong>Document Type:</strong> {{ item.doc_type }}
+                                        </p>                                
+                                        <a class="btn btn-outline-primary waves-effect waves-light smbtn ml-2" href="{{ item.report_link }}" target="_blank"><i class="fa fa-external-link ml-0"></i><span style="margin-left: 10px;">View Report</span></a>                                                                
+                                    </div>                                    
+                                </div>  
+                                {% endfor %}
+                            {% endfor %}
+                        {% else %}
+                            <p>No reports available!</p>
+                        {% endif %}                      
                     </div>
-                </div> {% endcomment %}
-                
-
+                </div>                               
             </div>
         </div>
     </div>
 </div>
 
+
+{% comment %} <div class="row community-box">
+    <div class="col-md-2">
+        <div class="icon-container">                            
+            <img height="185" src="{% static 'assets/images/map_gallery/B173/Basemap and Topography/B173_watershed_deliniation.png' %}" alt="Technical Proposal for Slope Stabilization and Erosion Protection at CHitafonf Hill Tracts (CHT) Area, Bangladesh" style="max-width: 100%; border: 1px solid #ddd;">                                                    
+        </div>
+    </div>
+    <div class="col-md-10">     
+        <p>                                                      
+            <h6 class="h6">Title: Technical Proposal for Slope Stabilization and Erosion Protection at CHitafonf Hill Tracts (CHT) Area, Bangladesh</h6>
+        </p>
+        <p>
+            <strong>Category:</strong> Terre Army Reports
+        </p>
+        <p>
+            <strong>Document Type:</strong> Report
+        </p>                                
+        <a class="btn btn-outline-primary waves-effect waves-light smbtn ml-2" href="#"><i class="fa fa-external-link ml-0"></i><span style="margin-left: 10px;">View Report</span></a>                                
+    </div>
+</div> {% endcomment %}
 
 <!-- Extra Large Modal border: 1px solid green;-->
 <div class="modal fade" id="modalsheet1">
@@ -179,11 +171,5 @@
         </div>
     </div>
 </div>
-
-<script src="https://unpkg.com/pdfobject"></script>
-<script>PDFObject.embed("{% static 'assets/pdf/factsheets/Report1.pdf' %}", "#factsheetpdf1");</script>
-<script>PDFObject.embed("{% static 'assets/pdf/factsheets/Report1.pdf' %}", "#factsheetpdf2");</script>
-<script>PDFObject.embed("{% static 'assets/pdf/factsheets/Report1.pdf' %}", "#factsheetpdf3");</script>
-<!-- ref: https://stackoverflow.com/questions/35286303/pdf-file-to-be-displayed-on-the-dialog-modal-via-bootstrap -->
 
 {% endblock %}

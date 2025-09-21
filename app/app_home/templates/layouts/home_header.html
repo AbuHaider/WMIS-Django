@@ -2,7 +2,7 @@
 {% load static %}
 
 
-<header id="page-topbar" style="background-color: #1353A3 ; ">
+<header id="page-topbar" style="background-color: #1353A3; background: linear-gradient(60deg, #1353A3 0%, #63b5ad 100%);">
     {% comment %} <img class="logo" src="{% static 'assets/logo/ADB_logo.png' %}" style="float:left"> {% endcomment %}
     
     <div class="navbar-header">
@@ -13,8 +13,8 @@
 
             <span class="title-txt d-none d-md-inline-block mt-3">
                 <span style="color: #eab600;font: 700 1.40vw/1 Roboto, Noto Sans, Helvetica, Arial, sans-serif">Watershed Management Information System</span><br />
-                <span style="color: #eab600;font: 700 1.20vw/1 Roboto, Noto Sans, Helvetica, Arial, sans-serif">Chittagong Hill Tracts (CHT)</span>  <br>
-                <span style="color:#d7ebf0;font: 700 .80vw/1 Roboto, Noto Sans, Helvetica, Arial, sans-serif">Asian Development Bank</span>        
+                <span style="color: #d7ebf0;font: 700 1vw/1 Roboto, Noto Sans, Helvetica, Arial, sans-serif">Chittagong Hill Tracts (CHT)</span>  <br>
+                <span style="color: #d7ebf0;font: 700 .80vw/1 Roboto, Noto Sans, Helvetica, Arial, sans-serif">Asian Development Bank</span>        
             </span>
 
             <span class="title-txt d-inline-block d-md-none text-center">
@@ -37,7 +37,7 @@
         </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid" style="z-index: 200; position: relative;">
         <div class="topnav">
 
             <nav class="navbar navbar-light navbar-expand-lg topnav-menu">
@@ -166,4 +166,5 @@
         </div>
     </div>
     
+    <div class="row" style="background-color: #eab600; height:17px; z-index: 100; position: relative;"></div>
 </header>

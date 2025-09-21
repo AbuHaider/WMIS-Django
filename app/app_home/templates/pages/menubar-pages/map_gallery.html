@@ -1,10 +1,7 @@
 {% extends "layouts/home_master.html" %}
-
 {% load static %}
 {% static "" as baseUrl %}
-
 {% block title %} Map Gallery {% endblock title %}
-
 {% block content %}
 
 <!-- Internal Inputtags css-->
@@ -32,6 +29,7 @@
         font-weight: 700;
         color: var(--bs-nav-link-color);
         background-color: gold;
+        border-color: #ffb700;
     }
 
     .data-cat-title {
@@ -81,7 +79,7 @@
                         </ul>
 
                         <!-- Tab Contents -->
-                        <div class="tab-content border rounded-bottom p-3" id="myTabContent">
+                        <div class="tab-content border rounded-bottom p-3 mb-4" id="myTabContent">
                             {% for item in watershed_data %}
                                 <div class="tab-pane fade {% if forloop.first %}show active{% endif %}" 
                                     id="{{ item.watershed.watershed_code }}" 

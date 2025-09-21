@@ -84,7 +84,7 @@
             {% include 'layouts/home_header.html' %}
             {% endblock header %}
     
-            <div class="main-content" style="background: #eab600;">
+            <div class="main-content" style="background: #eab600;">   {% comment %} style="background: #eab600;" {% endcomment %}
                 <div class="page-content" style="background: #f2eee3; margin-top: 142px; padding-top: 0;">   {% comment %}   background: #eef1f1;  {% endcomment %}
                     <div class="container-fluid">
                         {% block content %}
@@ -108,7 +108,7 @@
         <!-- Bootstrap 5 -->
         <script src="{% static 'plugins/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
         
-        {% comment %} <script src="{% static 'scripts/template/main.js' %}"></script> {% endcomment %}
+        <script src="{% static 'scripts/template/main.js' %}"></script>
         {% comment %} <script src="{% static 'scripts/template/app.js' %}"></script> {% endcomment %}
 
 

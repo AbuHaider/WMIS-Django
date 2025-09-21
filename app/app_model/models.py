@@ -392,3 +392,59 @@ class MapGallery(models.Model):
     class Meta:
         db_table = 'tbl_map_gallery'
         ordering = ['-created_at']
+        
+        
+
+class Reports(models.Model):
+    id = models.AutoField(primary_key=True)
+    kp_type = models.CharField(max_length=200, null=True, blank=True)
+    report_title = models.CharField(max_length=200, null=True, blank=True)
+    study_watershed_or_region = models.CharField(max_length=200, null=True, blank=True)    
+    doc_type = models.CharField(max_length=100, null=True, blank=True)
+    report_link = models.CharField(max_length=300, null=True, blank=True)
+    report_thumbnail_file_name = models.CharField(max_length=100, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
+    
+    def __str__(self) -> str:
+        return self.kp_type
+
+    class Meta:
+        db_table = 'tbl_reports'
+        ordering = ['-created_at']
+        
+        
+
+
+class Conservation_Measure_Categories(models.Model):
+    id = models.AutoField(primary_key=True)
+    con_measure_category_name = models.CharField(max_length=250, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
+
+    def __str__(self) -> str:
+        return self.con_measure_category_name
+
+    class Meta:
+        db_table = 'lkp_con_measure_categories'
+        ordering = ['-created_at']
+
+
+
+class Conservation_Measure(models.Model):
+    id = models.AutoField(primary_key=True)
+    code = models.CharField(max_length=200, null=True, blank=True)
+    conservation_measure_name = models.CharField(max_length=200, null=True, blank=True)
+    file_name = models.CharField(max_length=200, null=True, blank=True)    
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True, blank=True)
+    # FK --    
+    conservation_measure_categories = models.ForeignKey('Conservation_Measure_Categories', on_delete=models.CASCADE, null=True, blank=True)
+
+    def __str__(self) -> str:
+        return f"{self.code} - {self.conservation_measure_name}"
+
+    class Meta:
+        db_table = 'tbl_conservation_measure'
+        ordering = ['-created_at']
+        
